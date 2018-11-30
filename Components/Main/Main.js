@@ -51,7 +51,7 @@ export default connect(null,{OnSignIn})(Main);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#dcdbd9',
+    backgroundColor: '#4895F0',
   },
   content: {
     flex: 14.5,

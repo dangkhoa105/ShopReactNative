@@ -1,5 +1,5 @@
-import {StackNavigator, TabNavigator,DrawerNavigator, DrawerItems} from'react-navigation';
-import {Image, View, Text, StyleSheet, Dimensions} from 'react-native';
+import { StackNavigator, TabNavigator } from'react-navigation';
+import { Image, Text, StyleSheet, Dimensions } from 'react-native';
 import React from 'react';
 import Home from '../Main/Home/Home.js';
 import Cart from '../Order/Cart.js';
@@ -10,30 +10,26 @@ import ProductDetail from '../Main/Home/Product/ProductDetail.js';
 import IconCart from '../Route/TabBarIcon/IconCart.js';
 
 import iconHome from '../../Image/home0.png';
-import iconCart from '../../Image/cart0.png';
 import iconSearch from '../../Image/search0.png';
 import iconContact from '../../Image/contact0.png';
 import iconHome1 from '../../Image/home.png';
-import iconCart1 from '../../Image/cart.png';
 import iconSearch1 from '../../Image/search.png';
 import iconContact1 from '../../Image/contact.png';
 
 var {width, height} = Dimensions.get('window');
 
 const styles=StyleSheet.create({
-    icon:{
-        width:width/14,
-        height:height/22,
+    icon: {
+        width: width / 14,
+        height: height / 25,
     },
-    iconText:{
-        color:'#d4d3d0',
-        //marginTop:height/300,
-        fontSize:width/33,
+    iconText: {
+        color: '#d4d3d0',
+        fontSize: width / 33,
     },
-    iconTextActive:{
-        color:'#28b08a',
-        //marginTop:height/300,
-        fontSize: width/33,
+    iconTextActive: {
+        color: '#4895F0',
+        fontSize: width / 33,
     },
 })
 export const ROUTE_HOME = StackNavigator({
@@ -113,14 +109,14 @@ export const TABBAR = TabNavigator(
         tabBarPosition:'bottom',
         swipeEnabled: true,
         tabBarOptions:{
-            style:{
+            style: {
                 backgroundColor: '#f6f6f6',
-                flex:0.12,
-                justifyContent:'center',
+                flex: 0.12,
+                justifyContent: 'center',
             },
             
-            showIcon:true,
-            showLabel:true,
+            showIcon: true,
+            showLabel: true,
         },
     }
 )

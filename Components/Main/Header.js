@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, StyleSheet, TouchableOpacity, TextInput, Image, Dimensions, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import iconMenu from '../../Image/menu.png';
-import iconLogo from '../../Image/cart.png';
+import iconLogo from '../../Image/logo.png';
 import search from '../../Redux/API/search';
 import { searchProduct } from '../../Redux/Reducer/CreateAction';
 
@@ -82,8 +82,8 @@ const styles=StyleSheet.create({
         justifyContent: 'space-between'
     },
     imageMenu: {
-        width: width / 18,
-        height: height / 20,
+        width: width / 15,
+        height: height / 18,
     },
     imageCart: {
         width: width / 17,
@@ -103,7 +103,7 @@ const styles=StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 10,
         height: height / 20,
-        width: width / 1.5,
+        width: width / 1.6,
         paddingLeft: 10,
         paddingVertical: 1 
     },
