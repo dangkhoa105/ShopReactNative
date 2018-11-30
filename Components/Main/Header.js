@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, TouchableOpacity, TextInput, Image, Dimensions, Alert } from 'react-native';
 import { connect } from 'react-redux';
-import iconMenu from '../../Image/icon-menu.png';
-import iconLogo from '../../Image/cart0.png';
+import iconMenu from '../../Image/menu.png';
+import iconLogo from '../../Image/cart.png';
 import search from '../../Redux/API/search';
 import { searchProduct } from '../../Redux/Reducer/CreateAction';
 
@@ -42,15 +42,16 @@ class Header extends Component{
                             source={iconMenu}
                         />
                     </TouchableOpacity>
-                    <View style={styles.hearderSearch}>
+                    <View style={styles.hearderSearch}>                                                                     
                         <TextInput
                             underlineColorAndroid='transparent'
                             style={styles.textinput}
+                            placeholder="What do you want to buy ?"
                             value={this.state.contentSearch}
                             onChangeText={(contentSearch)=>{this.setState({contentSearch})}}
                             onFocus={ this.props.goSear}
                             onSubmitEditing={this._search.bind(this)}
-                        />
+                        /> 
                     </View>
                     <TouchableOpacity
                         onPress={this.props.goSear}
@@ -70,40 +71,40 @@ export default  connect(null,{searchProduct})(Header);
 var {width, height} = Dimensions.get('window');
 const styles=StyleSheet.create({
     header: {
-        flex: 1,
         backgroundColor: '#4895F0',
         justifyContent: 'space-around',
         padding: width / 25,
         paddingTop: width / 30,
-        height: height / 100
+        height: height / 12,
     },
     headerTop: {
-        flex: 1,
         flexDirection: 'row',
-        alignItems: 'center',
+        justifyContent: 'space-between'
     },
     imageMenu: {
-        width: width / 15,
-        height: height / 18,
+        width: width / 18,
+        height: height / 20,
     },
     imageCart: {
-        width: width / 10,
-        height: height / 15,
+        width: width / 17,
+        height: height / 20,
+        marginRight: width / 32,
     },
     text: {
         fontSize: width / 23,
         color: 'white',
     },
     hearderSearch: {
-        flex: 1,
+        backgroundColor: 'white',
         marginTop: width / 100,
+        justifyContent: 'space-around',
     },
     textinput: {
         backgroundColor: 'white',
-        fontSize: width / 40,
         borderRadius: 10,
-        marginLeft: 14,
-        marginRight: 10,
-        height: 30
+        height: height / 20,
+        width: width / 1.5,
+        paddingLeft: 10,
+        paddingVertical: 1 
     },
 })
