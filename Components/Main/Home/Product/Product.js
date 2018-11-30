@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Dimensions, Image, FlatList } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Dimensions, Image, FlatList, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import getListProduct from '../../../../Redux/API/getListProduct';
 import { fetchListProduct, getListProductsThunk,refreshListProduct,loadpage, setRefre } from '../../../../Redux/Reducer/CreateAction';
@@ -48,53 +48,55 @@ class Product extends Component {
   }
 
   render() {
-    const {textName, textPrice, textMaterial, textShowDetail, colorStyle, container, header, body, imagebackstyle, textheaderstyle, products,imageProduct, productsImage, productsContent, productsShowDetail} = styles;
+    const {textName, textPrice, textMaterial, textShowDetail, colorStyle, container, wrapper, header, body, imagebackstyle, textheaderstyle, products,imageProduct, productsImage, productsContent, productsShowDetail} = styles;
     const {type} = this.props.navigation.state.params;
     const {listProducts} = this.props;
     console.log(listProducts,"listproducts");
     const {refre} = this.state;
     return (
       <View style={container}>
-        <View style={header}>
-          <TouchableOpacity onPress={this.goHome.bind(this)}>
-            <Image style={imagebackstyle} source={back} />
-          </TouchableOpacity>
-          <Text key={type.id} style={textheaderstyle}>{type.name}</Text>
-          <Text></Text>
-        </View>
-        <View style={body}>
-          <FlatList
-            refreshing={refre}
-            onRefresh={()=>{this._refre()}}
+        <ScrollView style={wrapper}>
+          <View style={header}>
+            <TouchableOpacity onPress={this.goHome.bind(this)}>
+              <Image style={imagebackstyle} source={back} />
+            </TouchableOpacity>
+            <Text key={type.id} style={textheaderstyle}>{type.name}</Text>
+            <Text></Text>
+          </View>
+          <View style={body}>
+            <FlatList
+              refreshing={refre}
+              onRefresh={()=>{this._refre()}}
 
-            data={listProducts}
-            renderItem={({ item }) => 
-              <View style={products} >
-                <View style={productsImage}>
-                  <Image style={imageProduct} source={{uri:`${url}${item.images[0]}`}} />
-                </View>
-                <View style={productsContent}>
-                  <Text style={textName}> {item.name.toUpperCase()} </Text>
-                  <Text style={textPrice}> {item.price}$</Text>
-                  <Text style={textMaterial}> {item.material} </Text>
-                  <View style={colorStyle}>
-                    <Text> Color {item.color}</Text>
-                    <View style={{width:16, height:16, backgroundColor: item.color.toLowerCase(), borderRadius:8}}></View>
+              data={listProducts}
+              renderItem={({ item }) => 
+                <View style={products} >
+                  <View style={productsImage}>
+                    <Image style={imageProduct} source={{uri:`${url}${item.images[0]}`}} />
+                  </View>
+                  <View style={productsContent}>
+                    <Text style={textName}>{item.name.toUpperCase()} </Text>
+                    <Text style={textPrice}> {item.price}$</Text>
+                    <Text style={textMaterial}> {item.material} </Text>
+                    <View style={colorStyle}>
+                      <Text> Color {item.color}</Text>
+                      <View style={{width:16, height:16, backgroundColor: item.color.toLowerCase(), borderRadius:8}}></View>
+                    </View>
+                  </View>
+                  <View style={productsShowDetail}>
+                    <TouchableOpacity
+                      onPress={()=> {this.goDetail(item)}}
+                    >
+                      <Text style={textShowDetail}>SHOW DETAIL</Text>
+                    </TouchableOpacity>
                   </View>
                 </View>
-                <View style={productsShowDetail}>
-                  <TouchableOpacity
-                    onPress={()=> {this.goDetail(item)}}
-                  >
-                    <Text style={textShowDetail}>SHOW DETAIL</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            }    
-            keyExtractor={(item)=> item.id.toString()}
-              
-          />
-        </View>
+              }    
+              keyExtractor={(item)=> item.id.toString()}
+                
+            />
+          </View>
+        </ScrollView>        
       </View>
     );
   }
@@ -109,7 +111,7 @@ function mapStoreToProps(state){
 
 export default connect(mapStoreToProps,{fetchListProduct,getListProductsThunk,refreshListProduct,loadpage,setRefre})(Product);
 var {width, height} = Dimensions.get('window');
-const imageWidth = (width - 100) / 3;
+const imageWidth = (width - 70) / 3;
 const imageHeight = (imageWidth / 361) * 452;
 const styles = StyleSheet.create({
     container: {
@@ -119,8 +121,12 @@ const styles = StyleSheet.create({
       borderColor: 'gray',
       borderWidth: 1,
     },
+    wrapper: {
+      backgroundColor: "#FFF",
+      margin: 10
+    },
     header: {
-      flex: 1,
+      //flex: 1,
       height: 50,
       flexDirection: 'row',
       justifyContent: 'space-between',
@@ -142,7 +148,7 @@ const styles = StyleSheet.create({
     products: {
       flexDirection: 'row',
       paddingVertical: 15,
-      padding: 7,
+      padding: 10,
       borderTopColor: '#F0F0F0',
       borderBottomColor: '#FFF',
       borderLeftColor: '#FFF',
@@ -150,8 +156,8 @@ const styles = StyleSheet.create({
       borderWidth: 2,
     },
     productsImage: {
-      padding: 10,
-      height: 130,
+      padding: 5,
+      height: 150,
       width: (90*452) / 361
     },
     imageProduct: {
@@ -159,9 +165,11 @@ const styles = StyleSheet.create({
       height: imageHeight,
     },
     productsContent: {
+      flex: 90,
       justifyContent: 'space-between',
       marginLeft: 15,
-      flex: 1,
+      padding: 5
+      //flex: 1,
     },
     textName: {
       color: '#BCBCBC',
@@ -174,17 +182,20 @@ const styles = StyleSheet.create({
       fontWeight: '100'
     },
     textMaterial: {
-      fontSize: 11,
+      fontSize: 14,
       fontWeight: '100',
     },
     textShowDetail: {
       color: '#B10D65',
-      fontSize: 11,
+      fontSize: 13,
     },
     productsShowDetail: {
-      borderRadius: 8,
-      padding: 10,
-      justifyContent: 'flex-end',
+      flex: 30,
+      //borderRadius: 8,
+      padding: 5,
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: imageWidth
     },  
     colorStyle: {
       flexDirection: 'row',
@@ -192,9 +203,9 @@ const styles = StyleSheet.create({
       alignItems: 'center',
     },
     color: {
-      width: 12,
-      height: 12,
+      width: 16,
+      height: 16,
       backgroundColor: 'blue',
-      borderRadius: 100,
+      borderRadius: 8,
     }
 })
