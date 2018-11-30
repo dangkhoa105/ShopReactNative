@@ -1,16 +1,13 @@
-import React, {Component} from 'react';
-import {View, Text, TouchableOpacity, Image} from 'react-native';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { View, Text, Image } from 'react-native';
+import { connect } from 'react-redux';
 
 import iconCart from '../../../Image/cart0.png'
 import iconCart1 from '../../../Image/cart.png';
 
 class Iconcart extends Component{
     constructor(props){
-        super(props);
-        // // this.state={
-        // //     notifications:[{id:"1",name:"abc",money:"125"},{id:"1",name:"abc",money:"125"},{id:"1",name:"abc",money:"125"}],
-        // }        
+        super(props);   
     }
     render(){
         const {focused, cartLeght, user} = this.props;
@@ -18,8 +15,6 @@ class Iconcart extends Component{
             <View style={{ position: "relative" ,
                 flex: 1,
                 alignSelf: 'stretch',
-                // justifyContent: 'space-around',
-                // alignItems: 'center'
             }}>
                 {focused ? <Image source={iconCart1} style={{ width: 25, height: 25 }} /> : <Image source={iconCart} style={{ width: 25, height: 25 }} />}
                 {cartLeght.length > 0 ?

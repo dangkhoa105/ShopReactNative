@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   profileBody: {
     alignItems: 'center',
     justifyContent: 'center',
-    height: height * 0.72,
+    height: height * 0.5,
   },
   button: {
     backgroundColor: '#FFF',

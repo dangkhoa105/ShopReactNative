@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     header: {
-        flex: 1,
+        flex: 7,
         backgroundColor: '#4895F0',
         flexDirection: 'row',
         padding: width / 25,
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
         fontFamily: 'Avenir',
     },
     body: {
-        flex: 10,
+        flex: 93,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#F6F6F6',  
@@ -137,11 +137,11 @@ const styles = StyleSheet.create({
         height: height * 0.07,
         borderRadius: 20,
         alignItems: 'center',
-        alignSelf: 'stretch',
         justifyContent: 'center',
         backgroundColor: '#4895F0',
-        marginTop: 20,
+        marginTop: 30,
         marginHorizontal: 20,
+        paddingLeft: 20,
     },
     buttontext: {
         color: 'white',

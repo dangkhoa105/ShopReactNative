@@ -90,8 +90,8 @@ const styles = StyleSheet.create({
       alignItems: 'center',
   },
     imageStyle:{
-      width:imageWidth,
-      height:imageHeight,
+      width:imageWidth * 1.7,
+      height:imageHeight * 1.7,
       borderRadius:100,
       margin:20,
     },

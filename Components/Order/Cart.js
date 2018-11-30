@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, Dimensions, FlatList, AsyncStorage, Alert } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image, Dimensions, FlatList, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { updateProductsCart } from '../../Redux/Reducer/CreateAction.js';
 import saveCart from "../../Redux/API/saveCart.js";
@@ -14,17 +14,6 @@ class Cart extends Component {
     this.props.navigation.navigate('PRODUCTDETAIL', { product });
   }
   deleteProduct(productID) {
-    // const { arrCart } = this.props;
-    // //console.log("mang" , arrCart);
-    // var i = arrCart.map(e => { return e.id }).indexOf(productID);
-    // // console.log("vị trí thứ :",i);
-    // if (i > -1) {
-    //   arrCart.splice(i, 1);
-    //   console.log("mang moi 1:", arrCart);
-    //   this.props.updateProductsCart(arrCart, console.log(arrCart, "UPDATE PRODUCT CART"));
-    //   saveCart(arrCart);
-    //   return arrCart;
-    // }
     const { arrCart } = this.props;
     const newarrCart = arrCart.filter(e => e.id !== productID);
     console.log(newarrCart, "mang moi");
@@ -53,7 +42,7 @@ class Cart extends Component {
         else {
           Alert.alert(
             'Xóa ',
-            'Bạn chắc chắn muốn xóa sàn phẩm này ?',
+            'Do you want to delete this product ?',
             [
               { text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel' },
               { text: 'OK', onPress: () => this.deleteProduct(productID) },
@@ -63,7 +52,6 @@ class Cart extends Component {
       }
       return e;
     });
-    // console.log(newarrCart, "mang moi");
     this.props.updateProductsCart(newarrCart);
     saveCart(newarrCart);
   }// Xóa số lượng của sản phẩm
@@ -71,8 +59,6 @@ class Cart extends Component {
     try {
       var token = await getToken();
       var arrayDetail = this.props.arrCart.map(e => ({ id: e.id, quantity: e.quantity }));
-      // console.log(token, "TOKEN");
-      // console.log(arrayDetail, "ARAYDETAIL");
       const kq = await sendOrder(token, arrayDetail);
       if (kq === "THEM_THANH_CONG") return this._Success();
       return console.log("LOI");
@@ -85,9 +71,8 @@ class Cart extends Component {
     saveCart([]);
   }
   render() {
-    const { stylecart, product, viewImage, viewTitle, viewShow, textstyleadd, imageStyle, tatolCart, textTatol, textStyle0, textStyle2, textStyle1, add } = styles;
+    const { stylecart, product, viewImage, viewTitle, viewShow, textstyleadd, imageStyle, tatolCart, textTatol, textStyleName, textStyleShow, textStylePrice, add } = styles;
     const { arrCart, user } = this.props;
-    // console.log("mang" , arrCart);
     const arrTotal = arrCart.map(e => e.price * e.quantity);
     const total = arrTotal.length ? arrTotal.reduce((a, b) => a + b) : 0;
     return (
@@ -103,8 +88,8 @@ class Cart extends Component {
                       <Image source={{ uri: `${url}${item.images[0]}` }} style={imageStyle} />
                     </View>
                     <View style={viewTitle}>
-                      <Text style={textStyle0}> {item.name.toUpperCase()} </Text>
-                      <Text style={textStyle1}> {item.price}$ </Text>
+                      <Text style={textStyleName}>{item.name.toUpperCase()} </Text>
+                      <Text style={textStylePrice}>{item.price}$ </Text>
                       <View style={add}>
                         <TouchableOpacity onPress={() => { this.incrQuantity(item.id) }}>
                           <Text style={textstyleadd}>+</Text>
@@ -119,10 +104,10 @@ class Cart extends Component {
                     </View>
                     <View style={viewShow}>
                       <TouchableOpacity onPress={() => { this.deleteProduct(item.id) }}>
-                        <Text>X</Text>
+                        <Text style={{ fontFamily: 'Avenir', color: '#969696' }}>X</Text>
                       </TouchableOpacity>
                       <TouchableOpacity onPress={() => { this.goDetail(item) }}>
-                        <Text style={textStyle2}>SHOW DETAIL</Text>
+                        <Text style={textStyleShow}>SHOW DETAIL</Text>
                       </TouchableOpacity>
                     </View>
                   </View>
@@ -135,7 +120,7 @@ class Cart extends Component {
                 </TouchableOpacity>
               </View>
             </View>
-            : <Text>Vui long dang nhap </Text>
+            : <Text>Sign in, please! </Text>
       }
       </View>
     );
@@ -155,12 +140,14 @@ const imageHeight = (imageWidth / 361) * 452;
 const styles = StyleSheet.create({
   stylecart: {
     flex: 13,
+    backgroundColor: '#DFDFDF'
   },
   product: {
     margin: width / 38,
     backgroundColor: 'white',
     flexDirection: 'row',
     padding: 5,
+    borderRadius: 2,
   },
   viewImage: {
     margin: 10,
@@ -168,21 +155,30 @@ const styles = StyleSheet.create({
   imageStyle: {
     width: imageWidth,
     height: imageHeight,
+    flex: 1,
+    resizeMode: 'center'
   },
   viewTitle: {
+    flex: 80,
     justifyContent: 'space-between',
-    margin: 10,
+    margin: 5,
   },
-  textStyle0: {
-    color: 'gray',
-    fontSize: 15,
+  textStyleName: {
+    paddingLeft: 20,
+    color: '#A7A7A7',
+    fontSize: 20,
+    fontWeight: '400',
+    fontFamily: 'Avenir',
   },
-  textStyle1: {
-    color: '#c6386b',
-    fontSize: 15,
+  textStylePrice: {
+    paddingLeft: 20,
+    color: '#C21C70',
+    fontSize: 18,
+    fontWeight: '400',
+    fontFamily: 'Avenir'
   },
   add: {
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     flexDirection: 'row',
   },
   textstyleadd: {
@@ -194,12 +190,15 @@ const styles = StyleSheet.create({
     margin: 10,
     alignItems: 'flex-end',
   },
-  textStyle2: {
-    color: '#c6386b',
-    fontSize: 10,
+  textStyleShow: {
+    color: '#C21C70',
+    fontSize: 13,
+    fontWeight: '400',
+    fontFamily: 'Avenir',
+    textAlign: 'right',
   },
   tatolCart: {
-    backgroundColor: '#28b08a',
+    backgroundColor: '#4895F0',
     margin: width / 38,
     alignItems: 'center',
     padding: 15,

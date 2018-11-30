@@ -18,7 +18,7 @@ class Authentication extends Component{
         return <Login goBackMenu = {this.goBackMenu.bind(this)}/>
     }
     isFilterLogin(statusname){
-        if( statusname === this.props.isLogin) return styles.buttontextBottom;
+        if( statusname === this.props.isLogin ) return styles.buttontextBottom;
         return styles.buttontextBottomSignUp;
     }
     render() {
@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: width / 25,
         padding: 20,
+        justifyContent: "space-between"
     },
     header: {
         flex: 1,
