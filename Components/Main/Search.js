@@ -27,9 +27,8 @@ class Search extends Component{
                 <Text> {item.material}</Text>
                 <View style={colorStyle}>
                   <Text> Color {item.color}</Text>
-                  <View style={{width:12, height:12, backgroundColor: item.color.toLowerCase(),borderRadius:100,}}></View>
+                  <View style={{width:12, height:12, backgroundColor: item.color.toLowerCase(), borderRadius:100, marginLeft: 15}}/>
                 </View>
-
               </View>
               <View style={productsShowDetail}>
                 <TouchableOpacity
@@ -55,50 +54,54 @@ function mapStoreToProps(state){
 
 export default connect(mapStoreToProps)(Search);
 var {width, height} = Dimensions.get('window');
-const imageWidth=  (width -100)/3;
-const imageHeight= (imageWidth /361)*452;
+const imageWidth = (width - 100) / 3;
+const imageHeight = (imageWidth / 361) * 452;
 const styles=StyleSheet.create({
-    stylesearch:{
-        flex:13,
+    stylesearch: {
+      flex: 13,
     },
-    products:{
-        flexDirection:'row',
-        margin:width/38,
-        backgroundColor:'white'
-      },
-        productsImage:{
-          margin:10,
-        },
-          imageProduct:{
-            width:imageWidth,
-            height:imageHeight,
-          },
-        productsContent:{
-          margin:10,
-          justifyContent:'space-between',
-        },
-          textStyle0:{
-            color:'gray',
-            fontSize:13,
-          },
-          textStyle1:{
-            color:'#c6386b',
-          },            
-        productsShowDetail:{
-          margin:10,
-          justifyContent:'flex-end',
-        },
-          textStyle2:{
-            color:'#c6386b',
-            fontSize:10,
-          },      
-          colorStyle:{
-            flexDirection:'row',
-            justifyContent:'space-between',
-            alignItems:'center',
-          },
-          color:{
-            width:12, height:12, backgroundColor:'blue',
-            borderRadius:100,
-          }
+    products: {
+      flexDirection: 'row',
+      margin: width / 38,
+      backgroundColor: 'white',
+      justifyContent: 'space-around'
+    },
+    productsImage: {
+      margin: 10,
+    },
+    imageProduct: {
+      width: imageWidth,
+      height: imageHeight,
+    },
+    productsContent: {
+      margin: 10,
+      justifyContent: 'space-between',
+    },
+    textStyle0: {
+      color: 'gray',
+      fontSize: 15,
+    },
+    textStyle1: {
+      color: '#c6386b',
+    },
+    productsShowDetail: {
+      margin: 10,
+      justifyContent: 'flex-end',
+    },
+    textStyle2: {
+      color: '#c6386b',
+      fontSize: 13,
+      alignItems: 'flex-start'
+    },
+    colorStyle: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    color: {
+      width: 12,
+      height: 12,
+      backgroundColor: 'blue',
+      borderRadius: 100,
+    }
 })
