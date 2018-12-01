@@ -61,7 +61,7 @@ class Login extends Component{
 
 export default connect(null, {OnSignIn})(Login);
 
-const {width, height} = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
     body: {
         flex: 7,

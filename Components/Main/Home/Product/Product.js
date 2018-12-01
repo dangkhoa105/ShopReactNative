@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Dimensions, Image, FlatList, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import getListProduct from '../../../../Redux/API/getListProduct';
-import { fetchListProduct, getListProductsThunk,refreshListProduct,loadpage, setRefre } from '../../../../Redux/Reducer/CreateAction';
+import { fetchListProduct, getListProductsThunk, refreshListProduct, loadpage, setRefre } from '../../../../Redux/Reducer/CreateAction';
 
 
 import back from '../../../../Image/backList.png';
@@ -48,11 +48,11 @@ class Product extends Component {
   }
 
   render() {
-    const {textName, textPrice, textMaterial, textShowDetail, colorStyle, container, wrapper, header, body, imagebackstyle, textheaderstyle, products,imageProduct, productsImage, productsContent, productsShowDetail} = styles;
-    const {type} = this.props.navigation.state.params;
-    const {listProducts} = this.props;
+    const { textName, textPrice, textMaterial, textShowDetail, colorStyle, container, wrapper, header, body, imagebackstyle, textheaderstyle, products, imageProduct, productsImage, productsContent, productsShowDetail } = styles;
+    const { type } = this.props.navigation.state.params;
+    const { listProducts } = this.props;
     console.log(listProducts,"listproducts");
-    const {refre} = this.state;
+    const { refre } = this.state;
     return (
       <View style={container}>
         <ScrollView style={wrapper}>
@@ -92,8 +92,7 @@ class Product extends Component {
                   </View>
                 </View>
               }    
-              keyExtractor={(item)=> item.id.toString()}
-                
+              keyExtractor={(item)=> item.id.toString()}              
             />
           </View>
         </ScrollView>        
@@ -109,103 +108,102 @@ function mapStoreToProps(state){
   }
 }
 
-export default connect(mapStoreToProps,{fetchListProduct,getListProductsThunk,refreshListProduct,loadpage,setRefre})(Product);
-var {width, height} = Dimensions.get('window');
+export default connect(mapStoreToProps,{fetchListProduct, getListProductsThunk, refreshListProduct, loadpage, setRefre})(Product);
+var { width, height } = Dimensions.get('window');
 const imageWidth = (width - 70) / 3;
 const imageHeight = (imageWidth / 361) * 452;
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#DBDBDB',
-      margin: width / 38,
-      borderColor: 'gray',
-      borderWidth: 1,
-    },
-    wrapper: {
-      backgroundColor: "#FFF",
-      margin: 4
-    },
-    header: {
-      //flex: 1,
-      height: 50,
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      padding: 5,
-    },
-    imagebackstyle: {
-      width: width / 13,
-      height: height / 18,
-    },
-    textheaderstyle: {
-      fontSize: width / 23,
-      color: '#B10D65',
-    },
-    body: {
-      flex: 14,
-      padding: 10,
-    },
-    products: {
-      flexDirection: 'row',
-      paddingVertical: 15,
-      padding: 10,
-      borderTopColor: '#F0F0F0',
-      borderBottomColor: '#FFF',
-      borderLeftColor: '#FFF',
-      borderRightColor: '#FFF',
-      borderWidth: 2,
-    },
-    productsImage: {
-      padding: 5,
-      height: 150,
-      width: (90*452) / 361
-    },
-    imageProduct: {
-      width: imageWidth,
-      height: imageHeight,
-    },
-    productsContent: {
-      flex: 100,
-      justifyContent: 'space-between',
-      marginLeft: 15,
-      padding: 5
-      //flex: 1,
-    },
-    textName: {
-      color: '#BCBCBC',
-      fontSize: 17,
-      fontWeight: '300',
-    },
-    textPrice: {
-      color: '#B10D65',
-      fontSize: 14,
-      fontWeight: '100'
-    },
-    textMaterial: {
-      fontSize: 14,
-      fontWeight: '100',
-    },
-    textShowDetail: {
-      color: '#B10D65',
-      fontSize: 12,
-    },
-    productsShowDetail: {
-      flex: 30,
-      //borderRadius: 8,
-      paddingLeft: 14,
-      justifyContent: 'flex-end',
-      alignItems: 'center',
-      width: imageWidth,
-    },  
-    colorStyle: {
-      flexDirection: 'row',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-    },
-    color: {
-      width: 16,
-      height: 16,
-      backgroundColor: 'blue',
-      borderRadius: 8,
-    }
+  container: {
+    flex: 1,
+    backgroundColor: '#DBDBDB',
+    margin: width / 38,
+    borderColor: 'gray',
+    borderWidth: 1,
+  },
+  wrapper: {
+    backgroundColor: "#FFF",
+    margin: 4
+  },
+  header: {
+    height: 50,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 5,
+  },
+  imagebackstyle: {
+    width: width / 13,
+    height: height / 18,
+  },
+  textheaderstyle: {
+    fontSize: width / 23,
+    color: '#B10D65',
+  },
+  body: {
+    flex: 14,
+    padding: 10,
+  },
+  products: {
+    flexDirection: 'row',
+    paddingVertical: 15,
+    padding: 10,
+    borderTopColor: '#F0F0F0',
+    borderBottomColor: '#FFF',
+    borderLeftColor: '#FFF',
+    borderRightColor: '#FFF',
+    borderWidth: 2,
+  },
+  productsImage: {
+    padding: 5,
+    height: 150,
+    width: (90 * 452) / 361
+  },
+  imageProduct: {
+    width: imageWidth,
+    height: imageHeight,
+  },
+  productsContent: {
+    flex: 100,
+    justifyContent: 'space-between',
+    marginLeft: 15,
+    padding: 5
+    //flex: 1,
+  },
+  textName: {
+    color: '#BCBCBC',
+    fontSize: 17,
+    fontWeight: '300',
+  },
+  textPrice: {
+    color: '#B10D65',
+    fontSize: 14,
+    fontWeight: '100'
+  },
+  textMaterial: {
+    fontSize: 14,
+    fontWeight: '100',
+  },
+  textShowDetail: {
+    color: '#B10D65',
+    fontSize: 12,
+  },
+  productsShowDetail: {
+    flex: 30,
+    //borderRadius: 8,
+    paddingLeft: 14,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    width: imageWidth,
+  },
+  colorStyle: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  color: {
+    width: 16,
+    height: 16,
+    backgroundColor: 'blue',
+    borderRadius: 8,
+  }
 })

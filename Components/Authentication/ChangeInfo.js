@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity,Alert, Image, TextInput, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Alert, Image, TextInput, Dimensions } from 'react-native';
 import { connect } from 'react-redux';
 import changeInfoUser from '../../Redux/API/changeInfo';
 import getToken from '../../Redux/API/getToken';
@@ -37,8 +37,8 @@ class ChangeInfo extends Component{
           )
     }
     render(){
-        const {container, header, body, iconStyle, textHeaderStyle, textInputStyle, button, buttontext} = styles
-        const {name, address, phonenumber} = this.state;
+        const { container, header, body, iconStyle, textHeaderStyle, textInputStyle, button, buttontext } = styles
+        const { name, address, phonenumber } = this.state;
         return(
             <View style={container}>
                 <View style={header}>

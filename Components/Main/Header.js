@@ -31,21 +31,22 @@ class Header extends Component{
           )
     }
     render(){
+        const { header, headerTop, imageMenu, hearderSearch, textinput, imageCart } = styles
         return(
-            <View style={styles.header}>
-                <View style={styles.headerTop}>
+            <View style={header}>
+                <View style={headerTop}>
                     <TouchableOpacity
                         onPress={this.props.onOpen}
                     >
                         <Image 
-                            style={styles.imageMenu}
+                            style={imageMenu}
                             source={iconMenu}
                         />
                     </TouchableOpacity>
-                    <View style={styles.hearderSearch}>                                                                     
+                    <View style={hearderSearch}>                                                                     
                         <TextInput
                             underlineColorAndroid='transparent'
-                            style={styles.textinput}
+                            style={textinput}
                             placeholder="What do you want to buy ?"
                             value={this.state.contentSearch}
                             onChangeText={(contentSearch)=>{this.setState({contentSearch})}}
@@ -57,7 +58,7 @@ class Header extends Component{
                         onPress={this.props.goSear}
                     >
                         <Image 
-                            style={styles.imageCart}
+                            style={imageCart}
                             source={iconLogo}
                         />
                     </TouchableOpacity>
@@ -68,7 +69,7 @@ class Header extends Component{
     }
 }
 export default  connect(null,{searchProduct})(Header);
-var {width, height} = Dimensions.get('window');
+var { width, height } = Dimensions.get('window');
 const styles=StyleSheet.create({
     header: {
         backgroundColor: '#4895F0',
@@ -89,10 +90,6 @@ const styles=StyleSheet.create({
         width: width / 17,
         height: height / 20,
         marginRight: width / 32,
-    },
-    text: {
-        fontSize: width / 23,
-        color: 'white',
     },
     hearderSearch: {
         backgroundColor: 'white',

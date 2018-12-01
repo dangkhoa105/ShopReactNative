@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Image, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 
-
 const url="http://192.168.56.1:80/app/images/product/";
 class Search extends Component{
     goDetail(product){
@@ -53,7 +52,7 @@ function mapStoreToProps(state){
 }
 
 export default connect(mapStoreToProps)(Search);
-var {width, height} = Dimensions.get('window');
+var { width } = Dimensions.get('window');
 const imageWidth = (width - 100) / 3;
 const imageHeight = (imageWidth / 361) * 452;
 const styles=StyleSheet.create({
@@ -98,10 +97,4 @@ const styles=StyleSheet.create({
       justifyContent: 'space-between',
       alignItems: 'center',
     },
-    color: {
-      width: 12,
-      height: 12,
-      backgroundColor: 'blue',
-      borderRadius: 100,
-    }
 })

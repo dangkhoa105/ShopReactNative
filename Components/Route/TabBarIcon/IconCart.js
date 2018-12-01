@@ -10,7 +10,7 @@ class Iconcart extends Component{
         super(props);   
     }
     render(){
-        const {focused, cartLeght, user} = this.props;
+        const { focused, cartLeght, user } = this.props;
         return(
             <View style={{ position: "relative" ,
                 flex: 1,

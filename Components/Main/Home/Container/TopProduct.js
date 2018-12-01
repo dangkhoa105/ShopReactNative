@@ -1,37 +1,43 @@
 import React, { Component } from 'react';
-import {  StyleSheet, Text, View, TouchableOpacity, Dimensions, Image, FlatList} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Dimensions, Image, FlatList} from 'react-native';
 import { connect } from 'react-redux';
+
+import ElevatedView from 'react-native-elevated-view'
 
 const url="http://192.168.56.1:80/app/images/product/";
 
 class TopProduct extends Component {
   render() {
-    const {banner, bannerText, text, product, productImage,productText, productTextOne, productTextTwo } = styles;
-    const {arrTopProducts}= this.props;
+    const { banner, bannerText, text, product, productImage, productText, productTextOne, productTextTwo, stayElevated, content } = styles;
+    const { arrTopProducts }= this.props;
     return (
       <View style={banner}>
-        <View style={bannerText}>
-          <Text style={text}>TOP PRODUCT</Text>
-        </View>
-        <View style={styles.content}>
-          <FlatList
-              data={arrTopProducts}
-              renderItem={({ item }) =>
-                <View style={product} >
-                  <TouchableOpacity onPress={()=>this.props.goProductDetails(item)}>
-                    <View >
-                      <Image source={{uri:`${url}${item.images[0]}`}} style={productImage} />
-                    </View>
-                    <View style={productText}>
-                      <Text style={productTextOne}>{item.name.toUpperCase()}</Text>
-                      <Text style={productTextTwo}>{`${item.price}$`}</Text>
-                    </View>
-                  </TouchableOpacity>
-                </View>}
-              keyExtractor={item => item.id.toString()}
-              numColumns={2}
-            />       
-        </View>
+        <ElevatedView elevation={3} style={stayElevated}>
+          <View style={bannerText}>
+            <Text style={text}>TOP PRODUCT</Text>
+          </View>
+          <View style={content}>
+            <FlatList
+                data={arrTopProducts}
+                renderItem={({ item }) =>
+                  <View style={product}>
+                    <ElevatedView elevation={3} style={stayElevated}>
+                      <TouchableOpacity onPress={()=>this.props.goProductDetails(item)}>                        
+                        <View >
+                          <Image source={{uri:`${url}${item.images[0]}`}} style={productImage} />
+                        </View>
+                        <View style={productText}>
+                          <Text style={productTextOne}>{item.name.toUpperCase()}</Text>
+                          <Text style={productTextTwo}>{`${item.price}$`}</Text>
+                        </View>                        
+                      </TouchableOpacity>
+                    </ElevatedView>
+                  </View>}
+                keyExtractor={item => item.id.toString()}
+                numColumns={2}
+              />       
+          </View>
+        </ElevatedView>
       </View>
     );
   }
@@ -72,12 +78,11 @@ const styles = StyleSheet.create({
       paddingBottom: 10,
     },
     product: {
-      width: (width - 50) / 2,
-      alignItems: 'center',
-      justifyContent: 'center',
-      borderColor: 'gray',
-      borderWidth: 1,
-      margin: 5,
+      marginLeft: 9,
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      paddingBottom: 10,
+      flexWrap: 'wrap'
     },
     productImage: {
       width: imageWidth,
@@ -99,4 +104,7 @@ const styles = StyleSheet.create({
       fontSize: 13,
       fontWeight: '500',
     },
+    stayElevated: {
+      backgroundColor: '#FFF',
+    }
 })

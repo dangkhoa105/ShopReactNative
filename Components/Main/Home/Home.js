@@ -41,9 +41,9 @@ function mapStoreToProps(state){
     arrCart : state.arrCart,
   };
 }
-export default connect(mapStoreToProps,{getDataTypesThunk, getTopProductsThunk,updateProductsCart})(Home);
+export default connect(mapStoreToProps, {getDataTypesThunk, getTopProductsThunk,updateProductsCart})(Home);
 
-var {height} = Dimensions.get('window');
+var { height } = Dimensions.get('window');
 const styles = StyleSheet.create({
     container:{
         height:height*2.25,

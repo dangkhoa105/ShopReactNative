@@ -19,8 +19,8 @@ class OrderHistory extends Component{
         .catch(err => console.log(err,"LOI"));
     }
     render(){
-        const {container, header, body, iconStyle, textHeaderStyle, orders, textStyle0, textStyle1, textStyle2, textStyle3, rowOrder} = styles
-        const {arrOrder} = this.props;
+        const { container, header, body, iconStyle, textHeaderStyle, orders, textStyle0, textStyle1, textStyle2, textStyle3, rowOrder } = styles
+        const { arrOrder } = this.props;
         console.log(arrOrder,"ORDER HISTORY");
         return(
             <View style={container}>

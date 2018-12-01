@@ -16,7 +16,7 @@ import iconHome1 from '../../Image/home.png';
 import iconSearch1 from '../../Image/search.png';
 import iconContact1 from '../../Image/contact.png';
 
-var {width, height} = Dimensions.get('window');
+var { width, height } = Dimensions.get('window');
 
 const styles=StyleSheet.create({
     icon: {

@@ -92,7 +92,7 @@ class Registry extends Component{
         );
     }
 }
-export default  connect(null,{login})(Registry);
+export default connect(null,{login})(Registry);
 
 const {width, height} = Dimensions.get('window');
 const styles = StyleSheet.create({

@@ -9,7 +9,7 @@ import web from '../../Image/web.png';
 
 export default class Contact extends Component{
     render(){
-        const {styleContact, viewMap, viewTitle, viewRow, imageStyle, textStyle, viewRowBottom} = styles;
+        const { styleContact, viewMap, viewTitle, viewRow, imageStyle, textStyle, viewRowBottom } = styles;
         return(
             <View style={styleContact}>
                 <View style={viewMap}>

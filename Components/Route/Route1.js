@@ -1,7 +1,6 @@
-
 import React, { Component } from 'react';
 import { Dimensions} from 'react-native';
-import { DrawerNavigator } from'react-navigation';
+import { DrawerNavigator } from 'react-navigation';
 import Main from '../Main/Main';
 import Menu from '../Main/Menu.js';
 import ChangeInfo from '../Authentication/ChangeInfo.js';
@@ -16,10 +15,10 @@ export const SIDEMAIN = DrawerNavigator({
         screen: Main
     },
     FormChangeInfo: {
-        screen:ChangeInfo
+        screen: ChangeInfo
     },
     FormOrderHistory:{
-        screen:OrderHistory
+        screen: OrderHistory
     },
     FormAuthen:{
         screen: Authentication

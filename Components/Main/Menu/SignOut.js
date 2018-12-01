@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image , Dimensions} from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Dimensions} from 'react-native';
 import { connect } from 'react-redux';
 
 class SignOut extends Component {
   
   render() {
-    const {button, textSignIn} = styles;
+    const { button, textSignIn } = styles;
     return (
         <View>
         <TouchableOpacity
@@ -24,7 +24,7 @@ function mapStoreToProp(state){
   }
 }
 export default  connect(mapStoreToProp)(SignOut);
-const {width} = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   button: {
     backgroundColor: '#FFF',

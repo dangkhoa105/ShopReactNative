@@ -1,11 +1,11 @@
 import React,{ Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Header from './Header.js';
 import { TABBAR } from '../Route/Route.js';
 import getToken from '../../Redux/API/getToken';
 import CheckLogin from '../../Redux/API/checklogin';
-import {OnSignIn} from '../../Redux/Reducer/CreateAction';
-import {connect} from 'react-redux';
+import { OnSignIn } from '../../Redux/Reducer/CreateAction';
+import { connect } from 'react-redux';
 import RefreshToken from '../../Redux/API/refreshToken';
 
 class Main extends Component {
@@ -18,13 +18,6 @@ class Main extends Component {
       .then(res => { this.props.OnSignIn(res.user) })
       .catch(err => console.log(err, "TOKEN KO HOP LE"))
 
-    // setInterval(() => {
-    //   getToken()
-    //     .then(token => {
-    //       console.log(token, "token OLD");
-    //       RefreshToken(token);
-    //     })
-    // }, 60 * 1000)//cách 1 chưa kiểm tra login no login
     setInterval(RefreshToken,60000);
   }
   openMenu() {
@@ -34,10 +27,11 @@ class Main extends Component {
     this.props.navigation.navigate('tabSearch');
   }
   render() {
+    const { container, content } = styles
     return (
-      <View style={styles.container}>
+      <View style={container}>
         <Header  onOpen={this.openMenu.bind(this)} goSear={this.goSearch.bind(this)}/>
-        <View style={styles.content}>
+        <View style={content}>
             <TABBAR />
         </View>
       </View>

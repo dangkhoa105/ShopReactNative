@@ -134,7 +134,7 @@ function mapStoreToProps(state) {
 }
 export default connect(mapStoreToProps, { updateProductsCart })(Cart);
 
-const { width, height } = Dimensions.get('window');
+const { width } = Dimensions.get('window');
 const imageWidth = (width - 100) / 3;
 const imageHeight = (imageWidth / 361) * 452;
 const styles = StyleSheet.create({

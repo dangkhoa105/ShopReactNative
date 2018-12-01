@@ -1,35 +1,41 @@
 import React, { Component } from 'react';
-import {  StyleSheet, Text, View, TouchableOpacity, Dimensions, ImageBackground } from 'react-native';
-import {connect} from 'react-redux';
+import { StyleSheet, Text, View, TouchableOpacity, Dimensions, ImageBackground } from 'react-native';
+import { connect } from 'react-redux';
 
 import Swiper from 'react-native-swiper';
+import Elevated from 'react-native-elevated-view'
 
 class Sideproduct extends Component {
   render() {
-    const {arrType}= this.props;
+    const {arrType} = this.props;
+    const { banner, bannerText, text, bannerImage, image, titleText } = styles
     return (
-      <View style={styles.banner}>
-        <View style={styles.bannerText}>
-          <Text style ={styles.text}>LIST OF CATEGORY</Text>
-        </View>
-        <View style = {styles.bannerImage}>
-          <Swiper>
-            {arrType.map((e) => ( //hàm map có ý nghĩa là từ 1 cái mảng về 1 cái mảng khác (biến mảng từ đối tượng types sang mảng của View)
-              //có 4 phần tử thì sẽ render về 4 cái 
-              <View key={e.id}>
-                <TouchableOpacity ref={'Midi'} onPress={()=>this.props.goProduct(e)} key={e.id} >{/* dùng để gán tên cho TouchableOpacity */}
-                  <ImageBackground
-                    style={styles.image}
-                    source={{ uri: `http://192.168.56.1:80/app/images/type/${e.image}` }}
-                  >
-                    <Text style={styles.titleText}>{e.name}</Text>
-                  </ImageBackground>
-                </TouchableOpacity>
-              </View>
-            ))}
-          </Swiper>
-        </View>
-      </View>
+      <View margin={7}>
+        <Elevated elevation={3}>
+          <View style={banner}>
+            <View style={bannerText}>
+              <Text style ={text}>LIST OF CATEGORY</Text>
+            </View>
+            <View style = {bannerImage}>
+              <Swiper>
+                {arrType.map((e) => ( //hàm map có ý nghĩa là từ 1 cái mảng về 1 cái mảng khác (biến mảng từ đối tượng types sang mảng của View)
+                  //có 4 phần tử thì sẽ render về 4 cái 
+                  <View key={e.id}>
+                    <TouchableOpacity ref={'Midi'} onPress={()=>this.props.goProduct(e)} key={e.id} >{/* dùng để gán tên cho TouchableOpacity */}
+                      <ImageBackground
+                        style={image}
+                        source={{ uri: `http://192.168.56.1:80/app/images/type/${e.image}` }}
+                      >
+                        <Text style={titleText}>{e.name}</Text>
+                      </ImageBackground>
+                    </TouchableOpacity>
+                  </View>
+                ))}
+              </Swiper>
+            </View>
+          </View>
+        </Elevated>      
+      </View>     
     );
   }
 }

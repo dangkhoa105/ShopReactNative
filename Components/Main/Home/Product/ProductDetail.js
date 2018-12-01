@@ -41,8 +41,8 @@ class ProductDetail extends Component {
         }else {return alert("Sign in, please!")}        
     }
   render() {
-    const {colorStyle, container, titleContainer, textMain, cardStyle, header, body, textBlack, textSmoke, textHighlight, textMaterial, imagebackstyle, imageStyles, viewName, viewDetail, viewColor} = styles;
-    const {product} = this.props.navigation.state.params;
+    const { colorStyle, container, titleContainer, textMain, cardStyle, header, body, textBlack, textSmoke, textHighlight, textMaterial, imagebackstyle, imageStyles, viewDetail, viewColor } = styles;
+    const { product } = this.props.navigation.state.params;
     
     return (
         <View style={container}>
@@ -94,7 +94,7 @@ function mapStoreToProps(state){
 
 export default connect(mapStoreToProps, {addProductToCart,updateProductsCart})(ProductDetail);
 
-var {width, height} = Dimensions.get('window');
+var { width, height } = Dimensions.get('window');
 const imageWidth = (width - 100) / 2;
 const imageHeight = (imageWidth / 361) * 452;
 
@@ -102,21 +102,21 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#D6D6D6',
-        margin: width / 38,
+        margin: width / 40,
     },
     cardStyle: {
         flex: 1,
         backgroundColor: '#FFFFFF',
-        borderRadius: 5,
-        marginHorizontal: 10,
-        marginVertical: 10
+        //borderRadius: 5,
+        marginHorizontal: 7,
+        marginVertical: 7
     },
     header: {
         flex: 1.2,
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 10,
-        paddingTop: 15,
+        paddingTop: 10,
         paddingRight: 20,
     },
     titleContainer: {
@@ -136,13 +136,6 @@ const styles = StyleSheet.create({
     },
     body: {
         flex: 14,
-    },
-    viewImage: {
-        margin: width / 76,
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 7,
     },
     imageStyles: {
         margin: width / 76,
@@ -173,11 +166,6 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: '400',
         fontFamily: 'Avenir'
-    },
-    viewName: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'center',
     },
     viewDetail: {
         borderColor: 'gray',
