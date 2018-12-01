@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Dimensions, Image } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Dimensions, Image, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import { addProductToCart, updateProductsCart } from '../../../../Redux/Reducer/CreateAction.js';
 import back from '../../../../Image/back.png';
@@ -41,29 +41,32 @@ class ProductDetail extends Component {
         }else {return alert("Sign in, please!")}        
     }
   render() {
-    const {colorStyle, container, header, body, textBlack, textSmoke, textHighlight, textMaterial, imagebackstyle, imageStyles, viewImage, viewName, viewDetail, viewColor} = styles;
+    const {colorStyle, container, titleContainer, textMain, cardStyle, header, body, textBlack, textSmoke, textHighlight, textMaterial, imagebackstyle, imageStyles, viewName, viewDetail, viewColor} = styles;
     const {product} = this.props.navigation.state.params;
     
     return (
-      <View style={container}>
-            <View style={header}>
-              <TouchableOpacity onPress={this.goHome.bind(this)}>
-                <Image style={imagebackstyle} source={back}/>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={this.addProductsToCart.bind(this)}>
-                <Image style={imagebackstyle} source={carts}/>
-              </TouchableOpacity>
-            </View>
-            <View style={body}>
+        <View style={container}>
+            <View style={cardStyle}>
+                <View style={header}>
+                    <TouchableOpacity onPress={this.goHome.bind(this)}>
+                        <Image style={imagebackstyle} source={back}/>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={this.addProductsToCart.bind(this)}>
+                        <Image style={imagebackstyle} source={carts}/>
+                    </TouchableOpacity>
+                </View>
+                <View style={body}>
                     <View key={product.id}>
-                        <View style={viewImage} >
+                        <ScrollView style={{ flexDirection: 'row', paddingLeft: 20, height: imageHeight, paddingTop: 7 }} horizontal >
                             <Image style={imageStyles} source={{ uri: `${url}${product.images[0]}` }} />
                             <Image style={imageStyles} source={{ uri: `${url}${product.images[1]}` }} />
-                        </View>
-                            <Text style={textBlack}> {product.name.toUpperCase()}</Text>
-                        <View style={viewName}>
-                            <Text style={textSmoke}> / {product.price}</Text>
-                        </View>
+                        </ScrollView>
+                        <View style={titleContainer}>
+                            <Text style={textMain}>
+                                <Text style={textBlack}>{product.name.toUpperCase()} </Text>
+                                <Text style={textSmoke}> / {product.price}</Text>
+                            </Text>
+                        </View>                        
                         <View style={viewDetail}>
                             <Text style={textHighlight}>{product.description}</Text>
                         </View>
@@ -71,13 +74,13 @@ class ProductDetail extends Component {
                             <Text style={textMaterial}>Material {product.material} </Text>
                             <View style={colorStyle}>        
                                 <Text style={textMaterial}>Color {product.color}</Text>
-                                <View style={{backgroundColor: product.color.toLowerCase(), width:15, height: 15, borderRadius:100, marginLeft:5, marginRight:5, borderColor: '#C21C70'}}></View>
+                                <View style={{backgroundColor: product.color.toLowerCase(), width:15, height: 15, borderRadius: 100, marginLeft: 10, marginRight:5, borderColor: '#C21C70'}}/>
                             </View>
                         </View>
-                    </View>
-                
-            </View>
-      </View>
+                    </View>                       
+                </View>
+            </View>               
+        </View>
     );
   }
 }//361*452
@@ -94,32 +97,42 @@ export default connect(mapStoreToProps, {addProductToCart,updateProductsCart})(P
 var {width, height} = Dimensions.get('window');
 const imageWidth = (width - 100) / 2;
 const imageHeight = (imageWidth / 361) * 452;
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#D6D6D6',
         margin: width / 38,
-        borderColor: 'gray',
-        borderWidth: 1,
+    },
+    cardStyle: {
+        flex: 1,
+        backgroundColor: '#FFFFFF',
+        borderRadius: 5,
+        marginHorizontal: 10,
+        marginVertical: 10
     },
     header: {
-        flex: 1,
+        flex: 1.2,
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: 5,
-        paddingHorizontal: 15,
-        paddingTop: 20
+        paddingHorizontal: 10,
+        paddingTop: 15,
+        paddingRight: 20,
+    },
+    titleContainer: {
+        borderBottomWidth: 1,
+        borderColor: '#F6F6F6',
+        marginHorizontal: 20,
+        //paddingBottom: 5,
+        paddingTop: 8
+    },
+    textMain: {
+        paddingLeft: 5,
+        marginVertical: 10
     },
     imagebackstyle: {
         width: width / 11,
         height: height / 18,
-    },
-    textheaderstyle: {
-        fontSize: width / 23,
-        color: '#3F3F46',
-        fontFamily: 'Avenir',
-        fontWeight: 'bold',
     },
     body: {
         flex: 14,
@@ -135,12 +148,16 @@ const styles = StyleSheet.create({
         margin: width / 76,
         width: imageWidth,
         height: imageHeight,
+        marginHorizontal: 5
     },
     textBlack: {
         fontFamily: 'Avenir',
         fontSize: 20,
         fontWeight: 'bold',
-        color: '#3F3F46'
+        color: '#3F3F46',
+        paddingLeft: 20,
+        marginVertical: 10,
+        marginHorizontal: 15,
     },
     textSmoke: {
         fontFamily: 'Avenir',
@@ -148,6 +165,7 @@ const styles = StyleSheet.create({
         color: '#9A9A9A'
     },
     textHighlight: {
+        fontSize: 15,
         color: '#AFAFAF'
     },
     textMaterial: {
@@ -160,14 +178,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 5,
-        paddingBottom: 10,
     },
     viewDetail: {
         borderColor: 'gray',
         borderTopWidth: 1,
-        padding: 10,
-        paddingTop: 10,
+        padding: 12.3,
         paddingHorizontal: 10,
         margin: 10,
         marginLeft: 5,      
@@ -186,13 +201,5 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-    },
-    color: {
-        width: 12,
-        height: 12,
-        borderRadius: 100,
-        marginLeft: 5,
-        marginRight: 5,
-    },
-              
+    },              
 })

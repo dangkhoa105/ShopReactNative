@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
     },
     wrapper: {
       backgroundColor: "#FFF",
-      margin: 10
+      margin: 4
     },
     header: {
       //flex: 1,
@@ -165,7 +165,7 @@ const styles = StyleSheet.create({
       height: imageHeight,
     },
     productsContent: {
-      flex: 90,
+      flex: 100,
       justifyContent: 'space-between',
       marginLeft: 15,
       padding: 5
@@ -187,15 +187,15 @@ const styles = StyleSheet.create({
     },
     textShowDetail: {
       color: '#B10D65',
-      fontSize: 13,
+      fontSize: 12,
     },
     productsShowDetail: {
       flex: 30,
       //borderRadius: 8,
-      padding: 5,
-      justifyContent: 'center',
+      paddingLeft: 14,
+      justifyContent: 'flex-end',
       alignItems: 'center',
-      width: imageWidth
+      width: imageWidth,
     },  
     colorStyle: {
       flexDirection: 'row',

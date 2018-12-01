@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
-import {View, Text, StyleSheet, TouchableOpacity, Dimensions, Image, FlatList} from 'react-native';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Image, FlatList } from 'react-native';
+import { connect } from 'react-redux';
 
-import midi from '../../Image/midi.jpeg';
 
 const url="http://192.168.56.1:80/app/images/product/";
 class Search extends Component{
@@ -10,7 +9,7 @@ class Search extends Component{
         this.props.navigation.navigate('PRODUCTDETAIL',{product});
     }
   render() {
-    const { color, colorStyle, stylesearch, products, productsImage, imageProduct, productsContent, textStyle0, textStyle1, textStyle2, productsShowDetail } = styles;
+    const { colorStyle, stylesearch, products, productsImage, imageProduct, productsContent, textStyle0, textStyle1, textStyle2, productsShowDetail } = styles;
     const { arrproduct } = this.props;
     console.log(arrproduct, "arrproduct");
     return (
