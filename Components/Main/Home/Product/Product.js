@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 import getListProduct from '../../../../Redux/API/getListProduct';
 import { fetchListProduct, getListProductsThunk, refreshListProduct, loadpage, setRefre } from '../../../../Redux/Reducer/CreateAction';
 
+import ElevatedView from 'react-native-elevated-view'
 
-import back from '../../../../Image/backList.png';
+import back from '../../../../Image/back_white.png';
 
 
 const url="http://192.168.56.1:80/app/images/product/";
@@ -14,7 +15,7 @@ class Product extends Component {
   constructor(props){
     super(props);
     this.state={
-      page:1,
+      page: 1,
       refre: false,
     }
   }
@@ -48,54 +49,59 @@ class Product extends Component {
   }
 
   render() {
-    const { textName, textPrice, textMaterial, textShowDetail, colorStyle, container, wrapper, header, body, imagebackstyle, textheaderstyle, products, imageProduct, productsImage, productsContent, productsShowDetail } = styles;
+    const { textName, textPrice, textMaterial, textShowDetail, colorStyle, container, stayElavated, header, body, imagebackstyle, textheaderstyle, products, imageProduct, productsImage, productsContent, productsShowDetail } = styles;
     const { type } = this.props.navigation.state.params;
     const { listProducts } = this.props;
     console.log(listProducts,"listproducts");
     const { refre } = this.state;
     return (
       <View style={container}>
-        <ScrollView style={wrapper}>
-          <View style={header}>
-            <TouchableOpacity onPress={this.goHome.bind(this)}>
-              <Image style={imagebackstyle} source={back} />
-            </TouchableOpacity>
-            <Text key={type.id} style={textheaderstyle}>{type.name}</Text>
-            <Text></Text>
-          </View>
-          <View style={body}>
-            <FlatList
-              refreshing={refre}
-              onRefresh={()=>{this._refre()}}
-
-              data={listProducts}
-              renderItem={({ item }) => 
-                <View style={products} >
-                  <View style={productsImage}>
-                    <Image style={imageProduct} source={{uri:`${url}${item.images[0]}`}} />
-                  </View>
-                  <View style={productsContent}>
-                    <Text style={textName}>{item.name.toUpperCase()} </Text>
-                    <Text style={textPrice}> {item.price}$</Text>
-                    <Text style={textMaterial}> {item.material} </Text>
-                    <View style={colorStyle}>
-                      <Text> Color {item.color}</Text>
-                      <View style={{width:16, height:16, backgroundColor: item.color.toLowerCase(), borderRadius:8}}></View>
-                    </View>
-                  </View>
-                  <View style={productsShowDetail}>
-                    <TouchableOpacity
-                      onPress={()=> {this.goDetail(item)}}
-                    >
-                      <Text style={textShowDetail}>SHOW DETAIL</Text>
-                    </TouchableOpacity>
-                  </View>
-                </View>
-              }    
-              keyExtractor={(item)=> item.id.toString()}              
-            />
-          </View>
-        </ScrollView>        
+        <View style={header}>
+          <TouchableOpacity onPress={this.goHome.bind(this)}>
+            <Image style={imagebackstyle} source={back} />
+          </TouchableOpacity>
+          <Text key={type.id} style={textheaderstyle}>{type.name}</Text>
+          <Text></Text>
+        </View>
+        <View margin={1}>
+          <ElevatedView elevation={5} style={stayElavated}>
+            <View style={body}>
+              <FlatList
+                refreshing={refre}
+                onRefresh={()=>{this._refre()}}
+                data={listProducts}
+                renderItem={({ item }) => 
+                  <View margin={6}>
+                    <ElevatedView elevation={3} style={stayElavated}>
+                      <View style={products} >
+                        <View style={productsImage}>
+                          <Image style={imageProduct} source={{uri:`${url}${item.images[0]}`}} />
+                        </View>
+                        <View style={productsContent}>
+                          <Text style={textName}>{item.name.toUpperCase()} </Text>
+                          <Text style={textPrice}> {item.price}$</Text>
+                          <Text style={textMaterial}> {item.material} </Text>
+                          <View style={colorStyle}>
+                            <Text> Color {item.color}</Text>
+                            <View style={{width:16, height:16, backgroundColor: item.color.toLowerCase(), borderRadius:8}}/>
+                          </View>
+                        </View>
+                        <View style={productsShowDetail}>
+                          <TouchableOpacity
+                            onPress={()=> {this.goDetail(item)}}
+                          >
+                            <Text style={textShowDetail}>SHOW DETAIL</Text>
+                          </TouchableOpacity>
+                        </View>
+                      </View>
+                    </ElevatedView>      
+                  </View> 
+                }    
+                keyExtractor={(item)=> item.id.toString()}              
+              />
+            </View>   
+          </ElevatedView>      
+        </View> 
       </View>
     );
   }
@@ -115,47 +121,42 @@ const imageHeight = (imageWidth / 361) * 452;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#DBDBDB',
+    backgroundColor: '#FFFFFF',
     margin: width / 38,
-    borderColor: 'gray',
-    borderWidth: 1,
-  },
-  wrapper: {
-    backgroundColor: "#FFF",
-    margin: 4
   },
   header: {
+    backgroundColor: '#4895F0',
     height: 50,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 5,
+    //padding: 5,
   },
   imagebackstyle: {
+    margin: 10,
     width: width / 13,
     height: height / 18,
   },
   textheaderstyle: {
-    fontSize: width / 23,
-    color: '#B10D65',
+    fontSize: width / 22,
+    color: '#FFFFFF',
   },
   body: {
-    flex: 14,
+    //flex: 14,
     padding: 10,
   },
   products: {
     flexDirection: 'row',
-    paddingVertical: 15,
-    padding: 10,
-    borderTopColor: '#F0F0F0',
-    borderBottomColor: '#FFF',
-    borderLeftColor: '#FFF',
-    borderRightColor: '#FFF',
-    borderWidth: 2,
+    paddingVertical: 10, 
+    // borderTopColor: '#F0F0F0',
+    // borderBottomColor: '#FFF',
+    // borderLeftColor: '#FFF',
+    // borderRightColor: '#FFF',
+    // borderWidth: 2,
   },
   productsImage: {
     padding: 5,
-    height: 150,
+    height: 140,
     width: (90 * 452) / 361
   },
   imageProduct: {
@@ -205,5 +206,8 @@ const styles = StyleSheet.create({
     height: 16,
     backgroundColor: 'blue',
     borderRadius: 8,
-  }
+  },
+  stayElavated: {
+    backgroundColor: '#FFF',
+  },
 })

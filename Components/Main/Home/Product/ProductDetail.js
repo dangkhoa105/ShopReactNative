@@ -6,6 +6,8 @@ import back from '../../../../Image/back.png';
 import carts from '../../../../Image/cartfull.png';
 import saveCart from '../../../../Redux/API/saveCart.js';
 
+import ElevatedView from 'react-native-elevated-view'
+
 const url="http://192.168.56.1:80/app/images/product/";
 
 class ProductDetail extends Component {
@@ -41,7 +43,7 @@ class ProductDetail extends Component {
         }else {return alert("Sign in, please!")}        
     }
   render() {
-    const { colorStyle, container, titleContainer, textMain, cardStyle, header, body, textBlack, textSmoke, textHighlight, textMaterial, imagebackstyle, imageStyles, viewDetail, viewColor } = styles;
+    const { colorStyle, container, titleContainer, textMain, cardStyle, header, stayElavated, body, textBlack, textSmoke, textHighlight, textMaterial, imagebackstyle, imageStyles, viewDetail, viewColor } = styles;
     const { product } = this.props.navigation.state.params;
     
     return (
@@ -57,9 +59,9 @@ class ProductDetail extends Component {
                 </View>
                 <View style={body}>
                     <View key={product.id}>
-                        <ScrollView style={{ flexDirection: 'row', paddingLeft: 20, height: imageHeight, paddingTop: 7 }} horizontal >
+                        <ScrollView style={{ flexDirection: 'row', paddingLeft: 30, height: imageHeight, paddingTop: 7 }} horizontal >
                             <Image style={imageStyles} source={{ uri: `${url}${product.images[0]}` }} />
-                            <Image style={imageStyles} source={{ uri: `${url}${product.images[1]}` }} />
+                            <Image style={imageStyles} source={{ uri: `${url}${product.images[1]}` }} />      
                         </ScrollView>
                         <View style={titleContainer}>
                             <Text style={textMain}>
@@ -77,9 +79,9 @@ class ProductDetail extends Component {
                                 <View style={{backgroundColor: product.color.toLowerCase(), width:15, height: 15, borderRadius: 100, marginLeft: 10, marginRight:5, borderColor: '#C21C70'}}/>
                             </View>
                         </View>
-                    </View>                       
-                </View>
-            </View>               
+                    </View>                                                  
+                </View> 
+            </View>              
         </View>
     );
   }
@@ -101,18 +103,18 @@ const imageHeight = (imageWidth / 361) * 452;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#D6D6D6',
+        backgroundColor: '#FFFFFF',
         margin: width / 40,
     },
     cardStyle: {
         flex: 1,
-        backgroundColor: '#FFFFFF',
+        //backgroundColor: '#FFFFFF',
         //borderRadius: 5,
-        marginHorizontal: 7,
-        marginVertical: 7
+        //marginHorizontal: 7,
+        //marginVertical: 7
     },
     header: {
-        flex: 1.2,
+        flex: 0.5,
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 10,
@@ -124,18 +126,20 @@ const styles = StyleSheet.create({
         borderColor: '#F6F6F6',
         marginHorizontal: 20,
         //paddingBottom: 5,
-        paddingTop: 8
+        paddingTop: 8,
+        justifyContent: 'center',
+        alignItems: 'center'     
     },
     textMain: {
         paddingLeft: 5,
-        marginVertical: 10
+        marginVertical: 10,       
     },
     imagebackstyle: {
         width: width / 11,
         height: height / 18,
     },
     body: {
-        flex: 14,
+        //flex: 14,
     },
     imageStyles: {
         margin: width / 76,
@@ -189,5 +193,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-    },              
+    },    
+    stayElavated: {
+        backgroundColor: '#FFF',
+    },          
 })

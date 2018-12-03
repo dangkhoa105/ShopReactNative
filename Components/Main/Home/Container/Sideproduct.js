@@ -3,15 +3,15 @@ import { StyleSheet, Text, View, TouchableOpacity, Dimensions, ImageBackground }
 import { connect } from 'react-redux';
 
 import Swiper from 'react-native-swiper';
-import Elevated from 'react-native-elevated-view'
+import ElevatedView from 'react-native-elevated-view'
 
 class Sideproduct extends Component {
   render() {
     const {arrType} = this.props;
-    const { banner, bannerText, text, bannerImage, image, titleText } = styles
+    const { banner, bannerText, text, bannerImage, image, titleText, stayElavated } = styles
     return (
-      <View margin={7}>
-        <Elevated elevation={3}>
+      <View margin={10}>
+        <ElevatedView elevation={5} style={stayElavated}>
           <View style={banner}>
             <View style={bannerText}>
               <Text style ={text}>LIST OF CATEGORY</Text>
@@ -34,7 +34,7 @@ class Sideproduct extends Component {
               </Swiper>
             </View>
           </View>
-        </Elevated>      
+        </ElevatedView>    
       </View>     
     );
   }
@@ -52,7 +52,7 @@ const imageWidth= width - 40;
 const imageHeight= (imageWidth / 933) * 456;
 const styles = StyleSheet.create({
     banner: {
-      height: height * 0.37,
+      height: height * 0.36,
       backgroundColor: '#fff',
       margin: width / 38,
       marginTop: 0,
@@ -81,5 +81,8 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       justifyContent: 'center',
       paddingBottom: 0,
-    }
+    },
+    stayElavated: {
+      backgroundColor: '#FFF',
+    },
 })

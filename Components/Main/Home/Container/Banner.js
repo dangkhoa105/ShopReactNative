@@ -10,8 +10,8 @@ export default class Banner extends Component {
     const type = {name: 'SPRING COLLECTION', id: 'COLLECTION'};
     const { stayElavated, sbanner, bannerText, bannerImage, text, image } = styles
     return (
-      <View margin={7}>
-        <ElevatedView elevation={3} style={stayElavated}>
+      <View margin={10}>
+        <ElevatedView elevation={6} style={stayElavated}>
           <View style={sbanner}>
               <TouchableOpacity style={sbanner} onPress={()=>this.props.goCollection(type)}>
                 <View style={bannerText}>
@@ -36,15 +36,15 @@ const imageWidth = width - 40;
 const imageHeight = (imageWidth / 933) * 456;
 const styles = StyleSheet.create({
   sbanner: {
-    height: height * 0.37,
+    height: height * 0.35,
     backgroundColor: '#fff',
-    margin: width / 38,
+    margin: width / 36,
     justifyContent: 'space-around',
   },
   bannerText: {
-    flex: 1,
+    flex: 0.4,
     justifyContent: 'center',
-    marginLeft: 10,
+    marginLeft: 1,
   },
   text: {
     color: '#AFAEAF',
@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
   },
   bannerImage: {
     flex: 4,
-    margin: 10,
-    marginTop: 0,
+    margin: 2,
+    marginTop: 14,
   },
   image: {
     width: imageWidth,

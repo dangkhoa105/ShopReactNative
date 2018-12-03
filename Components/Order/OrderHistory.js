@@ -7,6 +7,8 @@ import getToken from '../../Redux/API/getToken';
 
 import back from '../../Image/backs.png';
 
+import ElevatedView from 'react-native-elevated-view'
+
 class OrderHistory extends Component{
     goBack(){
         this.props.navigation.navigate('First');
@@ -19,7 +21,7 @@ class OrderHistory extends Component{
         .catch(err => console.log(err,"LOI"));
     }
     render(){
-        const { container, header, body, iconStyle, textHeaderStyle, orders, textStyle0, textStyle1, textStyle2, textStyle3, rowOrder } = styles
+        const { container, header, body, iconStyle, textHeaderStyle, orders, textStyle0, textStyle1, textStyle2, textStyle3, rowOrder, stayElavated } = styles
         const { arrOrder } = this.props;
         console.log(arrOrder,"ORDER HISTORY");
         return(
@@ -35,28 +37,31 @@ class OrderHistory extends Component{
                 <FlatList
                     data={arrOrder}
                     renderItem={({item})=> 
-                        <View style={orders}>
-                            <View style={rowOrder}>
-                                <Text style={textStyle0}>Order id: </Text>
-                                <Text style={textStyle1}>{item.id}</Text>
+                    <View margin={10}>
+                        <ElevatedView elevation={6} style={stayElavated}>
+                            <View style={orders}>
+                                <View style={rowOrder}>
+                                    <Text style={textStyle0}>Order id: </Text>
+                                    <Text style={textStyle1}>{item.id}</Text>
+                                </View>
+                                <View style={rowOrder}>
+                                    <Text style={textStyle0}>OrderTime: </Text>
+                                    <Text style={textStyle2}>{item.date_order}</Text>
+                                </View>
+                                <View style={rowOrder}>
+                                    <Text style={textStyle0}>Status: </Text>
+                                    <Text style={textStyle1}>{item.status}</Text>
+                                </View>
+                                <View style={rowOrder}>
+                                    <Text style={textStyle0}>Total: </Text>
+                                    <Text style={textStyle3}>{item.total}$</Text>
+                                </View>
                             </View>
-                            <View style={rowOrder}>
-                                <Text style={textStyle0}>OrderTime: </Text>
-                                <Text style={textStyle2}>{item.date_order}</Text>
-                            </View>
-                            <View style={rowOrder}>
-                                <Text style={textStyle0}>Status: </Text>
-                                <Text style={textStyle1}>{item.status}</Text>
-                            </View>
-                            <View style={rowOrder}>
-                                <Text style={textStyle0}>Total: </Text>
-                                <Text style={textStyle3}>{item.total}$</Text>
-                            </View>
-                        </View>
+                        </ElevatedView>                       
+                    </View>
                 }
                     keyExtractor={(item)=> item.id.toString()}
-                />
-                    
+                />                    
                 </View>
             </View>
         );
@@ -124,5 +129,8 @@ const styles = StyleSheet.create({
     textStyle3: {
         color: '#C21C70',
         fontWeight: 'bold',
+    },
+    stayElavated: {
+        backgroundColor: '#FFF',
     },
 })

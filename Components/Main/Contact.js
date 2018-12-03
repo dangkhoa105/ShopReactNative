@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, Dimensions, Image } from 'react-native';
 import MapView from 'react-native-maps';
 
+
 import location from '../../Image/location.png';
 import email from '../../Image/mail.png';
 import phone from '../../Image/phone.png';
@@ -21,10 +22,10 @@ export default class Contact extends Component{
                             longitudeDelta: 0.0421,
                         }}
                     >
-                        <MapView.Marker
-                                coordinate={{ latitude: 10.870645, longitude: 106.803424 }}
-                                title="University of Information Technology"
-                        />
+                    <MapView.Marker
+                        coordinate={{ latitude: 10.870645, longitude: 106.803424 }}
+                        title="University of Information Technology"
+                    />
                     </MapView>
                 </View>
                 <View style={viewTitle}>
@@ -44,7 +45,7 @@ export default class Contact extends Component{
                         <Image source={web} style={imageStyle}/>
                         <Text style={textStyle}>https://www.uit.edu.vn/</Text>
                     </View>
-                </View>
+                </View>       
             </View>
         );
     }
@@ -101,5 +102,8 @@ const styles=StyleSheet.create({
         flex: 1,
         justifyContent: 'space-between',
         alignItems: 'center',
-    }
+    },
+    stayElavated: {
+        backgroundColor: '#FFF',
+    },
 })

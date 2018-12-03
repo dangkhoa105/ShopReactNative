@@ -45,7 +45,7 @@ export default connect(mapStoreToProps, {getDataTypesThunk, getTopProductsThunk,
 
 var { height } = Dimensions.get('window');
 const styles = StyleSheet.create({
-    container:{
-        height:height*2.25,
-    },
+  container: {
+    height: height * 2.25,
+  },
 })

@@ -6,6 +6,7 @@ import saveCart from "../../Redux/API/saveCart.js";
 import getToken from '../../Redux/API/getToken';
 import sendOrder from '../../Redux/API/sendOrder';
 
+import ElevatedView from 'react-native-elevated-view'
 
 const url = "http://192.168.56.1:80/app/images/product/";
 
@@ -71,7 +72,7 @@ class Cart extends Component {
     saveCart([]);
   }
   render() {
-    const { stylecart, product, viewImage, viewTitle, viewShow, textstyleadd, imageStyle, tatolCart, textTatol, textStyleName, textStyleShow, textStylePrice, add } = styles;
+    const { stylecart, product, stayElavated, viewImage, viewTitle, viewShow, textstyleadd, imageStyle, tatolCart, textTatol, textStyleName, textStyleShow, textStylePrice, add } = styles;
     const { arrCart, user } = this.props;
     const arrTotal = arrCart.map(e => e.price * e.quantity);
     const total = arrTotal.length ? arrTotal.reduce((a, b) => a + b) : 0;
@@ -83,34 +84,38 @@ class Cart extends Component {
               <FlatList
                 data={arrCart}
                 renderItem={({ item }) =>
-                  <View style={product} >
-                    <View style={viewImage}>
-                      <Image source={{ uri: `${url}${item.images[0]}` }} style={imageStyle} />
-                    </View>
-                    <View style={viewTitle}>
-                      <Text style={textStyleName}>{item.name.toUpperCase()} </Text>
-                      <Text style={textStylePrice}>{item.price}$ </Text>
-                      <View style={add}>
-                        <TouchableOpacity onPress={() => { this.incrQuantity(item.id) }}>
-                          <Text style={textstyleadd}>+</Text>
-                        </TouchableOpacity>
+                  <View margin={10}>
+                    <ElevatedView elevation={6} style={stayElavated}>
+                      <View style={product}>
+                        <View style={viewImage}>
+                          <Image source={{ uri: `${url}${item.images[0]}` }} style={imageStyle} />
+                        </View>
+                        <View style={viewTitle}>
+                          <Text style={textStyleName}>{item.name.toUpperCase()} </Text>
+                          <Text style={textStylePrice}>{item.price}$ </Text>
+                          <View style={add}>
+                            <TouchableOpacity onPress={() => { this.incrQuantity(item.id) }}>
+                              <Text style={textstyleadd}>+</Text>
+                            </TouchableOpacity>
 
-                        <Text style={textstyleadd}>{item.quantity}</Text>
+                            <Text style={textstyleadd}>{item.quantity}</Text>
 
-                        <TouchableOpacity onPress={() => { this.decrQuantity(item.id) }}>
-                          <Text style={textstyleadd}>-</Text>
-                        </TouchableOpacity>
+                            <TouchableOpacity onPress={() => { this.decrQuantity(item.id) }}>
+                              <Text style={textstyleadd}>-</Text>
+                            </TouchableOpacity>
+                          </View>
+                        </View>
+                        <View style={viewShow}>
+                          <TouchableOpacity onPress={() => { this.deleteProduct(item.id) }}>
+                            <Text style={{ fontFamily: 'Avenir', color: '#969696' }}>X</Text>
+                          </TouchableOpacity>
+                          <TouchableOpacity onPress={() => { this.goDetail(item) }}>
+                            <Text style={textStyleShow}>SHOW DETAIL</Text>
+                          </TouchableOpacity>
+                        </View>
                       </View>
-                    </View>
-                    <View style={viewShow}>
-                      <TouchableOpacity onPress={() => { this.deleteProduct(item.id) }}>
-                        <Text style={{ fontFamily: 'Avenir', color: '#969696' }}>X</Text>
-                      </TouchableOpacity>
-                      <TouchableOpacity onPress={() => { this.goDetail(item) }}>
-                        <Text style={textStyleShow}>SHOW DETAIL</Text>
-                      </TouchableOpacity>
-                    </View>
-                  </View>
+                    </ElevatedView>
+                  </View>            
                 }
                 keyExtractor={item => item.id}
               />
@@ -206,5 +211,8 @@ const styles = StyleSheet.create({
   textTatol: {
     color: 'white',
     fontSize: 15,
-  }
+  },
+  stayElavated: {
+    backgroundColor: '#FFF',
+  },
 })

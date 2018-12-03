@@ -11,34 +11,37 @@ class TopProduct extends Component {
     const { banner, bannerText, text, product, productImage, productText, productTextOne, productTextTwo, stayElevated, content } = styles;
     const { arrTopProducts }= this.props;
     return (
-      <View style={banner}>
-        <ElevatedView elevation={3} style={stayElevated}>
-          <View style={bannerText}>
-            <Text style={text}>TOP PRODUCT</Text>
-          </View>
-          <View style={content}>
-            <FlatList
-                data={arrTopProducts}
-                renderItem={({ item }) =>
-                  <View style={product}>
-                    <ElevatedView elevation={3} style={stayElevated}>
-                      <TouchableOpacity onPress={()=>this.props.goProductDetails(item)}>                        
-                        <View >
-                          <Image source={{uri:`${url}${item.images[0]}`}} style={productImage} />
-                        </View>
-                        <View style={productText}>
-                          <Text style={productTextOne}>{item.name.toUpperCase()}</Text>
-                          <Text style={productTextTwo}>{`${item.price}$`}</Text>
-                        </View>                        
-                      </TouchableOpacity>
-                    </ElevatedView>
-                  </View>}
-                keyExtractor={item => item.id.toString()}
-                numColumns={2}
-              />       
+      <View margin={10}>
+        <ElevatedView elevation={5} style={stayElevated}>
+          <View style={banner}>           
+              <View style={bannerText}>
+                <Text style={text}>TOP PRODUCT</Text>
+              </View>
+              <View style={content}>
+                <FlatList
+                    data={arrTopProducts}
+                    renderItem={({ item }) =>
+                      <View style={product}>
+                        <ElevatedView elevation={5} style={stayElevated}>
+                          <TouchableOpacity onPress={()=>this.props.goProductDetails(item)}>                        
+                            <View >
+                              <Image source={{uri:`${url}${item.images[0]}`}} style={productImage} />
+                            </View>
+                            <View style={productText}>
+                              <Text style={productTextOne}>{item.name.toUpperCase()}</Text>
+                              <Text style={productTextTwo}>{`${item.price}$`}</Text>
+                            </View>                        
+                          </TouchableOpacity>
+                        </ElevatedView>
+                      </View>}
+                    keyExtractor={item => item.id.toString()}
+                    numColumns={2}
+                  />       
+              </View>           
           </View>
         </ElevatedView>
       </View>
+      
     );
   }
 }
@@ -52,21 +55,21 @@ export default connect(mapStoreToProps)(TopProduct);
 
 var {width} = Dimensions.get('window');
 const imageWidth= (width-70)/2;
-const imageHeight= (imageWidth /361) *452;
+const imageHeight= (imageWidth /361) *455;
 const styles = StyleSheet.create({
     banner: {
       backgroundColor: '#FFF',
-      margin: width / 38,
-      padding: 5,
+      //margin: width / 38,
+      padding: 6,
     },
     bannerText: {
       height: 50,
       justifyContent: 'center',
-      margin: 10,
+      //margin: 10,
       paddingLeft: 10,
     },
     text: {
-      color: 'gray',
+      color: '#AFAEAF',
       fontSize: 18,
     },
     content: {
