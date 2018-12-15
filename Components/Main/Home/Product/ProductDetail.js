@@ -11,9 +11,10 @@ import ElevatedView from 'react-native-elevated-view'
 const url="http://192.168.56.1:80/app/images/product/";
 
 class ProductDetail extends Component {
-  goHome(){
-    this.props.navigation.goBack();
-  }
+    goHome(){
+        this.props.navigation.navigate('FormSearch');
+        this.props.navigation.goBack()
+    }
 
     addProductsToCart() {
         const { arrCart, user } = this.props;
@@ -108,10 +109,6 @@ const styles = StyleSheet.create({
     },
     cardStyle: {
         flex: 1,
-        //backgroundColor: '#FFFFFF',
-        //borderRadius: 5,
-        //marginHorizontal: 7,
-        //marginVertical: 7
     },
     header: {
         flex: 0.5,

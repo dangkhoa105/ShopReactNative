@@ -24,15 +24,15 @@ class Main extends Component {
     this.props.navigation.navigate('DrawerOpen');
   }
   goSearch(){
-    this.props.navigation.navigate('tabSearch');
+    this.props.navigation.navigate('FormSearch');
   }
   render() {
     const { container, content } = styles
     return (
       <View style={container}>
-        <Header  onOpen={this.openMenu.bind(this)} goSear={this.goSearch.bind(this)}/>
+        <Header onOpen={this.openMenu.bind(this)} goSear={this.goSearch.bind(this)}/>
         <View style={content}>
-            <TABBAR />
+          <TABBAR></TABBAR>
         </View>
       </View>
     );

@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import { Dimensions} from 'react-native';
-import { DrawerNavigator } from 'react-navigation';
+import { DrawerNavigator, StackNavigator } from 'react-navigation';
 import Main from '../Main/Main';
 import Menu from '../Main/Menu.js';
 import ChangeInfo from '../Authentication/ChangeInfo.js';
 import Authentication from '../Authentication/Authentication';
 import OrderHistory from '../Order/OrderHistory.js';
+import { TABBAR, CombineScreen } from './Route';
+import Header from '../Main/Header';
+import Search from '../Main/Search';
 
 
 var {width} = Dimensions.get('window');
@@ -22,7 +25,10 @@ export const SIDEMAIN = DrawerNavigator({
     },
     FormAuthen:{
         screen: Authentication
-    }
+    },
+    FormSearch:{
+        screen: Search
+    },
 },
 {
     initialRouteName: 'First',
@@ -30,3 +36,11 @@ export const SIDEMAIN = DrawerNavigator({
     drawerPosition: 'left',
     contentComponent: props => <Menu{...props}/>
 })
+
+export default StackNavigator({
+    sideBar: SIDEMAIN,
+    screenMain: TABBAR,
+},{
+    headerMode: "none"
+})
+

@@ -15,6 +15,7 @@ import iconContact from '../../Image/contact0.png';
 import iconHome1 from '../../Image/home.png';
 import iconSearch1 from '../../Image/search.png';
 import iconContact1 from '../../Image/contact.png';
+import Header from '../Main/Header.js';
 
 var { width, height } = Dimensions.get('window');
 
@@ -32,10 +33,11 @@ const styles=StyleSheet.create({
         fontSize: width / 33,
     },
 })
+
 export const ROUTE_HOME = StackNavigator({
     HOME:{screen: Home, navigationOptions:{header:null}},
     PRODUCT:{screen: Product, navigationOptions:{header:null}},
-    PRODUCTDETAIL:{screen: ProductDetail, navigationOptions:{header:null}}
+    PRODUCTDETAIL:{screen: ProductDetail, navigationOptions:{header:null}},
 })
 export const ROUTE_CART = StackNavigator({
     CART:{screen: Cart, navigationOptions:{header:null}},
@@ -48,8 +50,8 @@ export const ROUTE_SEARCH = StackNavigator({
 export const ROUTE_CONTACT = StackNavigator({
     CONTACT:{screen: Contact, navigationOptions:{header:null}},
 })
-export const TABBAR = TabNavigator(
-    {                           
+export const TABBAR = TabNavigator(   
+    {                             
         tabHome: {
             screen: ROUTE_HOME,
             navigationOptions:{
@@ -72,21 +74,6 @@ export const TABBAR = TabNavigator(
                 tabBarLabel: ({focused, tintColor})=> 
                     (<Text style={focused ? styles.iconTextActive : styles.iconText}>Cart</Text>),
             }                
-        },
-        tabSearch: {
-            screen: ROUTE_SEARCH,
-            navigationOptions:{
-                tabBarIcon: ({ focused, tintColor }) => {
-                    if (focused) {
-                        return (<Image source={iconSearch1} style={styles.icon} />)
-                    }
-                    else {
-                        return (<Image source={iconSearch} style={styles.icon} />)
-                    }
-                },
-                tabBarLabel: ({focused, tintColor})=> 
-                    (<Text style={focused ? styles.iconTextActive : styles.iconText}>Search</Text>),
-            }
         },
         tabContact: {
             screen: ROUTE_CONTACT,
@@ -120,5 +107,4 @@ export const TABBAR = TabNavigator(
         },
     }
 )
-
 

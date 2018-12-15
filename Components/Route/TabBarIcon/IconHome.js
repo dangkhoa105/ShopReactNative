@@ -12,7 +12,8 @@ export default  class IconHome extends Component{
     }
     render(){
         return(
-            <View style={{ position: "relative" ,
+            <View style={{ 
+                position: "relative",
                 zIndex: 0,
                 flex: 1,
                 alignSelf: 'stretch',

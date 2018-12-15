@@ -7,31 +7,8 @@ import search from '../../Redux/API/search';
 import { searchProduct } from '../../Redux/Reducer/CreateAction';
 
 class Header extends Component{
-    constructor(props){
-        super(props);
-        this.state={
-            contentSearch:'',
-        }
-    }
-    _search(){
-        const {contentSearch} = this.state;
-        search(contentSearch)
-        .then(arrproduct => 
-            this.props.searchProduct(arrproduct)
-        )
-        .catch(err => this._searchFail())
-    }
-    _searchFail(){
-        Alert.alert(
-            'Search',
-            'Product not found',
-            [
-              {text: 'OK', onPress: () => console.log('OK Pressed')},
-            ],
-          )
-    }
     render(){
-        const { header, headerTop, imageMenu, hearderSearch, textinput, imageCart } = styles
+        const { header, headerTop, imageMenu, hearderSearch, textinput, imageCart } = styles;
         return(
             <View style={header}>
                 <View style={headerTop}>
@@ -47,27 +24,20 @@ class Header extends Component{
                         <TextInput
                             underlineColorAndroid='transparent'
                             style={textinput}
-                            placeholder="What do you want to buy ?"
-                            value={this.state.contentSearch}
-                            onChangeText={(contentSearch)=>{this.setState({contentSearch})}}
-                            onFocus={ this.props.goSear}
-                            onSubmitEditing={this._search.bind(this)}
+                            placeholder="What do you want to buy ?"                      
+                            onFocus={ this.props.goSear }                                                      
                         /> 
                     </View>
-                    <TouchableOpacity
-                        onPress={this.props.goSear}
-                    >
-                        <Image 
-                            style={imageCart}
-                            source={iconLogo}
-                        />
-                    </TouchableOpacity>
-                </View>
-                
+                    <Image 
+                        style={imageCart}
+                        source={iconLogo}
+                    />
+                </View>      
             </View>
         );
     }
 }
+
 export default  connect(null,{searchProduct})(Header);
 var { width, height } = Dimensions.get('window');
 const styles=StyleSheet.create({
@@ -85,11 +55,13 @@ const styles=StyleSheet.create({
     imageMenu: {
         width: width / 15,
         height: height / 18,
+        margin: width / 80,
     },
     imageCart: {
         width: width / 17,
         height: height / 20,
         marginRight: width / 32,
+        marginTop: width / 100,
     },
     hearderSearch: {
         backgroundColor: 'white',

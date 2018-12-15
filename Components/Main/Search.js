@@ -1,21 +1,68 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Image, FlatList } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Image, FlatList, TextInput } from 'react-native';
 import { connect } from 'react-redux';
+import search from '../../Redux/API/search';
+import { searchProduct } from '../../Redux/Reducer/CreateAction';
 
 import ElevatedView from 'react-native-elevated-view'
+import { Header } from 'native-base';
+
+import back from '../../Image/back_white.png';
 
 const url="http://192.168.56.1:80/app/images/product/";
 
 class Search extends Component{
-    goDetail(product){
-        this.props.navigation.navigate('PRODUCTDETAIL',{product});
+  constructor(props){
+    super(props);
+    this.state={
+        contentSearch:'',
     }
+  }
+  goDetail(product){
+    this.props.navigation.navigate('PRODUCTDETAIL',{product});
+  }
+  _search(){
+    const {contentSearch} = this.state;
+    search(contentSearch)
+    .then(arrproduct => 
+      this.props.searchProduct(arrproduct)
+    )
+    .catch(err => this._searchFail())
+  }
+  _searchFail(){
+    Alert.alert(
+      'Search',
+      'Product not found',
+      [
+        {text: 'OK', onPress: () => console.log('OK Pressed')},
+      ],
+    )
+  }
+  goBack(){
+    this.props.navigation.navigate('First');
+    //this.props.navigation.navigate('DrawerOpen')
+  }
   render() {
-    const { colorStyle, stylesearch, products, stayElavated, productsImage, imageProduct, productsContent, textStyle0, textStyle1, textStyle2, productsShowDetail } = styles;
+    const { colorStyle, header, hearderSearch, textinput,iconStyle, stylesearch, products, stayElavated, productsImage, imageProduct, productsContent, textStyle0, textStyle1, textStyle2, productsShowDetail } = styles;
     const { arrproduct } = this.props;
     console.log(arrproduct, "arrproduct");
     return (
       <View style={stylesearch}>
+        <View style={header}>
+          <TouchableOpacity onPress={this.goBack.bind(this)}>
+            <Image style={iconStyle} source={back} />
+          </TouchableOpacity>
+          <View style={hearderSearch}>                                                                     
+            <TextInput
+              underlineColorAndroid='transparent'
+              style={textinput}
+              placeholder="What do you want to buy ?"
+              onChangeText={(contentSearch)=>{this.setState({contentSearch})}}
+              onSubmitEditing={this._search.bind(this)}  
+              value={this.state.contentSearch}                                                                                       
+            /> 
+          </View>
+        </View>
         <FlatList
           data={arrproduct}
           renderItem={({ item }) =>
@@ -58,8 +105,8 @@ function mapStoreToProps(state){
   }
 }
 
-export default connect(mapStoreToProps)(Search);
-var { width } = Dimensions.get('window');
+export default connect(mapStoreToProps,{searchProduct})(Search);
+var { width, height } = Dimensions.get('window');
 const imageWidth = (width - 100) / 3;
 const imageHeight = (imageWidth / 361) * 452;
 const styles=StyleSheet.create({
@@ -106,5 +153,32 @@ const styles=StyleSheet.create({
   },
   stayElavated: {
     backgroundColor: '#FFF',
+  },
+  header: {
+    backgroundColor: '#4895F0',
+    justifyContent: 'space-around',
+    padding: width / 25,
+    paddingTop: width / 30,
+    height: height / 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  hearderSearch: {
+    backgroundColor: 'white',
+    marginTop: width / 70,
+    //justifyContent: 'space-around',
+  },
+  textinput: {
+    backgroundColor: 'white',
+    borderRadius: 10,
+    height: height / 20,
+    width: width / 1.4,
+    paddingLeft: 10,
+    paddingVertical: 1 
+  },
+  iconStyle: {
+    marginTop: width / 80,
+    width: width / 13,
+    height: height / 16,
   },
 })
