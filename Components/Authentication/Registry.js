@@ -3,6 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity,Alert, TextInput, Dimensions }
 import { connect } from 'react-redux';
 import Register from "../../Redux/API/Register";
 import { login } from '../../Redux/Reducer/CreateAction';
+import { Input } from 'react-native-elements';
 
 class Registry extends Component{
     constructor(props){
@@ -46,39 +47,71 @@ class Registry extends Component{
           )
     }
     render(){
-        const { body, button, buttontext, textInputStyle } = styles
+        const { body, button, buttontext, textInputStyle, inputView } = styles
         return(       
                 <View style={body}>
-                    <TextInput
-                        underlineColorAndroid='transparent'
-                        style={textInputStyle}
-                        value={this.state.name}
-                        onChangeText={(name) => { this.setState({name}) }}
-                        placeholder="Enter your name"
-                    />
-                    <TextInput
-                        underlineColorAndroid='transparent'
-                        style={textInputStyle}
-                        value={this.state.email}
-                        onChangeText={(email) => { this.setState({email}) }}
-                        placeholder="Enter your email"
-                    />
-                    <TextInput
-                        underlineColorAndroid='transparent'
-                        style={textInputStyle}
-                        value={this.state.pass}
-                        onChangeText={(pass) => { this.setState({pass}) }}
-                        placeholder="Enter your password"
-                        secureTextEntry
-                    />
-                    <TextInput
-                        underlineColorAndroid='transparent'
-                        style={textInputStyle}
-                        value={this.state.repass}
-                        onChangeText={(repass) => { this.setState({repass}) }}
-                        placeholder="Re-enter your password"
-                        secureTextEntry
-                    />
+                    <View style={inputView}>
+                        <Input
+                            placeholder='Enter your name'
+                            leftIcon={{
+                                style: {textInputStyle},
+                                name: 'person',
+                                size: 25,
+                                color: 'gray',
+                            }}
+                            value={this.state.name}
+                            onChangeText={(name) => { this.setState({name}) }}
+                            inputContainerStyle = {{backgroundColor: 'white', borderColor: 'transparent'}}
+                            containerStyle = {{margin: 20}}
+                        />
+                    </View>   
+                    <View style={inputView}>
+                        <Input
+                            placeholder='Enter your email'
+                            leftIcon={{
+                                style: {textInputStyle},
+                                name: 'email',
+                                size: 24,
+                                color: 'gray',
+                            }}
+                            value={this.state.email}
+                            onChangeText={(email) => { this.setState({email}) }}
+                            inputContainerStyle = {{backgroundColor: 'white', borderColor: 'transparent'}}
+                            containerStyle = {{margin: 20}}
+                        />
+                    </View>   
+                    <View style={inputView}>
+                        <Input
+                            placeholder='Enter your password'
+                            leftIcon={{
+                                style: {textInputStyle},
+                                name: 'lock',
+                                size: 24,
+                                color: 'gray',
+                            }}
+                            value={this.state.pass}
+                            onChangeText={(pass) => { this.setState({pass}) }}
+                            inputContainerStyle = {{backgroundColor: 'white', borderColor: 'transparent'}}
+                            containerStyle = {{margin: 20}}
+                            secureTextEntry
+                        />
+                    </View>   
+                    <View style={inputView}>
+                        <Input
+                            placeholder='Re-enter your password'
+                            leftIcon={{
+                                style: {textInputStyle},
+                                name: 'lock',
+                                size: 24,
+                                color: 'gray',
+                            }}
+                            value={this.state.repass}
+                            onChangeText={(repass) => { this.setState({repass}) }}
+                            inputContainerStyle = {{backgroundColor: 'white', borderColor: 'transparent'}}
+                            containerStyle = {{margin: 20}}
+                            secureTextEntry
+                        />
+                    </View>   
                     <TouchableOpacity
                         style={button}
                         onPress={() => {this._register() }}
@@ -106,7 +139,7 @@ const styles = StyleSheet.create({
         height: height * 0.07,
         borderRadius: 15,
         marginBottom: 10,
-        paddingLeft: 30,
+        paddingLeft: 20,
     },
     button: {
         borderColor: '#FFF',
@@ -116,9 +149,18 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         alignItems: 'center',
         justifyContent: 'center',
+        margin: 20
     },
     buttontext: {
         color: "#FFF",
         fontWeight: "400"
+    },
+    inputView: {
+        width: width - 80,
+        height: height * 0.07,
+        borderRadius: 15,
+        justifyContent: 'space-around',
+        margin: 10,
+        backgroundColor: 'white'
     },
 })

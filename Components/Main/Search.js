@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Image, FlatList, TextInput } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Dimensions, Image, FlatList, TextInput, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import search from '../../Redux/API/search';
 import { searchProduct } from '../../Redux/Reducer/CreateAction';
+import { SearchBar, Icon } from 'react-native-elements'
 
 import ElevatedView from 'react-native-elevated-view'
 import { Header } from 'native-base';
@@ -49,17 +50,23 @@ class Search extends Component{
     return (
       <View style={stylesearch}>
         <View style={header}>
-          <TouchableOpacity onPress={this.goBack.bind(this)}>
-            <Image style={iconStyle} source={back} />
-          </TouchableOpacity>
+          <Icon
+            name='keyboard-arrow-left'
+            type='MaterialIcons'
+            color='#ffffff'
+            size={60}
+            onPress={this.goBack.bind(this)} 
+          />         
           <View style={hearderSearch}>                                                                     
-            <TextInput
+            <SearchBar
+              lightTheme
+              platform="android"
               underlineColorAndroid='transparent'
-              style={textinput}
-              placeholder="What do you want to buy ?"
+              inputStyle={{}}
+              placeholder="Search..."                        
               onChangeText={(contentSearch)=>{this.setState({contentSearch})}}
               onSubmitEditing={this._search.bind(this)}  
-              value={this.state.contentSearch}                                                                                       
+              value={this.state.contentSearch}                                                   
             /> 
           </View>
         </View>
@@ -156,29 +163,31 @@ const styles=StyleSheet.create({
   },
   header: {
     backgroundColor: '#4895F0',
-    justifyContent: 'space-around',
+    //justifyContent: 'space-between',
     padding: width / 25,
-    paddingTop: width / 30,
+    paddingTop: width / 24,
     height: height / 12,
     flexDirection: 'row',
     alignItems: 'center',
   },
   hearderSearch: {
     backgroundColor: 'white',
-    marginTop: width / 70,
-    //justifyContent: 'space-around',
+    //marginTop: width / 120,
+    marginLeft: width / 25,
+    justifyContent: 'space-around',
+    height: height / 20,
+    width: width / 1.5,
+    borderRadius: 20,
   },
   textinput: {
     backgroundColor: 'white',
     borderRadius: 10,
     height: height / 20,
     width: width / 1.4,
-    paddingLeft: 10,
+    paddingLeft: 7,
     paddingVertical: 1 
   },
   iconStyle: {
-    marginTop: width / 80,
-    width: width / 13,
-    height: height / 16,
+    paddingTop: height / 80,
   },
 })

@@ -49,6 +49,7 @@ const styles = StyleSheet.create({
   text: {
     color: '#AFAEAF',
     fontSize: 18,
+    fontFamily: 'OpenSansCondensed-Light'
   },
   bannerImage: {
     flex: 4,

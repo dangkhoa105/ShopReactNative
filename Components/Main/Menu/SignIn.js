@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10, 
   },
   profileBody: {
-    flex: 1,
+    //flex: 1.5,
     alignItems: 'center',
     justifyContent: 'center',
     height: height * 0.5,

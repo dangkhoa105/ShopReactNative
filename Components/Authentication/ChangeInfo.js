@@ -5,6 +5,9 @@ import changeInfoUser from '../../Redux/API/changeInfo';
 import getToken from '../../Redux/API/getToken';
 
 import back from '../../Image/backs.png';
+import { Input, Icon } from 'react-native-elements';
+//import Icon from 'react-native-vector-icons/';
+
 
 class ChangeInfo extends Component{
     constructor(props){
@@ -49,27 +52,49 @@ class ChangeInfo extends Component{
                     </TouchableOpacity>
                 </View>
                 <View style={body}>
-                    <TextInput
-                        style={textInputStyle}
-                        value={name}
-                        onChangeText={(name)=>{this.setState({name})}}
-                        placeholder="Enter your name"
-                        underlineColorAndroid='transparent'
-                    />
-                    <TextInput
-                        style={textInputStyle}
-                        value={address}
-                        onChangeText={(address)=>{this.setState({address})}}
-                        placeholder="Enter your address"
-                        underlineColorAndroid='transparent'
-                    />
-                    <TextInput
-                        style={textInputStyle}
-                        value={phonenumber}
-                        onChangeText={(phonenumber)=>{this.setState({phonenumber})}}
-                        placeholder="Enter your phone number"
-                        underlineColorAndroid='transparent'
-                    />
+                    <View style={textInputStyle}>
+                        <Input
+                            placeholder='Enter your name'
+                            leftIcon={{
+                                type: 'font-awesome',
+                                name: 'user',
+                                size: 22,
+                                color: '#4895F0',
+                            }}
+                            value={name}
+                            onChangeText={(name)=>{this.setState({name})}}
+                            inputContainerStyle = {{borderColor: 'transparent'}}
+                        />
+                    </View>
+                    <View style={textInputStyle}>
+                        <Input
+                            placeholder='Enter your address'
+                            leftIcon={{
+                                type: 'font-awesome',
+                                name: 'address-book',
+                                size: 21,
+                                color: '#4895F0',
+                            }}
+                            value={address}
+                            onChangeText={(address)=>{this.setState({address})}}
+                            inputContainerStyle = {{borderColor: 'transparent'}}
+                        />
+                    </View>
+                    <View style={textInputStyle}>
+                        <Input
+                            placeholder='Enter your phone number'
+                            leftIcon={{
+                                type: 'font-awesome',
+                                name: 'phone',
+                                size: 22,
+                                color: '#4895F0',
+                                underlineColorAndroid: 'transparent'
+                            }}
+                            value={phonenumber}
+                            onChangeText={(phonenumber)=>{this.setState({phonenumber})}}
+                            inputContainerStyle = {{borderColor: 'transparent'}}
+                        />
+                    </View>                  
                     <TouchableOpacity
                         style={button}
                         onPress={this._changeInfo.bind(this)}
@@ -111,7 +136,7 @@ const styles = StyleSheet.create({
     textHeaderStyle: {
         color: '#fff',
         fontSize: width / 16,
-        fontFamily: 'Avenir',
+        fontFamily: 'Roboto',
     },
     body: {
         flex: 93,
@@ -121,20 +146,19 @@ const styles = StyleSheet.create({
         borderColor: '#4895F0',
     },
     textInputStyle: {
-        borderWidth: 1,
-        backgroundColor: '#FFFFFF',
+        borderWidth: 2,
+        borderColor: '#4895F0',
         width: width - 60,
-        height: height * 0.07,
-        borderRadius: 15,
+        height: height * 0.08,
+        borderRadius: 30,
         paddingLeft: 20,
-        borderRadius: 20,
-        marginBottom: 20,
-        fontFamily: 'Avenir',
+        margin: 10,
         marginHorizontal: 20,
+        justifyContent: 'center'
     },
     button: {
         width: width - 60,
-        height: height * 0.07,
+        height: height * 0.09,
         borderRadius: 20,
         alignItems: 'center',
         justifyContent: 'center',

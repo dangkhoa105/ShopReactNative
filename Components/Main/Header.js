@@ -5,6 +5,7 @@ import iconMenu from '../../Image/menu.png';
 import iconLogo from '../../Image/logo.png';
 import search from '../../Redux/API/search';
 import { searchProduct } from '../../Redux/Reducer/CreateAction';
+import { SearchBar, Icon } from 'react-native-elements'
 
 class Header extends Component{
     render(){
@@ -12,25 +13,30 @@ class Header extends Component{
         return(
             <View style={header}>
                 <View style={headerTop}>
-                    <TouchableOpacity
-                        onPress={this.props.onOpen}
-                    >
-                        <Image 
-                            style={imageMenu}
-                            source={iconMenu}
-                        />
-                    </TouchableOpacity>
+                    <Icon
+                        name='menu'
+                        type='MaterialIcons'
+                        color='#ffffff'
+                        size={45}
+                        onPress={this.props.onOpen} 
+                    />
                     <View style={hearderSearch}>                                                                     
-                        <TextInput
+                        <SearchBar
+                            lightTheme
+                            platform="android"
                             underlineColorAndroid='transparent'
-                            style={textinput}
-                            placeholder="What do you want to buy ?"                      
+                            //style={textinput}
+                            inputStyle={{}}
+                            placeholder="Search..."                      
                             onFocus={ this.props.goSear }                                                      
                         /> 
                     </View>
-                    <Image 
-                        style={imageCart}
-                        source={iconLogo}
+                    <Icon
+                        name='search'
+                        type='MaterialIcons'
+                        color='#ffffff'
+                        size={40}
+                        onPress={ this.props.goSear }   
                     />
                 </View>      
             </View>
@@ -67,13 +73,13 @@ const styles=StyleSheet.create({
         backgroundColor: 'white',
         marginTop: width / 100,
         justifyContent: 'space-around',
+        height: height / 20,
+        width: width / 1.6,
+        borderRadius: 20,
     },
     textinput: {
         backgroundColor: 'white',
         borderRadius: 10,
-        height: height / 20,
-        width: width / 1.6,
-        paddingLeft: 10,
-        paddingVertical: 1 
+        alignItems: 'center'
     },
 })

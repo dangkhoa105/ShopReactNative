@@ -13,7 +13,7 @@ import ReducerRefre from './Reducer/ReducerRefre';
 import ReducerSearch from './Reducer/ReducerSearch';
 import ReducerOrderHistory from './Reducer/ReducerOrderHistory';
 
-const  Reducer = combineReducers ({
+const Reducer = combineReducers ({
     arrType: ReducerTypes,
     isLoading: ReducerIsLoading,
     isErr: ReducerErr,
