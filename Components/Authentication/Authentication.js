@@ -6,6 +6,8 @@ import Registry from './Registry';
 import { login, registry } from '../../Redux/Reducer/CreateAction';
 
 import back from '../../Image/back_white.png';
+import colors from '../../Design/Color';
+import profile from '../../Image/temp/profile.png';
 
 class Authentication extends Component{
     goBackMenu() {
@@ -23,17 +25,23 @@ class Authentication extends Component{
     }
     render() {
         const { isLogin } = this.props;
-        const { container, bottom, header, iconStyle, buttonLeft, buttonRight } = styles
+        const { container, bottom, header, iconStyle, buttonLeft, buttonRight, logo, logoStyle } = styles
         return (
-            <View style={container}>
+            <View style={container}>               
                 <View style={header}>
                     <View>
                         <TouchableOpacity
+                            style={{flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center'}}
                             onPress={this.goBackMenu.bind(this)}
                         >
                             <Image style={iconStyle} source={back} />
+                            <Text style={{color: 'white', fontSize: 20}}>Back</Text>
                         </TouchableOpacity>
                     </View>
+                </View>
+
+                <View style={logo}>
+                    <Image style={logoStyle} source={profile} />
                 </View>
 
                 {this.isLogin()}
@@ -65,13 +73,17 @@ function mapStoreToProp(state){
 export default connect(mapStoreToProp,{login,registry})(Authentication);
 
 const {width, height} = Dimensions.get('window');
+const imageWidth = width * 0.2;
+const imageHeight = (imageWidth / 2000) * 2000;
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#4895F0',
-        flex: 1,
+        width: width,
+        height: height,
+        backgroundColor: colors.darkblue_1,
+        //flex: 1,
         padding: width / 25,
         padding: 20,
-        justifyContent: "space-between"
+        justifyContent: "space-between"        
     },
     header: {
         flex: 1,
@@ -89,9 +101,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'center',
+        marginBottom: 30,
     },
     buttonLeft: {
-        flex: 1,
         width: (width - 65) / 2,
         height: height * 0.07,
         backgroundColor: '#FFF',
@@ -103,7 +115,7 @@ const styles = StyleSheet.create({
         marginRight: 1,
     },
     buttonRight: {
-        flex: 1,
+        //flex: 1,
         width: (width - 65) / 2,
         height: height * 0.07,
         backgroundColor: '#FFF',
@@ -114,4 +126,14 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 20,
         marginRight: 1,
     },
+    logo: {
+        backgroundColor: colors.darkblue_1,
+        alignItems: 'center',
+    },
+    logoStyle: {
+        width: imageWidth * 1.1,
+        height: imageHeight * 1.1,
+        borderRadius: 100,
+        //margin: 20,
+    }
 })

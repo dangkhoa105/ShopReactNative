@@ -5,6 +5,7 @@ import SignIn from './Menu/SignIn';
 import SignOut from './Menu/SignOut';
 
 import avata from '../../Image/temp/profile.png';
+import colors from '../../Design/Color';
 
 class Menu extends Component {
 
@@ -50,13 +51,14 @@ const imageHeight = (imageWidth / 2000) * 2000;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#4895F0',
+    backgroundColor: colors.darkblue_1,
     alignItems: 'center',
   },
   imageStyle: {
     width: imageWidth * 1.7,
     height: imageHeight * 1.7,
     borderRadius: 100,
-    margin: 20,
+    marginTop: 50,
+    marginBottom: 15,
   },
 })

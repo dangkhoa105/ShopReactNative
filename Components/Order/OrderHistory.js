@@ -8,6 +8,7 @@ import getToken from '../../Redux/API/getToken';
 import back from '../../Image/backs.png';
 
 import ElevatedView from 'react-native-elevated-view'
+import colors from '../../Design/Color';
 
 class OrderHistory extends Component{
     goBack(){
@@ -54,7 +55,7 @@ class OrderHistory extends Component{
                                 </View>
                                 <View style={rowOrder}>
                                     <Text style={textStyle0}>Total: </Text>
-                                    <Text style={textStyle3}>{item.total}$</Text>
+                                    <Text style={textStyle2}>{item.total}$</Text>
                                 </View>
                             </View>
                         </ElevatedView>                       
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
     },
     header: {
         flex: 1,
-        backgroundColor: '#4895F0',
+        backgroundColor: colors.darkblue_1,
         flexDirection: 'row',
         padding: width / 25,
         justifyContent: 'space-between',
@@ -100,7 +101,7 @@ const styles = StyleSheet.create({
     body: {
         flex: 13,
         padding: width / 25,
-        backgroundColor: '#F6F6F6'
+        backgroundColor: colors.white,
     },
     orders: {
         backgroundColor: 'white',
@@ -115,15 +116,15 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     textStyle0: {
-        color: '#9A9A9A',
+        color: colors.darkblue,
         fontWeight: 'bold'
     },
     textStyle1: {
-        color: '#4895F0',
+        color: colors.darkblue_1,
         fontWeight: 'bold'
     },
     textStyle2: {
-        color: '#C21C70',
+        color: colors.brightred,
         fontWeight: 'bold'
     },
     textStyle3: {

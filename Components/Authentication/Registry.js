@@ -5,6 +5,8 @@ import Register from "../../Redux/API/Register";
 import { login } from '../../Redux/Reducer/CreateAction';
 import { Input } from 'react-native-elements';
 
+import colors from '../../Design/Color'
+
 class Registry extends Component{
     constructor(props){
         super(props);
@@ -53,62 +55,62 @@ class Registry extends Component{
                     <View style={inputView}>
                         <Input
                             placeholder='Enter your name'
+                            placeholderTextColor = 'white'
                             leftIcon={{
-                                style: {textInputStyle},
                                 name: 'person',
                                 size: 25,
-                                color: 'gray',
+                                color: 'white',
                             }}
                             value={this.state.name}
                             onChangeText={(name) => { this.setState({name}) }}
-                            inputContainerStyle = {{backgroundColor: 'white', borderColor: 'transparent'}}
-                            containerStyle = {{margin: 20}}
+                            inputContainerStyle = {{backgroundColor: 'transparent', borderColor: 'white'}}
+                            containerStyle = {{width: width - 10}}
                         />
                     </View>   
                     <View style={inputView}>
                         <Input
                             placeholder='Enter your email'
+                            placeholderTextColor = 'white'
                             leftIcon={{
-                                style: {textInputStyle},
                                 name: 'email',
                                 size: 24,
-                                color: 'gray',
+                                color: 'white',
                             }}
                             value={this.state.email}
                             onChangeText={(email) => { this.setState({email}) }}
-                            inputContainerStyle = {{backgroundColor: 'white', borderColor: 'transparent'}}
-                            containerStyle = {{margin: 20}}
+                            inputContainerStyle = {{backgroundColor: 'transparent', borderColor: 'white'}}
+                            containerStyle = {{width: width - 10}}
                         />
                     </View>   
                     <View style={inputView}>
                         <Input
                             placeholder='Enter your password'
+                            placeholderTextColor = 'white'
                             leftIcon={{
-                                style: {textInputStyle},
                                 name: 'lock',
                                 size: 24,
-                                color: 'gray',
+                                color: 'white',
                             }}
                             value={this.state.pass}
                             onChangeText={(pass) => { this.setState({pass}) }}
-                            inputContainerStyle = {{backgroundColor: 'white', borderColor: 'transparent'}}
-                            containerStyle = {{margin: 20}}
+                            inputContainerStyle = {{backgroundColor: 'transparent', borderColor: 'white'}}
+                            containerStyle = {{width: width - 10}}
                             secureTextEntry
                         />
                     </View>   
                     <View style={inputView}>
                         <Input
                             placeholder='Re-enter your password'
+                            placeholderTextColor = 'white'
                             leftIcon={{
-                                style: {textInputStyle},
                                 name: 'lock',
                                 size: 24,
-                                color: 'gray',
+                                color: 'white',
                             }}
                             value={this.state.repass}
                             onChangeText={(repass) => { this.setState({repass}) }}
-                            inputContainerStyle = {{backgroundColor: 'white', borderColor: 'transparent'}}
-                            containerStyle = {{margin: 20}}
+                            inputContainerStyle = {{backgroundColor: 'transparent', borderColor: 'white'}}
+                            containerStyle = {{width: width - 10}}
                             secureTextEntry
                         />
                     </View>   
@@ -130,8 +132,9 @@ export default connect(null,{login})(Registry);
 const {width, height} = Dimensions.get('window');
 const styles = StyleSheet.create({
     body: {
-        flex: 7,
+        flex: 10,
         alignItems: 'center',
+        marginTop: 20,
     },
     textInputStyle: {
         backgroundColor: '#FFF',
@@ -142,11 +145,11 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
     },
     button: {
+        backgroundColor: colors.darkblue,
         borderColor: '#FFF',
-        borderWidth: 2,
-        width: width - 60,
+        width: width / 1.5,
         height: height * 0.07,
-        borderRadius: 15,
+        borderRadius: 20,
         alignItems: 'center',
         justifyContent: 'center',
         margin: 20
@@ -160,7 +163,6 @@ const styles = StyleSheet.create({
         height: height * 0.07,
         borderRadius: 15,
         justifyContent: 'space-around',
-        margin: 10,
-        backgroundColor: 'white'
+        margin: 7,
     },
 })

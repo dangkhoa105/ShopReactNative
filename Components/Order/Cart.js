@@ -7,6 +7,7 @@ import getToken from '../../Redux/API/getToken';
 import sendOrder from '../../Redux/API/sendOrder';
 
 import ElevatedView from 'react-native-elevated-view'
+import colors from '../../Design/Color.js';
 
 const url = "http://192.168.56.1:80/app/images/product/";
 
@@ -91,8 +92,8 @@ class Cart extends Component {
                           <Image source={{ uri: `${url}${item.images[0]}` }} style={imageStyle} />
                         </View>
                         <View style={viewTitle}>
-                          <Text style={textStyleName}>{item.name.toUpperCase()} </Text>
-                          <Text style={textStylePrice}>{item.price}$ </Text>
+                          <Text style={textStyleName}>{item.name.toUpperCase()}</Text>
+                          <Text style={textStylePrice}>{item.price}$</Text>
                           <View style={add}>
                             <TouchableOpacity onPress={() => { this.incrQuantity(item.id) }}>
                               <Text style={textstyleadd}>+</Text>
@@ -148,7 +149,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#DFDFDF'
   },
   product: {
-    margin: width / 38,
+    //margin: width / 22,
     backgroundColor: 'white',
     flexDirection: 'row',
     padding: 5,
@@ -169,15 +170,15 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   textStyleName: {
-    paddingLeft: 20,
-    color: '#A7A7A7',
+    paddingLeft: 15,
+    color: colors.darkgrayishblue,
     fontSize: 20,
     fontWeight: '400',
     fontFamily: 'Avenir',
   },
   textStylePrice: {
-    paddingLeft: 20,
-    color: '#C21C70',
+    paddingLeft: 15,
+    color: colors.brightorange,
     fontSize: 18,
     fontWeight: '400',
     fontFamily: 'Avenir'
@@ -187,12 +188,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   textstyleadd: {
-    fontSize: 15,
+    fontSize: 20,
     fontWeight: 'bold',
   },
   viewShow: {
     justifyContent: 'space-between',
-    margin: 10,
+    margin: 5,
     alignItems: 'flex-end',
   },
   textStyleShow: {
@@ -203,7 +204,7 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
   tatolCart: {
-    backgroundColor: '#4895F0',
+    backgroundColor: colors.brightred,
     margin: width / 38,
     alignItems: 'center',
     padding: 15,

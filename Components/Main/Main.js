@@ -7,6 +7,7 @@ import CheckLogin from '../../Redux/API/checklogin';
 import { OnSignIn } from '../../Redux/Reducer/CreateAction';
 import { connect } from 'react-redux';
 import RefreshToken from '../../Redux/API/refreshToken';
+import colors from '../../Design/Color.js';
 
 class Main extends Component {
   constructor(props){
@@ -45,7 +46,7 @@ export default connect(null,{OnSignIn})(Main);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#4895F0',
+    backgroundColor: colors.darkblue_1,
   },
   content: {
     flex: 14.5,

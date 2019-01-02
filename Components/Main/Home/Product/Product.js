@@ -7,6 +7,7 @@ import { fetchListProduct, getListProductsThunk, refreshListProduct, loadpage, s
 import ElevatedView from 'react-native-elevated-view'
 
 import back from '../../../../Image/back_white.png';
+import colors from '../../../../Design/Color';
 
 
 const url="http://192.168.56.1:80/app/images/product/";
@@ -49,59 +50,61 @@ class Product extends Component {
   }
 
   render() {
-    const { textName, textPrice, textMaterial, textShowDetail, colorStyle, container, stayElavated, header, body, imagebackstyle, textheaderstyle, products, imageProduct, productsImage, productsContent, productsShowDetail } = styles;
+    const { textName, wrapper, textPrice, textMaterial, textShowDetail, colorStyle, container, stayElavated, header, body, imagebackstyle, textheaderstyle, products, imageProduct, productsImage, productsContent, productsShowDetail } = styles;
     const { type } = this.props.navigation.state.params;
     const { listProducts } = this.props;
     console.log(listProducts,"listproducts");
     const { refre } = this.state;
     return (
       <View style={container}>
-        <View style={header}>
-          <TouchableOpacity onPress={this.goHome.bind(this)}>
-            <Image style={imagebackstyle} source={back} />
-          </TouchableOpacity>
-          <Text key={type.id} style={textheaderstyle}>{type.name}</Text>
-          <Text></Text>
-        </View>
-        <View margin={1}>
-          <ElevatedView elevation={5} style={stayElavated}>
-            <View style={body}>
-              <FlatList
-                refreshing={refre}
-                onRefresh={()=>{this._refre()}}
-                data={listProducts}
-                renderItem={({ item }) => 
-                  <View margin={6}>
-                    <ElevatedView elevation={3} style={stayElavated}>
-                      <View style={products} >
-                        <View style={productsImage}>
-                          <Image style={imageProduct} source={{uri:`${url}${item.images[0]}`}} />
-                        </View>
-                        <View style={productsContent}>
-                          <Text style={textName}>{item.name.toUpperCase()} </Text>
-                          <Text style={textPrice}> {item.price}$</Text>
-                          <Text style={textMaterial}> {item.material} </Text>
-                          <View style={colorStyle}>
-                            <Text> Color {item.color}</Text>
-                            <View style={{width:16, height:16, backgroundColor: item.color.toLowerCase(), borderRadius:8}}/>
+        <View style={wrapper}>
+          <View style={header}>
+            <TouchableOpacity onPress={this.goHome.bind(this)}>
+              <Image style={imagebackstyle} source={back} />
+            </TouchableOpacity>
+            <Text key={type.id} style={textheaderstyle}>{type.name}</Text>
+            <View style={{ width: 30 }} />
+          </View>
+          {/* <View margin={3}>
+            <ElevatedView elevation={5} style={stayElavated}> */}
+              {/* <View style={body}> */}
+                <FlatList
+                  refreshing={refre}
+                  onRefresh={()=>{this._refre()}}
+                  data={listProducts}
+                  renderItem={({ item }) => 
+                    <View margin={5}>
+                      <ElevatedView elevation={4} style={stayElavated}>
+                        <View style={products} >
+                          {/* <View style={productsImage}> */}
+                            <Image style={imageProduct} source={{uri:`${url}${item.images[0]}`}} />
+                          {/* </View> */}
+                          <View style={productsContent}>
+                            <Text style={textName}>{item.name.toUpperCase()} </Text>
+                            <Text style={textPrice}> {item.price}$</Text>
+                            <Text style={textMaterial}> {item.material} </Text>  
+                            <View style={colorStyle}>
+                              <Text style={{color: colors.darkblue}}> Color {item.color}</Text>
+                              <View style={{width:16, height:16, backgroundColor: item.color.toLowerCase(), borderRadius:8}}/>
+                            </View>                         
+                          </View>
+                          <View style={productsShowDetail}>                            
+                            <TouchableOpacity
+                              onPress={()=> {this.goDetail(item)}}
+                            >
+                              <Text style={textShowDetail}>SHOW DETAIL</Text>
+                            </TouchableOpacity>
                           </View>
                         </View>
-                        <View style={productsShowDetail}>
-                          <TouchableOpacity
-                            onPress={()=> {this.goDetail(item)}}
-                          >
-                            <Text style={textShowDetail}>SHOW DETAIL</Text>
-                          </TouchableOpacity>
-                        </View>
-                      </View>
-                    </ElevatedView>      
-                  </View> 
-                }    
-                keyExtractor={(item)=> item.id.toString()}              
-              />
-            </View>   
-          </ElevatedView>      
-        </View> 
+                      </ElevatedView>      
+                    </View> 
+                  }    
+                  keyExtractor={(item)=> item.id.toString()}              
+                />
+              {/* </View>    */}
+            {/* </ElevatedView>      
+          </View>  */}
+        </View>
       </View>
     );
   }
@@ -120,81 +123,80 @@ const imageWidth = (width - 70) / 3;
 const imageHeight = (imageWidth / 361) * 452;
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#FFFFFF',
-    margin: width / 38,
+    //flex: 100,
+    backgroundColor: '#DBDBD8',
+    height: height + 90,
+    //margin: width / 38,
+  },
+  wrapper: {
+    backgroundColor: "#FFF",
+    margin: 10,
+    //paddingHorizontal: 10
   },
   header: {
-    backgroundColor: '#4895F0',
+    backgroundColor: colors.darkblue,
     height: 50,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
-    //padding: 5,
+    padding: 5,
   },
   imagebackstyle: {
-    margin: 10,
     width: width / 13,
     height: height / 18,
   },
   textheaderstyle: {
+    fontFamily: 'Avenir',
     fontSize: width / 22,
-    color: '#FFFFFF',
+    color: colors.paleblue,
   },
   body: {
-    //flex: 14,
+    flex: 14,
     padding: 10,
   },
   products: {
     flexDirection: 'row',
-    paddingVertical: 10, 
-    // borderTopColor: '#F0F0F0',
-    // borderBottomColor: '#FFF',
-    // borderLeftColor: '#FFF',
-    // borderRightColor: '#FFF',
-    // borderWidth: 2,
+    paddingVertical: 10,
   },
   productsImage: {
-    padding: 5,
-    height: 140,
+    //margin: 8,
+    height: width / 2.9,
     width: (90 * 452) / 361
   },
   imageProduct: {
-    width: imageWidth,
-    height: imageHeight,
+    marginLeft: 10,
+    width: 90,
+    height: (90 * 452) / 361,
+    resizeMode: 'center'
   },
   productsContent: {
-    flex: 100,
     justifyContent: 'space-between',
-    marginLeft: 15,
-    padding: 5
-    //flex: 1,
+    marginLeft: 10,
+    marginRight: 10,
+    flex: 1
   },
   textName: {
-    color: '#BCBCBC',
-    fontSize: 17,
-    fontWeight: '300',
+    fontFamily: 'Avenir',
+    color: colors.lightBlack,
+    fontSize: 20,
+    fontWeight: '400',
   },
   textPrice: {
-    color: '#B10D65',
-    fontSize: 14,
-    fontWeight: '100'
+    fontFamily: 'Avenir',
+    color: colors.brightorange,
   },
   textMaterial: {
-    fontSize: 14,
-    fontWeight: '100',
+    fontFamily: 'Avenir',
+    color: colors.grayishorange,
   },
   textShowDetail: {
+    fontFamily: 'Avenir',
     color: '#B10D65',
-    fontSize: 12,
+    fontSize: 15,
   },
   productsShowDetail: {
-    flex: 30,
-    //borderRadius: 8,
-    paddingLeft: 14,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    width: imageWidth,
+    flexDirection: 'row',
+    alignItems: 'flex-end'
   },
   colorStyle: {
     flexDirection: 'row',

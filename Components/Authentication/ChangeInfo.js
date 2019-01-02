@@ -7,6 +7,7 @@ import getToken from '../../Redux/API/getToken';
 import back from '../../Image/backs.png';
 import { Input, Icon } from 'react-native-elements';
 //import Icon from 'react-native-vector-icons/';
+import colors from '../../Design/Color'
 
 
 class ChangeInfo extends Component{
@@ -55,44 +56,46 @@ class ChangeInfo extends Component{
                     <View style={textInputStyle}>
                         <Input
                             placeholder='Enter your name'
+                            placeholderTextColor={colors.paleblue}
                             leftIcon={{
                                 type: 'font-awesome',
                                 name: 'user',
                                 size: 22,
-                                color: '#4895F0',
+                                color: colors.paleblue,
                             }}
                             value={name}
                             onChangeText={(name)=>{this.setState({name})}}
-                            inputContainerStyle = {{borderColor: 'transparent'}}
+                            inputContainerStyle = {{borderColor: colors.paleblue}}
                         />
                     </View>
                     <View style={textInputStyle}>
                         <Input
                             placeholder='Enter your address'
+                            placeholderTextColor={colors.paleblue}
                             leftIcon={{
                                 type: 'font-awesome',
                                 name: 'address-book',
                                 size: 21,
-                                color: '#4895F0',
+                                color: colors.paleblue,
                             }}
                             value={address}
                             onChangeText={(address)=>{this.setState({address})}}
-                            inputContainerStyle = {{borderColor: 'transparent'}}
+                            inputContainerStyle = {{borderColor: colors.paleblue}}
                         />
                     </View>
                     <View style={textInputStyle}>
                         <Input
                             placeholder='Enter your phone number'
+                            placeholderTextColor={colors.paleblue}
                             leftIcon={{
                                 type: 'font-awesome',
                                 name: 'phone',
                                 size: 22,
-                                color: '#4895F0',
-                                underlineColorAndroid: 'transparent'
+                                color: colors.paleblue,
                             }}
                             value={phonenumber}
                             onChangeText={(phonenumber)=>{this.setState({phonenumber})}}
-                            inputContainerStyle = {{borderColor: 'transparent'}}
+                            inputContainerStyle = {{borderColor: colors.paleblue}}
                         />
                     </View>                  
                     <TouchableOpacity
@@ -122,7 +125,7 @@ const styles = StyleSheet.create({
     },
     header: {
         flex: 7,
-        backgroundColor: '#4895F0',
+        backgroundColor: colors.darkblue_1,
         flexDirection: 'row',
         padding: width / 25,
         justifyContent: 'space-between',
@@ -142,32 +145,27 @@ const styles = StyleSheet.create({
         flex: 93,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F6F6F6',  
-        borderColor: '#4895F0',
+        backgroundColor: colors.darkblue,  
+        borderColor: colors.paleblue,
     },
     textInputStyle: {
-        borderWidth: 2,
-        borderColor: '#4895F0',
-        width: width - 60,
+        width: width - 20,
         height: height * 0.08,
-        borderRadius: 30,
         paddingLeft: 20,
         margin: 10,
         marginHorizontal: 20,
         justifyContent: 'center'
     },
     button: {
-        width: width - 60,
-        height: height * 0.09,
+        width: width / 1.5,
+        height: height * 0.07,
         borderRadius: 20,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#4895F0',
-        marginTop: 30,
-        marginHorizontal: 20,
-        paddingLeft: 20,
+        backgroundColor: colors.paleblue,
+        marginTop: 40,
     },
     buttontext: {
-        color: 'white',
+        color: colors.brightred,
     },
 })

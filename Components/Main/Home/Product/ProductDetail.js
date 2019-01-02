@@ -7,6 +7,7 @@ import carts from '../../../../Image/cartfull.png';
 import saveCart from '../../../../Redux/API/saveCart.js';
 
 import ElevatedView from 'react-native-elevated-view'
+import colors from '../../../../Design/Color.js';
 
 const url="http://192.168.56.1:80/app/images/product/";
 
@@ -67,7 +68,8 @@ class ProductDetail extends Component {
                         <View style={titleContainer}>
                             <Text style={textMain}>
                                 <Text style={textBlack}>{product.name.toUpperCase()} </Text>
-                                <Text style={textSmoke}> / {product.price}</Text>
+                                <Text style={textBlack}> /</Text>
+                                <Text style={textSmoke}> {product.price}$</Text>
                             </Text>
                         </View>                        
                         <View style={viewDetail}>
@@ -122,7 +124,6 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderColor: '#F6F6F6',
         marginHorizontal: 20,
-        //paddingBottom: 5,
         paddingTop: 8,
         justifyContent: 'center',
         alignItems: 'center'     
@@ -136,13 +137,13 @@ const styles = StyleSheet.create({
         height: height / 18,
     },
     body: {
-        //flex: 14,
     },
     imageStyles: {
         margin: width / 76,
         width: imageWidth,
         height: imageHeight,
-        marginHorizontal: 5
+        marginHorizontal: 5,
+        resizeMode: 'center'
     },
     textBlack: {
         fontFamily: 'Avenir',
@@ -156,7 +157,7 @@ const styles = StyleSheet.create({
     textSmoke: {
         fontFamily: 'Avenir',
         fontSize: 20,
-        color: '#9A9A9A'
+        color: colors.brightorange
     },
     textHighlight: {
         fontSize: 15,
@@ -181,8 +182,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },    
     viewColor: {
-        marginLeft: 15,
-        marginRight: 15,
+        marginHorizontal: 40,
         flexDirection: 'row',
         justifyContent: 'space-between',
     },

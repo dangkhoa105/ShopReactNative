@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Dimensions} from 'react-native';
 import { connect } from 'react-redux';
+import colors from '../../../Design/Color';
 
 class SignOut extends Component {
   
@@ -28,19 +29,16 @@ const { width } = Dimensions.get('window');
 const styles = StyleSheet.create({
   button: {
     backgroundColor: '#FFF',
-    width: (width / 1.5) - 20,
-    height: 50,
-    margin: 5,
-    borderRadius: 10,
+    width: (width / 1.5) - 40,
+    height: width / 8.8,
+    margin: width / 5,
+    borderRadius: 40,
     justifyContent: 'center',
-    borderRadius: 10,
-    paddingLeft: 10,
     alignItems: 'center',
-    marginBottom: 10,
   },
   textSignIn: {
     textAlign: 'center',
-    color: '#4895F0',
-    fontSize: 15
+    color: colors.brightred,
+    fontSize: 19
   },
 })

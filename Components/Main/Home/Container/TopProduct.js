@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity, Dimensions, Image, FlatList} 
 import { connect } from 'react-redux';
 
 import ElevatedView from 'react-native-elevated-view'
+import colors from '../../../../Design/Color';
 
 const url="http://192.168.56.1:80/app/images/product/";
 
@@ -58,30 +59,31 @@ const imageWidth= (width-70)/2;
 const imageHeight= (imageWidth /361) *455;
 const styles = StyleSheet.create({
     banner: {
-      backgroundColor: '#FFF',
-      //margin: width / 38,
+      backgroundColor: colors.white,
       padding: 6,
     },
     bannerText: {
+      backgroundColor: colors.vividcyan,
       height: 50,
       justifyContent: 'center',
-      //margin: 10,
-      paddingLeft: 10,
+      alignItems: 'center',
+      marginTop: 5,
+      marginHorizontal: 12,
     },
     text: {
-      color: '#AFAEAF',
+      color: colors.lightBlack,
       fontSize: 18,
     },
     content: {
       margin: 5,
-      marginTop: 0,
+      marginTop: 4,
       flexDirection: 'row',
       justifyContent: 'space-around',
       flexWrap: 'wrap',
       paddingBottom: 10,
     },
     product: {
-      marginLeft: 9,
+      marginLeft: 10,
       flexDirection: 'row',
       justifyContent: 'space-around',
       paddingBottom: 10,
@@ -98,7 +100,7 @@ const styles = StyleSheet.create({
     },
     productTextOne: {
       paddingLeft: 10,
-      color: '#D3D3CF',
+      color: colors.strongorange,
       fontWeight: '500',
     },
     productTextTwo: {
@@ -108,6 +110,6 @@ const styles = StyleSheet.create({
       fontWeight: '500',
     },
     stayElevated: {
-      backgroundColor: '#FFF',
+      backgroundColor: colors.white,
     }
 })

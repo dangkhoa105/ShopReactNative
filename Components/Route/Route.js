@@ -16,6 +16,7 @@ import iconHome1 from '../../Image/home.png';
 import iconSearch1 from '../../Image/search.png';
 import iconContact1 from '../../Image/contact.png';
 import Header from '../Main/Header.js';
+import colors from '../../Design/Color.js';
 
 var { width, height } = Dimensions.get('window');
 
@@ -29,7 +30,7 @@ const styles=StyleSheet.create({
         fontSize: width / 33,
     },
     iconTextActive: {
-        color: '#4895F0',
+        color: colors.vividblue_1,
         fontSize: width / 33,
     },
 })

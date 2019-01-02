@@ -3,7 +3,9 @@ import { StyleSheet, Text, View, TouchableOpacity, Dimensions} from 'react-nativ
 import { connect } from 'react-redux';
 import { OnSignOut } from '../../../Redux/Reducer/CreateAction';
 import saveToken from '../../../Redux/API/saveToken';
-
+import { Button } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/Octicons';
+import colors from '../../../Design/Color';
 
 class SignIn extends Component {
   _OnSignOut(){
@@ -19,24 +21,53 @@ class SignIn extends Component {
         <View style={{flex: 1, alignItems: 'center' }}>
           <Text style={textStyle}>{ user != null ? user.name : 'Error'}</Text>
           <View style={profileBody}>
-            <TouchableOpacity
-              style={button}
+            <Button
+              icon={
+                <Icon
+                  name='history'
+                  size={30}
+                  color='white'
+                  style={{margin: 10}}
+                />
+              }
+              buttonStyle = {button}
+              containerStyle = {{backgroundColor: colors.darkblue_1, margin: 10}}
+              titleStyle = {{ fontSize: 20 }}
               onPress={()=> {this.props.goOrderHis()}}
-            >
-              <Text style={buttonText}>Order History</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={button}
+              title = 'Order History              >'
+            />
+
+            <Button
+              icon={
+                <Icon
+                  name='info'
+                  size={30}
+                  color='white'
+                  style={{margin: 11}}
+                />
+              }
+              buttonStyle = {button}
+              containerStyle = {{backgroundColor: colors.darkblue_1, margin: 10}}
+              titleStyle = {{ fontSize: 20 }}
               onPress={()=> {this.props.goChange()}}
-            >
-              <Text style={buttonText}>Change Info</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={button}
-              onPress={this._OnSignOut.bind(this) }
-            >
-              <Text style={buttonText}>Sign Out</Text>
-            </TouchableOpacity>
+              title = 'Change Info                >'
+            />
+
+            <Button
+              icon={
+                <Icon
+                  name='sign-out'
+                  size={30}
+                  color='white'
+                  style={{margin: 10}}
+                />
+              }
+              buttonStyle = {button}
+              containerStyle = {{backgroundColor: colors.darkblue_1, margin: 10}}
+              titleStyle = {{ fontSize: 20 }}
+              onPress={this._OnSignOut.bind(this)}
+              title = 'Sign Out                       >'
+            />
           </View>
       </View>
     );
@@ -53,30 +84,27 @@ const imageWidth = width * 0.2;
 const imageHeight = (imageWidth / 2000) * 2000;
 const styles = StyleSheet.create({
   textStyle: {
-    color: '#FFF',
-    fontSize: 15,
+    color: 'white',
+    fontSize: 17,
+    fontWeight: '600',
     textAlign: 'center',
-    paddingBottom: 10, 
+    paddingBottom: 30, 
   },
   profileBody: {
-    //flex: 1.5,
-    alignItems: 'center',
-    justifyContent: 'center',
     height: height * 0.5,
   },
   button: {
-    backgroundColor: '#FFF',
-    width: (width / 1.5) - 20,
+    backgroundColor: colors.darkblue_1,
+    width: width / 1.4,
     height: 50,
-    margin: 5,
-    borderRadius: 10,
-    paddingLeft: 10,
-    justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 10,
+    justifyContent: 'flex-start',
+    borderWidth: 2,
+    borderColor: colors.darkblue_1,
+    borderBottomColor: 'white'
   },
   buttonText: {
-    color: '#4895F0',
-    fontSize: 15
+    color: 'white',
+    fontSize: 18
   },
 })

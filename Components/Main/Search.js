@@ -9,6 +9,7 @@ import ElevatedView from 'react-native-elevated-view'
 import { Header } from 'native-base';
 
 import back from '../../Image/back_white.png';
+import colors from '../../Design/Color';
 
 const url="http://192.168.56.1:80/app/images/product/";
 
@@ -62,7 +63,6 @@ class Search extends Component{
               lightTheme
               platform="android"
               underlineColorAndroid='transparent'
-              inputStyle={{}}
               placeholder="Search..."                        
               onChangeText={(contentSearch)=>{this.setState({contentSearch})}}
               onSubmitEditing={this._search.bind(this)}  
@@ -82,9 +82,9 @@ class Search extends Component{
                 <View style={productsContent}>
                   <Text style={textStyle0}> {item.name.toUpperCase()}</Text>
                   <Text style={textStyle1}> {item.price}$</Text>
-                  <Text> {item.material}</Text>
+                  <Text style={{color: colors.grayishorange, fontSize: 14, fontWeight: '100'}}> {item.material}</Text>
                   <View style={colorStyle}>
-                    <Text> Color {item.color}</Text>
+                    <Text style={{color: colors.vividred}}> Color {item.color}</Text>
                     <View style={{width:12, height:12, backgroundColor: item.color.toLowerCase(), borderRadius: 100, marginLeft: 15}}/>
                   </View>
                 </View>
@@ -127,7 +127,7 @@ const styles=StyleSheet.create({
     justifyContent: 'space-around'
   },
   productsImage: {
-    margin: 10,
+    margin: 5,
   },
   imageProduct: {
     width: imageWidth,
@@ -138,11 +138,14 @@ const styles=StyleSheet.create({
     justifyContent: 'space-between',
   },
   textStyle0: {
-    color: 'gray',
-    fontSize: 15,
+    color: colors.lightBlack,
+    fontSize: 17,
+    fontWeight: '300',
   },
   textStyle1: {
-    color: '#c6386b',
+    color: colors.brightorange,
+    fontSize: 14,
+    fontWeight: '100'
   },
   productsShowDetail: {
     margin: 10,
@@ -162,8 +165,7 @@ const styles=StyleSheet.create({
     backgroundColor: '#FFF',
   },
   header: {
-    backgroundColor: '#4895F0',
-    //justifyContent: 'space-between',
+    backgroundColor: colors.darkblue_1,
     padding: width / 25,
     paddingTop: width / 24,
     height: height / 12,

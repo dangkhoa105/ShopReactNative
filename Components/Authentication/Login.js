@@ -6,6 +6,7 @@ import { OnSignIn } from '../../Redux/Reducer/CreateAction';
 import saveToken from '../../Redux/API/saveToken';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
+import colors from '../../Design/Color';
 
 
 class Login extends Component{
@@ -31,36 +32,35 @@ class Login extends Component{
     render() {
         const { body, button, buttontext, textInputStyle, inputView } = styles
         return (
-
             <View style={body}>
                 <View style={inputView}>
                     <Input
-                        placeholder='Enter your email'
+                        placeholder = 'Enter your email'
+                        placeholderTextColor = 'white'
                         leftIcon={{
-                            style: {textInputStyle},
                             name: 'email',
                             size: 24,
-                            color: 'gray',
+                            color: 'white',
                         }}
                         value= {this.state.email}
                         onChangeText = {(email) => { this.setState({email}) }}
-                        inputContainerStyle = {{backgroundColor: 'white', borderColor: 'transparent'}}
-                        containerStyle = {{margin: 20}}
+                        inputContainerStyle = {{backgroundColor: 'transparent', borderColor: 'white'}}
+                        containerStyle = {{width: width - 10}}
                     />
                 </View>              
                 <View style={inputView}>
                     <Input
-                        placeholder='Enter your password'
+                        placeholder = 'Enter your password'
+                        placeholderTextColor = 'white'
                         leftIcon={{
-                            style: {textInputStyle},
                             name: 'lock',
                             size: 24,
-                            color: 'gray',
+                            color: 'white',
                         }}
                         value={this.state.pass}
                         onChangeText={(pass) => { this.setState({pass}) }}
-                        inputContainerStyle = {{backgroundColor: 'white', borderColor: 'transparent'}}
-                        containerStyle = {{margin: 20}}
+                        inputContainerStyle = {{backgroundColor: 'transparent', borderColor: 'white'}}
+                        containerStyle = {{width: width - 10}}
                         secureTextEntry
                     />
                 </View>                
@@ -82,8 +82,9 @@ export default connect(null, {OnSignIn})(Login);
 const { width, height } = Dimensions.get('window');
 const styles = StyleSheet.create({
     body: {
-        flex: 7,
+        flex: 9,
         alignItems: 'center',
+        marginTop: width / 5,
     },
     textInputStyle: {
         backgroundColor: '#FFF',
@@ -95,13 +96,12 @@ const styles = StyleSheet.create({
     },
     button: {
         borderColor: '#FFF',
-        borderWidth: 2,
-        width: width - 60,
+        width: width / 1.5,
         height: height * 0.07,
         borderRadius: 20,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: '#4895F0',
+        backgroundColor: colors.darkblue,
         marginTop: 20,
     },
     buttontext: {
@@ -114,6 +114,6 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         justifyContent: 'space-around',
         margin: 10,
-        backgroundColor: 'white'
+        //backgroundColor: 'white'
     }
 })

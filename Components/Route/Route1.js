@@ -32,7 +32,7 @@ export const SIDEMAIN = DrawerNavigator({
 },
 {
     initialRouteName: 'First',
-    drawerWidth: width / 1.5,
+    drawerWidth: width / 1.3,
     drawerPosition: 'left',
     contentComponent: props => <Menu{...props}/>
 })

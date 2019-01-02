@@ -95,7 +95,7 @@ const styles=StyleSheet.create({
         fontFamily: 'Avenir',
         color: '#AE005E',
         fontWeight: '500',
-        width: width / 1.5,
+        width: width / 1.5, 
     },
     viewRowBottom: {
         flexDirection: 'row',

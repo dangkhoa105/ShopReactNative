@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import Swiper from 'react-native-swiper';
 import ElevatedView from 'react-native-elevated-view'
+import colors from '../../../../Design/Color';
 
 class Sideproduct extends Component {
   render() {
@@ -52,28 +53,31 @@ const imageWidth= width - 40;
 const imageHeight= (imageWidth / 933) * 456;
 const styles = StyleSheet.create({
     banner: {
-      height: height * 0.36,
-      backgroundColor: '#fff',
-      margin: width / 38,
-      marginTop: 0,
+      height: height * 0.35,
+      backgroundColor: colors.white,
+      margin: width / 45,
+      justifyContent: 'space-around',
     },
     bannerText: {
-      flex: 1,
+      flex: 0.76,
+      backgroundColor: colors.vividorange,
       justifyContent: 'center',
-      marginLeft: 10,
+      alignItems: 'center',
+      marginTop: 10,
+      marginHorizontal: 10, 
     },
     text: {
-      color: '#AFAEAF',
+      color: colors.darkgrayishblue,
       fontSize: 18,
     },
     bannerImage: {
       flex: 4,
-      margin: 10,
-      marginTop: 0,
+      margin: 2,
+      marginHorizontal: 9,
     },
     titleText: {
-      fontSize: 15,
-      color: '#9A9A9A',
+      fontSize: 18,
+      color: colors.darkgrayishblue,
     },
     image: {
       width: imageWidth,
@@ -83,6 +87,6 @@ const styles = StyleSheet.create({
       paddingBottom: 0,
     },
     stayElavated: {
-      backgroundColor: '#FFF',
+      backgroundColor: colors.white,
     },
 })
