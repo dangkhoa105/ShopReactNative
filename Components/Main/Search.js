@@ -26,9 +26,10 @@ class Search extends Component{
   _search(){
     const {contentSearch} = this.state;
     search(contentSearch)
-    .then(arrproduct => 
-      this.props.searchProduct(arrproduct)
-    )
+    .then(arrProduct => {
+      this.props.searchProduct(arrProduct)
+      if(arrProduct==='KHONG_TIM_THAY') return this._searchFail();
+    })
     .catch(err => this._searchFail())
   }
   _searchFail(){
@@ -74,7 +75,7 @@ class Search extends Component{
           data={arrproduct}
           renderItem={({ item }) =>
             <View margin={10}>
-              <ElevatedView elevation={6} style={stayElavated}>
+              <ElevatedView elevation={5} style={stayElavated}>
               <View style={products}>
                 <View style={productsImage}>
                   <Image style={imageProduct} source={{uri:`${url}${item.images[0]}`}} />
@@ -121,10 +122,11 @@ const styles=StyleSheet.create({
     flex: 13,
   },
   products: {
+    
     flexDirection: 'row',
     margin: width / 38,
     backgroundColor: 'white',
-    justifyContent: 'space-around'
+    justifyContent: 'space-between'
   },
   productsImage: {
     margin: 5,
@@ -134,10 +136,11 @@ const styles=StyleSheet.create({
     height: imageHeight,
   },
   productsContent: {
-    margin: 10,
+    flex: 60,
     justifyContent: 'space-between',
   },
   textStyle0: {
+    
     color: colors.lightBlack,
     fontSize: 17,
     fontWeight: '300',
@@ -148,7 +151,7 @@ const styles=StyleSheet.create({
     fontWeight: '100'
   },
   productsShowDetail: {
-    margin: 10,
+    margin: 5,
     justifyContent: 'flex-end',
   },
   textStyle2: {
@@ -165,7 +168,7 @@ const styles=StyleSheet.create({
     backgroundColor: '#FFF',
   },
   header: {
-    backgroundColor: colors.darkblue_1,
+    backgroundColor: colors.headerUI,
     padding: width / 25,
     paddingTop: width / 24,
     height: height / 12,
@@ -174,7 +177,6 @@ const styles=StyleSheet.create({
   },
   hearderSearch: {
     backgroundColor: 'white',
-    //marginTop: width / 120,
     marginLeft: width / 25,
     justifyContent: 'space-around',
     height: height / 20,

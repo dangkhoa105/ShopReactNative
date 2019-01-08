@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 
 import iconCart from '../../../Image/cart0.png'
@@ -10,13 +10,11 @@ class Iconcart extends Component{
         super(props);   
     }
     render(){
-        const { focused, cartLeght, user } = this.props;
+        const { cartLeght, user } = this.props;
         return(
-            <View style={{ position: "relative" ,
-                flex: 1,
-                alignSelf: 'stretch',
-            }}>
-                {focused ? <Image source={iconCart1} style={{ width: 25, height: 25 }} /> : <Image source={iconCart} style={{ width: 25, height: 25 }} />}
+            <View style={{ position: "relative", alignSelf: 'stretch' }}>
+            <TouchableOpacity onPress={this.props.goCar}>
+                {<Image source={iconCart} style={{ width: 40, height: 40 }} />}
                 {cartLeght.length > 0 ?
                     <View style={{
                         width:14,
@@ -32,7 +30,8 @@ class Iconcart extends Component{
                         <Text style={{fontSize:12, color:'white'}}>{user ? cartLeght.length : null}</Text>
                     </View>
                     : undefined}
-              </View>
+            </TouchableOpacity>             
+            </View>
         );
     }
 } 

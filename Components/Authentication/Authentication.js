@@ -35,7 +35,7 @@ class Authentication extends Component{
                             onPress={this.goBackMenu.bind(this)}
                         >
                             <Image style={iconStyle} source={back} />
-                            <Text style={{color: 'white', fontSize: 20}}>Back</Text>
+                            <Text style={{color: colors.bannerUI, fontSize: 20}}>Back</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -79,8 +79,7 @@ const styles = StyleSheet.create({
     container: {
         width: width,
         height: height,
-        backgroundColor: colors.darkblue_1,
-        //flex: 1,
+        backgroundColor: colors.menuUI,
         padding: width / 25,
         padding: 20,
         justifyContent: "space-between"        
@@ -115,7 +114,6 @@ const styles = StyleSheet.create({
         marginRight: 1,
     },
     buttonRight: {
-        //flex: 1,
         width: (width - 65) / 2,
         height: height * 0.07,
         backgroundColor: '#FFF',
@@ -127,7 +125,7 @@ const styles = StyleSheet.create({
         marginRight: 1,
     },
     logo: {
-        backgroundColor: colors.darkblue_1,
+        backgroundColor: colors.menuUI,
         alignItems: 'center',
     },
     logoStyle: {

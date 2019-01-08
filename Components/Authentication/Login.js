@@ -22,45 +22,62 @@ class Login extends Component{
         var {email, pass} = this.state;
         SignIn(email, pass)
         .then(res =>  {
-            this.props.OnSignIn(res.user);
-            this.props.goBackMenu();
-            saveToken(res.token);
-        })
+            if(res.user === 'SAI_THONG_TIN_DANG_NHAP') return this.loginFail();
+            else {
+                this.props.OnSignIn(res.user);
+                this.props.goBackMenu();
+                saveToken(res.token);
+            }
+        })  
         .catch(err => console.log(err, "Sign in Fail"));
+    }
+
+    loginFail(){
+        Alert.alert(
+            'Notice',
+            'Sign in Fail',
+            [
+              {text: 'OK', onPress: () => this.setState({email: '', pass: ''})},
+            ],
+            { cancelable: false }
+          )
     }
 
     render() {
         const { body, button, buttontext, textInputStyle, inputView } = styles
+        const {email, pass} = this.state;
         return (
             <View style={body}>
                 <View style={inputView}>
                     <Input
                         placeholder = 'Enter your email'
-                        placeholderTextColor = 'white'
+                        placeholderTextColor = {colors.bannerUI}
                         leftIcon={{
                             name: 'email',
                             size: 24,
-                            color: 'white',
+                            color: colors.bannerUI,
                         }}
-                        value= {this.state.email}
+                        value= {email}
                         onChangeText = {(email) => { this.setState({email}) }}
-                        inputContainerStyle = {{backgroundColor: 'transparent', borderColor: 'white'}}
+                        inputContainerStyle = {{backgroundColor: 'transparent', borderColor: colors.bannerUI}}
                         containerStyle = {{width: width - 10}}
+                        inputStyle = {{color: colors.bannerUI}}
                     />
                 </View>              
                 <View style={inputView}>
                     <Input
                         placeholder = 'Enter your password'
-                        placeholderTextColor = 'white'
+                        placeholderTextColor = {colors.bannerUI}
                         leftIcon={{
                             name: 'lock',
                             size: 24,
-                            color: 'white',
+                            color: colors.bannerUI,
                         }}
-                        value={this.state.pass}
+                        value={pass}
                         onChangeText={(pass) => { this.setState({pass}) }}
-                        inputContainerStyle = {{backgroundColor: 'transparent', borderColor: 'white'}}
+                        inputContainerStyle = {{backgroundColor: 'transparent', borderColor: colors.bannerUI}}
                         containerStyle = {{width: width - 10}}
+                        inputStyle = {{color: colors.bannerUI}}
                         secureTextEntry
                     />
                 </View>                
@@ -84,7 +101,7 @@ const styles = StyleSheet.create({
     body: {
         flex: 9,
         alignItems: 'center',
-        marginTop: width / 5,
+        marginTop: width / 6,
     },
     textInputStyle: {
         backgroundColor: '#FFF',
@@ -96,17 +113,17 @@ const styles = StyleSheet.create({
     },
     button: {
         borderColor: '#FFF',
-        width: width / 1.5,
+        width: width / 1.8,
         height: height * 0.07,
         borderRadius: 20,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: colors.darkblue,
+        backgroundColor: colors.topUI,
         marginTop: 20,
     },
     buttontext: {
-        color: '#FFF',
-        fontWeight: "400"
+        color: colors.bannerUI,
+        fontWeight: "bold"
     },
     inputView: {
         width: width - 80,
@@ -114,6 +131,5 @@ const styles = StyleSheet.create({
         borderRadius: 25,
         justifyContent: 'space-around',
         margin: 10,
-        //backgroundColor: 'white'
     }
 })

@@ -49,7 +49,7 @@ class ProductDetail extends Component {
     const { product } = this.props.navigation.state.params;
     
     return (
-        <View style={container}>
+        <ElevatedView elevation={5} style={container}>
             <View style={cardStyle}>
                 <View style={header}>
                     <TouchableOpacity onPress={this.goHome.bind(this)}>
@@ -61,10 +61,14 @@ class ProductDetail extends Component {
                 </View>
                 <View style={body}>
                     <View key={product.id}>
-                        <ScrollView style={{ flexDirection: 'row', paddingLeft: 30, height: imageHeight, paddingTop: 7 }} horizontal >
-                            <Image style={imageStyles} source={{ uri: `${url}${product.images[0]}` }} />
-                            <Image style={imageStyles} source={{ uri: `${url}${product.images[1]}` }} />      
-                        </ScrollView>
+                        <ScrollView style={{ flexDirection: 'row', paddingLeft: 30, height: imageHeight}} horizontal >
+                            <ElevatedView elevation={6} style={{margin: 5}}>
+                                <Image style={imageStyles} source={{ uri: `${url}${product.images[0]}` }} />
+                            </ElevatedView>
+                            <ElevatedView elevation={6} style={{margin: 5}}>
+                                <Image style={imageStyles} source={{ uri: `${url}${product.images[1]}` }} />   
+                            </ElevatedView>                              
+                        </ScrollView>                       
                         <View style={titleContainer}>
                             <Text style={textMain}>
                                 <Text style={textBlack}>{product.name.toUpperCase()} </Text>
@@ -85,7 +89,7 @@ class ProductDetail extends Component {
                     </View>                                                  
                 </View> 
             </View>              
-        </View>
+        </ElevatedView>
     );
   }
 }//361*452
@@ -113,12 +117,11 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     header: {
-        flex: 0.5,
+        flex: 0.4,
         flexDirection: 'row',
         justifyContent: 'space-between',
         paddingHorizontal: 10,
         paddingTop: 10,
-        paddingRight: 20,
     },
     titleContainer: {
         borderBottomWidth: 1,
@@ -130,7 +133,7 @@ const styles = StyleSheet.create({
     },
     textMain: {
         paddingLeft: 5,
-        marginVertical: 10,       
+        marginBottom: 10,       
     },
     imagebackstyle: {
         width: width / 11,
@@ -139,11 +142,11 @@ const styles = StyleSheet.create({
     body: {
     },
     imageStyles: {
-        margin: width / 76,
+        //margin: width / 76,
         width: imageWidth,
         height: imageHeight,
-        marginHorizontal: 5,
-        resizeMode: 'center'
+        //marginHorizontal: 5,
+        //resizeMode: 'center'
     },
     textBlack: {
         fontFamily: 'Avenir',
@@ -160,8 +163,8 @@ const styles = StyleSheet.create({
         color: colors.brightorange
     },
     textHighlight: {
-        fontSize: 15,
-        color: '#AFAFAF'
+        fontSize: 17,
+        color: colors.lightBlack
     },
     textMaterial: {
         color: '#C21C70',
@@ -171,12 +174,9 @@ const styles = StyleSheet.create({
     },
     viewDetail: {
         borderColor: 'gray',
-        borderTopWidth: 1,
-        padding: 12.3,
-        paddingHorizontal: 10,
-        margin: 10,
-        marginLeft: 5,      
-        marginRight: 5,
+        borderTopWidth: 3,
+        padding: 17,
+        marginBottom: 15,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'

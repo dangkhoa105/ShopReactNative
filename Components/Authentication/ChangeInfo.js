@@ -40,6 +40,20 @@ class ChangeInfo extends Component{
             ],
           )
     }
+    phoneNumberOnlyNumeric(text){
+        let newText = '';
+        let numbers = '0123456789';
+    
+        for (var i=0; i < text.length; i++) {
+            if(numbers.indexOf(text[i]) > -1 ) {
+                newText = newText + text[i];
+            }
+            else {
+                alert("please enter numbers only");
+            }
+        }
+        this.setState({ phonenumber: newText });
+    }
     render(){
         const { container, header, body, iconStyle, textHeaderStyle, textInputStyle, button, buttontext } = styles
         const { name, address, phonenumber } = this.state;
@@ -56,46 +70,52 @@ class ChangeInfo extends Component{
                     <View style={textInputStyle}>
                         <Input
                             placeholder='Enter your name'
-                            placeholderTextColor={colors.paleblue}
+                            placeholderTextColor={colors.white}
                             leftIcon={{
                                 type: 'font-awesome',
                                 name: 'user',
                                 size: 22,
-                                color: colors.paleblue,
+                                color: colors.lightBlack,
                             }}
                             value={name}
                             onChangeText={(name)=>{this.setState({name})}}
-                            inputContainerStyle = {{borderColor: colors.paleblue}}
+                            inputContainerStyle = {{borderColor: colors.lightBlack}}
+                            inputStyle = {{color: colors.lightBlack}}
                         />
                     </View>
                     <View style={textInputStyle}>
                         <Input
                             placeholder='Enter your address'
-                            placeholderTextColor={colors.paleblue}
+                            placeholderTextColor={colors.white}
                             leftIcon={{
                                 type: 'font-awesome',
                                 name: 'address-book',
                                 size: 21,
-                                color: colors.paleblue,
+                                color: colors.lightBlack,
                             }}
                             value={address}
                             onChangeText={(address)=>{this.setState({address})}}
-                            inputContainerStyle = {{borderColor: colors.paleblue}}
+                            inputContainerStyle = {{borderColor: colors.lightBlack}}
+                            inputStyle = {{color: colors.lightBlack}}
+                            keyboardType='email-address'
                         />
                     </View>
                     <View style={textInputStyle}>
                         <Input
                             placeholder='Enter your phone number'
-                            placeholderTextColor={colors.paleblue}
+                            placeholderTextColor={colors.white}
                             leftIcon={{
                                 type: 'font-awesome',
                                 name: 'phone',
                                 size: 22,
-                                color: colors.paleblue,
+                                color: colors.lightBlack,
                             }}
                             value={phonenumber}
-                            onChangeText={(phonenumber)=>{this.setState({phonenumber})}}
-                            inputContainerStyle = {{borderColor: colors.paleblue}}
+                            onChangeText={(text)=>this.phoneNumberOnlyNumeric(text)}
+                            inputContainerStyle = {{borderColor: colors.lightBlack}}
+                            inputStyle = {{color: colors.lightBlack}}
+                            keyboardType='numeric'
+                            maxLength={10}
                         />
                     </View>                  
                     <TouchableOpacity
@@ -120,12 +140,12 @@ export default connect(mapStoreToProp)(ChangeInfo);
 const {width, height} = Dimensions.get('window');
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#fff',
+        backgroundColor: colors.headerUI,
         flex: 1,
     },
     header: {
         flex: 7,
-        backgroundColor: colors.darkblue_1,
+        backgroundColor: colors.headerUI,
         flexDirection: 'row',
         padding: width / 25,
         justifyContent: 'space-between',
@@ -137,35 +157,35 @@ const styles = StyleSheet.create({
         height: height / 18,
     },
     textHeaderStyle: {
-        color: '#fff',
+        color: colors.bannerUI,
         fontSize: width / 16,
         fontFamily: 'Roboto',
     },
     body: {
-        flex: 93,
+        flex: 94,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: colors.darkblue,  
-        borderColor: colors.paleblue,
+        backgroundColor: colors.paleblue,  
     },
     textInputStyle: {
         width: width - 20,
         height: height * 0.08,
-        paddingLeft: 20,
+        //paddingLeft: 20,
         margin: 10,
-        marginHorizontal: 20,
+        marginLeft: 50,
         justifyContent: 'center'
     },
     button: {
-        width: width / 1.5,
-        height: height * 0.07,
-        borderRadius: 20,
+        width: width / 1.6,
+        height: height * 0.08,
+        borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: colors.paleblue,
+        backgroundColor: colors.topUI,
         marginTop: 40,
     },
     buttontext: {
-        color: colors.brightred,
+        //fontWeight: 'bold',
+        color: colors.bannerUI,
     },
 })

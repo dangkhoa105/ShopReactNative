@@ -9,6 +9,8 @@ import sendOrder from '../../Redux/API/sendOrder';
 import ElevatedView from 'react-native-elevated-view'
 import colors from '../../Design/Color.js';
 
+import back from '../../Image/back_white.png';
+
 const url = "http://192.168.56.1:80/app/images/product/";
 
 class Cart extends Component {
@@ -72,13 +74,21 @@ class Cart extends Component {
     this.props.updateProductsCart([]);
     saveCart([]);
   }
+  goBack(){
+    this.props.navigation.navigate('First');
+  }
   render() {
-    const { stylecart, product, stayElavated, viewImage, viewTitle, viewShow, textstyleadd, imageStyle, tatolCart, textTatol, textStyleName, textStyleShow, textStylePrice, add } = styles;
+    const { stylecart, product, header, iconStyle, stayElavated, viewImage, viewTitle, viewShow, textstyleadd, imageStyle, tatolCart, textTatol, textStyleName, textStyleShow, textStylePrice, add } = styles;
     const { arrCart, user } = this.props;
     const arrTotal = arrCart.map(e => e.price * e.quantity);
     const total = arrTotal.length ? arrTotal.reduce((a, b) => a + b) : 0;
     return (
       <View style={stylecart}>
+        <View style={header}>
+          <TouchableOpacity onPress={this.goBack.bind(this)}>
+            <Image style={iconStyle} source={back} />
+          </TouchableOpacity>
+        </View>
         {
           user ?
             <View style={{ flex: 1 }}>
@@ -108,7 +118,7 @@ class Cart extends Component {
                         </View>
                         <View style={viewShow}>
                           <TouchableOpacity onPress={() => { this.deleteProduct(item.id) }}>
-                            <Text style={{ fontFamily: 'Avenir', color: '#969696' }}>X</Text>
+                            <Text style={{ fontFamily: 'Avenir', color: colors.slideUI }}>X</Text>
                           </TouchableOpacity>
                           <TouchableOpacity onPress={() => { this.goDetail(item) }}>
                             <Text style={textStyleShow}>SHOW DETAIL</Text>
@@ -140,7 +150,7 @@ function mapStoreToProps(state) {
 }
 export default connect(mapStoreToProps, { updateProductsCart })(Cart);
 
-const { width } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 const imageWidth = (width - 100) / 3;
 const imageHeight = (imageWidth / 361) * 452;
 const styles = StyleSheet.create({
@@ -149,14 +159,26 @@ const styles = StyleSheet.create({
     backgroundColor: '#DFDFDF'
   },
   product: {
-    //margin: width / 22,
     backgroundColor: 'white',
     flexDirection: 'row',
-    padding: 5,
+    margin: 5,
     borderRadius: 2,
   },
+  header: {
+    height: width / 7,
+    backgroundColor: colors.headerUI,
+    flexDirection: 'row',
+    padding: width / 25,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    paddingHorizontal: 10
+  },
+  iconStyle: {
+    width: width / 10,
+    height: height / 15,
+  },
   viewImage: {
-    margin: 10,
+    margin: 5,
   },
   imageStyle: {
     width: imageWidth,
@@ -165,7 +187,7 @@ const styles = StyleSheet.create({
     resizeMode: 'center'
   },
   viewTitle: {
-    flex: 80,
+    flex: 90,
     justifyContent: 'space-between',
     margin: 5,
   },
@@ -198,7 +220,7 @@ const styles = StyleSheet.create({
   },
   textStyleShow: {
     color: '#C21C70',
-    fontSize: 13,
+    fontSize: 15,
     fontWeight: '400',
     fontFamily: 'Avenir',
     textAlign: 'right',

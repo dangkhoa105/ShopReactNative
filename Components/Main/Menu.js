@@ -18,11 +18,14 @@ class Menu extends Component {
   goSignIn(){
     this.props.navigation.navigate('FormAuthen');
   }
+  goContact(){
+    this.props.navigation.navigate('FormContact');
+  }
 
   render() {
     const { container, imageStyle } = styles;
     const loginJSX=(
-      <SignIn goOrderHis = {this.goOrderHistory.bind(this)} goChange = {this.goChangeInfo.bind(this)}/>
+      <SignIn goOrderHis = {this.goOrderHistory.bind(this)} goChange = {this.goChangeInfo.bind(this)} goCont = {this.goContact.bind(this)}/>
     );
     const logoutJSX = (
       <SignOut goSignIn = {this.goSignIn.bind(this)}/>
@@ -51,7 +54,7 @@ const imageHeight = (imageWidth / 2000) * 2000;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.darkblue_1,
+    backgroundColor: colors.headerUI,
     alignItems: 'center',
   },
   imageStyle: {

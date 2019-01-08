@@ -59,19 +59,16 @@ const imageWidth= (width-70)/2;
 const imageHeight= (imageWidth /361) *455;
 const styles = StyleSheet.create({
     banner: {
-      backgroundColor: colors.white,
-      padding: 6,
+      backgroundColor: colors.topUI,
     },
     bannerText: {
-      backgroundColor: colors.vividcyan,
-      height: 50,
+      backgroundColor: colors.topUI,
+      height: 40,
       justifyContent: 'center',
       alignItems: 'center',
-      marginTop: 5,
-      marginHorizontal: 12,
     },
     text: {
-      color: colors.lightBlack,
+      color: colors.paleblue,
       fontSize: 18,
     },
     content: {
@@ -83,7 +80,7 @@ const styles = StyleSheet.create({
       paddingBottom: 10,
     },
     product: {
-      marginLeft: 10,
+      marginLeft: 14,
       flexDirection: 'row',
       justifyContent: 'space-around',
       paddingBottom: 10,

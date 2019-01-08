@@ -27,11 +27,14 @@ class Main extends Component {
   goSearch(){
     this.props.navigation.navigate('FormSearch');
   }
+  goCart(){
+    this.props.navigation.navigate('FormCart');
+  }
   render() {
     const { container, content } = styles
     return (
       <View style={container}>
-        <Header onOpen={this.openMenu.bind(this)} goSear={this.goSearch.bind(this)}/>
+        <Header onOpen={this.openMenu.bind(this)} goSear={this.goSearch.bind(this)} goCart={this.goCart.bind(this)}/>
         <View style={content}>
           <TABBAR></TABBAR>
         </View>
@@ -46,7 +49,7 @@ export default connect(null,{OnSignIn})(Main);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.darkblue_1,
+    backgroundColor: colors.red,
   },
   content: {
     flex: 14.5,

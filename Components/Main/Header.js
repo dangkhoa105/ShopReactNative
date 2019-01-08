@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { searchProduct } from '../../Redux/Reducer/CreateAction';
 import { SearchBar, Icon } from 'react-native-elements'
 import colors from '../../Design/Color'
+import IconCart from '../Route/TabBarIcon/IconCart';
 
 class Header extends Component{
     render(){
@@ -27,13 +28,7 @@ class Header extends Component{
                             onFocus={ this.props.goSear }                                                      
                         /> 
                     </View>
-                    <Icon
-                        name='search'
-                        type='MaterialIcons'
-                        color='#ffffff'
-                        size={40}
-                        onPress={ this.props.goSear }   
-                    />
+                    <IconCart goCar={this.props.goCart}/>                  
                 </View>      
             </View>
         );
@@ -44,7 +39,7 @@ export default  connect(null,{searchProduct})(Header);
 var { width, height } = Dimensions.get('window');
 const styles=StyleSheet.create({
     header: {
-        backgroundColor: colors.darkblue_1,
+        backgroundColor: colors.headerUI,
         justifyContent: 'space-around',
         padding: width / 25,
         paddingTop: width / 30,
@@ -71,7 +66,6 @@ const styles=StyleSheet.create({
         justifyContent: 'space-around',
         height: height / 20,
         width: width / 1.6,
-        borderRadius: 20,
     },
     textinput: {
         backgroundColor: 'white',

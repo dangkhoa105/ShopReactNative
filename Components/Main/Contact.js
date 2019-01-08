@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Dimensions, Image } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, Image, TouchableOpacity, Linking } from 'react-native';
 import MapView from 'react-native-maps';
 
 
@@ -7,13 +7,28 @@ import location from '../../Image/location.png';
 import email from '../../Image/mail.png';
 import phone from '../../Image/phone.png';
 import web from '../../Image/web.png';
+import back from '../../Image/back_white.png';
+
+import ElevatedView from 'react-native-elevated-view'
+import colors from '../../Design/Color';
 
 export default class Contact extends Component{
+    openLinking() {
+        Linking.openURL('https://www.uit.edu.vn');
+    }
+    goBack(){
+        this.props.navigation.navigate('First');
+    }
     render(){
-        const { styleContact, viewMap, viewTitle, viewRow, imageStyle, textStyle, viewRowBottom } = styles;
+        const { styleContact, header, iconStyle, viewMap, viewTitle, viewRow, imageStyle, textStyle, textStyle1, viewRowBottom } = styles;
         return(
             <View style={styleContact}>
-                <View style={viewMap}>
+                <View style={header}>
+                    <TouchableOpacity onPress={this.goBack.bind(this)}>
+                        <Image style={iconStyle} source={back} />
+                    </TouchableOpacity>
+                </View>
+                <ElevatedView elevation={5} style={viewMap}>
                     <MapView style={{width:350,height:200}}
                         initialRegion={{
                             latitude: 10.870645,
@@ -27,8 +42,8 @@ export default class Contact extends Component{
                         title="University of Information Technology"
                     />
                     </MapView>
-                </View>
-                <View style={viewTitle}>
+                </ElevatedView>
+                <ElevatedView elevation={5} style={viewTitle}>
                     <View style={viewRow}>
                         <Image source={location} style={imageStyle}/>
                         <Text style={textStyle}>Khu phố 6, Phường Linh Trung, Quận Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam</Text>
@@ -41,11 +56,13 @@ export default class Contact extends Component{
                         <Image source={email} style={imageStyle}/>
                         <Text style={textStyle}>info@uit.edu.vn</Text>
                     </View>
-                    <View style={viewRowBottom}>
-                        <Image source={web} style={imageStyle}/>
-                        <Text style={textStyle}>https://www.uit.edu.vn/</Text>
-                    </View>
-                </View>       
+                        <View style={viewRowBottom}>                           
+                            <Image source={web} style={imageStyle}/>  
+                            <TouchableOpacity onPress={this.openLinking}>                        
+                                <Text style={textStyle1}>https://www.uit.edu.vn</Text>         
+                            </TouchableOpacity>                                        
+                        </View>
+                </ElevatedView>       
             </View>
         );
     }
@@ -54,7 +71,20 @@ const {width, height}= Dimensions.get('window');
 const styles=StyleSheet.create({
     styleContact: {
         flex: 1, 
-        backgroundColor: '#F6F6F6'
+        backgroundColor: colors.white,
+    },
+    header: {
+        height: width / 7,
+        backgroundColor: colors.headerUI,
+        flexDirection: 'row',
+        padding: width / 25,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        paddingHorizontal: 10
+    },
+    iconStyle: {
+        width: width / 10,
+        height: height / 15,
     },
     viewMap: {
         justifyContent: 'center',
@@ -62,10 +92,7 @@ const styles=StyleSheet.create({
         flex: 1,
         backgroundColor: '#FFFFFF',
         margin: 10,
-        borderRadius: 2,
-        shadowColor: '#3B5458',
-        shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.2
+        borderRadius: 2,      
     },
     viewTitle: {
         padding: 10,
@@ -73,29 +100,35 @@ const styles=StyleSheet.create({
         backgroundColor: '#FFF',
         margin: 10,
         marginTop: 0,
-        borderRadius: 2,
-        shadowColor: '#3B5458',
-        shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.2
+        borderRadius: 2,    
     },
     viewRow: {
         flex: 1,
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-        borderBottomWidth: 1,
+        borderBottomWidth: 2,
         borderColor: '#D6D6D6'
     },
     imageStyle: {
         width: width / 11,
         height: height / 18,
-        margin: 20
+        margin: 15
     },
     textStyle: {
+        fontSize: 15,
         fontFamily: 'Avenir',
         color: '#AE005E',
         fontWeight: '500',
-        width: width / 1.5, 
+        width: width / 1.4,
+    },
+    textStyle1: {
+        fontSize: 15,
+        fontFamily: 'Avenir',
+        color: 'blue',
+        fontWeight: '500',
+        width: width / 1.4,
+        textDecorationLine: 'underline',
     },
     viewRowBottom: {
         flexDirection: 'row',

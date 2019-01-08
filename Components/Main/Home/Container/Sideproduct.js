@@ -49,31 +49,28 @@ function mapStoreToMap(state) {
 
 export default connect(mapStoreToMap)(Sideproduct);
 var {width, height} = Dimensions.get('window');
-const imageWidth= width - 40;
+const imageWidth= width;
 const imageHeight= (imageWidth / 933) * 456;
 const styles = StyleSheet.create({
     banner: {
       height: height * 0.35,
-      backgroundColor: colors.white,
-      margin: width / 45,
+      backgroundColor: colors.slideUI,
       justifyContent: 'space-around',
     },
     bannerText: {
-      flex: 0.76,
-      backgroundColor: colors.vividorange,
-      justifyContent: 'center',
-      alignItems: 'center',
-      marginTop: 10,
-      marginHorizontal: 10, 
+      flex: 0.7,
+      backgroundColor: colors.slideUI,
+      margin: 10,
+      marginBottom: 0
     },
     text: {
-      color: colors.darkgrayishblue,
+      color: colors.paleblue,
       fontSize: 18,
     },
     bannerImage: {
       flex: 4,
-      margin: 2,
-      marginHorizontal: 9,
+      marginTop: 0,
+      margin: 10,
     },
     titleText: {
       fontSize: 18,

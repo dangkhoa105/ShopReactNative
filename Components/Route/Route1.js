@@ -9,6 +9,9 @@ import OrderHistory from '../Order/OrderHistory.js';
 import { TABBAR, CombineScreen } from './Route';
 import Header from '../Main/Header';
 import Search from '../Main/Search';
+import Cart from '../Order/Cart'
+import IconCart from './TabBarIcon/IconCart';
+import Contact from '../Main/Contact';
 
 
 var {width} = Dimensions.get('window');
@@ -29,6 +32,18 @@ export const SIDEMAIN = DrawerNavigator({
     FormSearch:{
         screen: Search
     },
+    FormHeader:{
+        screen: Header
+    },
+    FormCart:{
+        screen: Cart
+    },
+    FormIconCart:{
+        screen: IconCart
+    },
+    FormContact:{
+        screen: Contact
+    }
 },
 {
     initialRouteName: 'First',

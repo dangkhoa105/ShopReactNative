@@ -26,13 +26,13 @@ class SignIn extends Component {
                 <Icon
                   name='history'
                   size={30}
-                  color='white'
+                  color={colors.bannerUI}
                   style={{margin: 10}}
                 />
               }
               buttonStyle = {button}
-              containerStyle = {{backgroundColor: colors.darkblue_1, margin: 10}}
-              titleStyle = {{ fontSize: 20 }}
+              containerStyle = {{backgroundColor: colors.headerUI, margin: 10}}
+              titleStyle = {{ fontSize: 20, color: colors.bannerUI }}
               onPress={()=> {this.props.goOrderHis()}}
               title = 'Order History              >'
             />
@@ -42,13 +42,13 @@ class SignIn extends Component {
                 <Icon
                   name='info'
                   size={30}
-                  color='white'
+                  color={colors.bannerUI}
                   style={{margin: 11}}
                 />
               }
               buttonStyle = {button}
-              containerStyle = {{backgroundColor: colors.darkblue_1, margin: 10}}
-              titleStyle = {{ fontSize: 20 }}
+              containerStyle = {{backgroundColor: colors.headerUI, margin: 10}}
+              titleStyle = {{ fontSize: 20, color: colors.bannerUI }}
               onPress={()=> {this.props.goChange()}}
               title = 'Change Info                >'
             />
@@ -56,15 +56,31 @@ class SignIn extends Component {
             <Button
               icon={
                 <Icon
+                  name='person'
+                  size={30}
+                  color={colors.bannerUI}
+                  style={{margin: 12}}
+                />
+              }
+              buttonStyle = {button}
+              containerStyle = {{backgroundColor: colors.headerUI, margin: 10}}
+              titleStyle = {{ fontSize: 20, color: colors.bannerUI }}
+              onPress={() => {this.props.goCont()}}
+              title = 'About                           >'
+            />
+
+            <Button
+              icon={
+                <Icon
                   name='sign-out'
                   size={30}
-                  color='white'
+                  color={colors.bannerUI}
                   style={{margin: 10}}
                 />
               }
               buttonStyle = {button}
-              containerStyle = {{backgroundColor: colors.darkblue_1, margin: 10}}
-              titleStyle = {{ fontSize: 20 }}
+              containerStyle = {{backgroundColor: colors.headerUI, margin: 10}}
+              titleStyle = {{ fontSize: 20, color: colors.bannerUI }}
               onPress={this._OnSignOut.bind(this)}
               title = 'Sign Out                       >'
             />
@@ -84,27 +100,24 @@ const imageWidth = width * 0.2;
 const imageHeight = (imageWidth / 2000) * 2000;
 const styles = StyleSheet.create({
   textStyle: {
-    color: 'white',
+    color: colors.bannerUI,
     fontSize: 17,
-    fontWeight: '600',
+    fontWeight: 'bold',
     textAlign: 'center',
-    paddingBottom: 30, 
+    //paddingBottom: 30, 
   },
   profileBody: {
+    margin: 20,
     height: height * 0.5,
   },
   button: {
-    backgroundColor: colors.darkblue_1,
+    backgroundColor: colors.headerUI,
     width: width / 1.4,
     height: 50,
     alignItems: 'center',
     justifyContent: 'flex-start',
     borderWidth: 2,
-    borderColor: colors.darkblue_1,
-    borderBottomColor: 'white'
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 18
+    borderColor: colors.headerUI,
+    borderBottomColor: colors.bannerUI
   },
 })

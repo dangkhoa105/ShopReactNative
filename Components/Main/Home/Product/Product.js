@@ -65,45 +65,35 @@ class Product extends Component {
             <Text key={type.id} style={textheaderstyle}>{type.name}</Text>
             <View style={{ width: 30 }} />
           </View>
-          {/* <View margin={3}>
-            <ElevatedView elevation={5} style={stayElavated}> */}
-              {/* <View style={body}> */}
-                <FlatList
-                  refreshing={refre}
-                  onRefresh={()=>{this._refre()}}
-                  data={listProducts}
-                  renderItem={({ item }) => 
-                    <View margin={5}>
-                      <ElevatedView elevation={4} style={stayElavated}>
-                        <View style={products} >
-                          {/* <View style={productsImage}> */}
-                            <Image style={imageProduct} source={{uri:`${url}${item.images[0]}`}} />
-                          {/* </View> */}
-                          <View style={productsContent}>
-                            <Text style={textName}>{item.name.toUpperCase()} </Text>
-                            <Text style={textPrice}> {item.price}$</Text>
-                            <Text style={textMaterial}> {item.material} </Text>  
-                            <View style={colorStyle}>
-                              <Text style={{color: colors.darkblue}}> Color {item.color}</Text>
-                              <View style={{width:16, height:16, backgroundColor: item.color.toLowerCase(), borderRadius:8}}/>
-                            </View>                         
-                          </View>
-                          <View style={productsShowDetail}>                            
-                            <TouchableOpacity
-                              onPress={()=> {this.goDetail(item)}}
-                            >
-                              <Text style={textShowDetail}>SHOW DETAIL</Text>
-                            </TouchableOpacity>
-                          </View>
-                        </View>
-                      </ElevatedView>      
-                    </View> 
-                  }    
-                  keyExtractor={(item)=> item.id.toString()}              
-                />
-              {/* </View>    */}
-            {/* </ElevatedView>      
-          </View>  */}
+          <FlatList
+            refreshing={refre}
+            onRefresh={()=>{this._refre()}}
+            data={listProducts}
+            renderItem={({ item }) => 
+              <View margin={10}>
+                <ElevatedView elevation={5} style={stayElavated}>
+                  <View style={products} >
+                    <Image style={imageProduct} source={{uri:`${url}${item.images[0]}`}} />
+                    <View style={productsContent}>
+                      <Text style={textName}>{item.name.toUpperCase()} </Text>
+                      <Text style={textPrice}> {item.price}$</Text>
+                      <Text style={textMaterial}> {item.material} </Text>  
+                      <View style={colorStyle}>
+                        <Text style={{color: colors.darkblue}}> Color {item.color}</Text>
+                        <View style={{width:16, height:16, backgroundColor: item.color.toLowerCase(), borderRadius:8}}/>
+                      </View>                         
+                    </View>
+                    <View style={productsShowDetail}>                            
+                      <TouchableOpacity onPress={()=> {this.goDetail(item)}}>
+                        <Text style={textShowDetail}>SHOW DETAIL</Text>
+                      </TouchableOpacity>
+                    </View>
+                  </View>
+                </ElevatedView>      
+              </View> 
+            }    
+            keyExtractor={(item)=> item.id.toString()}              
+          />
         </View>
       </View>
     );
@@ -123,23 +113,19 @@ const imageWidth = (width - 70) / 3;
 const imageHeight = (imageWidth / 361) * 452;
 const styles = StyleSheet.create({
   container: {
-    //flex: 100,
-    backgroundColor: '#DBDBD8',
-    height: height + 90,
-    //margin: width / 38,
+    backgroundColor: colors.bannerUI,
+    height: height + 15,
   },
   wrapper: {
-    backgroundColor: "#FFF",
-    margin: 10,
-    //paddingHorizontal: 10
+    backgroundColor: colors.bannerUI,
+    //margin: 10,
   },
   header: {
-    backgroundColor: colors.darkblue,
+    backgroundColor: colors.slideUI,
     height: 50,
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    padding: 5,
   },
   imagebackstyle: {
     width: width / 13,
@@ -152,14 +138,14 @@ const styles = StyleSheet.create({
   },
   body: {
     flex: 14,
-    padding: 10,
+    margin: 10,
+    
   },
   products: {
     flexDirection: 'row',
-    paddingVertical: 10,
+    marginVertical: 10,
   },
   productsImage: {
-    //margin: 8,
     height: width / 2.9,
     width: (90 * 452) / 361
   },
@@ -195,6 +181,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   productsShowDetail: {
+    width: width / 4,
     flexDirection: 'row',
     alignItems: 'flex-end'
   },

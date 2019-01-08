@@ -78,12 +78,12 @@ export default connect(mapStoreToProps,{order})(OrderHistory);
 const {width, height} = Dimensions.get('window');
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#FFF',
+        backgroundColor: colors.slideUI,
         flex: 1,
     },
     header: {
         flex: 1,
-        backgroundColor: colors.darkblue_1,
+        backgroundColor: colors.topUI,
         flexDirection: 'row',
         padding: width / 25,
         justifyContent: 'space-between',
@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
         backgroundColor: colors.white,
     },
     orders: {
-        backgroundColor: 'white',
+        backgroundColor: colors.paleblue,
         margin: 10,
         padding: 10,
         borderRadius: 2,
@@ -132,6 +132,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     stayElavated: {
-        backgroundColor: '#FFF',
+        backgroundColor: colors.paleblue,
     },
 })
