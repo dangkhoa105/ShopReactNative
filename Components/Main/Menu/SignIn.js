@@ -50,7 +50,7 @@ class SignIn extends Component {
               containerStyle = {{backgroundColor: colors.headerUI, margin: 10}}
               titleStyle = {{ fontSize: 20, color: colors.bannerUI }}
               onPress={()=> {this.props.goChange()}}
-              title = 'Change Info                >'
+              title = 'Change Infomation                >'
             />
 
             <Button

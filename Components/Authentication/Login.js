@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: colors.topUI,
+        backgroundColor: colors.brightred,
         marginTop: 20,
     },
     buttontext: {

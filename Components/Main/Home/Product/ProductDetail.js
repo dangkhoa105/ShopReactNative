@@ -13,8 +13,7 @@ const url="http://192.168.56.1:80/app/images/product/";
 
 class ProductDetail extends Component {
     goHome(){
-        this.props.navigation.navigate('FormSearch');
-        this.props.navigation.goBack()
+        this.props.navigation.goBack();
     }
 
     addProductsToCart() {

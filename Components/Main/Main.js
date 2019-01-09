@@ -1,5 +1,5 @@
 import React,{ Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import Header from './Header.js';
 import { TABBAR } from '../Route/Route.js';
 import getToken from '../../Redux/API/getToken';
@@ -25,18 +25,20 @@ class Main extends Component {
     this.props.navigation.navigate('DrawerOpen');
   }
   goSearch(){
-    this.props.navigation.navigate('FormSearch');
+    this.props.navigation.navigate('SEARCH');
   }
   goCart(){
-    this.props.navigation.navigate('FormCart');
+    this.props.navigation.navigate('CART');
   }
   render() {
     const { container, content } = styles
     return (
       <View style={container}>
-        <Header onOpen={this.openMenu.bind(this)} goSear={this.goSearch.bind(this)} goCart={this.goCart.bind(this)}/>
-        <View style={content}>
-          <TABBAR></TABBAR>
+        <View style={container}>
+          <Header onOpen={this.openMenu.bind(this)} goSear={this.goSearch.bind(this)} goCart={this.goCart.bind(this)}/>
+          <View style={content}>
+            <TABBAR></TABBAR>
+          </View>
         </View>
       </View>
     );
@@ -49,7 +51,7 @@ export default connect(null,{OnSignIn})(Main);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.red,
+    backgroundColor: colors.bannerUI,
   },
   content: {
     flex: 14.5,

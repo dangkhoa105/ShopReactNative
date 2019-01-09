@@ -7,25 +7,29 @@ import { login, registry } from '../../Redux/Reducer/CreateAction';
 
 import back from '../../Image/back_white.png';
 import colors from '../../Design/Color';
-import profile from '../../Image/temp/profile.png';
+import profile from '../../Image/logo.png';
 
 class Authentication extends Component{
     goBackMenu() {
         this.props.navigation.navigate('First');
         this.props.navigation.navigate('DrawerOpen');
     }
+
     isLogin(){
         const { isLogin } = this.props;
         if( isLogin === 'REGISTRY') return <Registry/>
         return <Login goBackMenu = {this.goBackMenu.bind(this)}/>
     }
+
     isFilterLogin(statusname){
         if( statusname === this.props.isLogin ) return styles.buttontextBottom;
         return styles.buttontextBottomSignUp;
     }
+
+    
     render() {
         const { isLogin } = this.props;
-        const { container, bottom, header, iconStyle, buttonLeft, buttonRight, logo, logoStyle } = styles
+        const { container, bottom, header, iconStyle, buttonLeft, buttonRight, logo, logoStyle, buttontextBottom } = styles
         return (
             <View style={container}>               
                 <View style={header}>
@@ -48,16 +52,16 @@ class Authentication extends Component{
 
                 <View style={bottom}>
                     <TouchableOpacity
-                        style={buttonLeft}
-                        onPress={() => this.props.login() }
+                        style={[buttonLeft, this.isFilterLogin('LOGIN')]}
+                        onPress={() => this.props.login()}
                     >
-                        <Text style={this.isFilterLogin('LOGIN')}>SIGN IN</Text>
+                        <Text>SIGN IN</Text>
                     </TouchableOpacity>
                     <TouchableOpacity
-                        style={buttonRight}
-                        onPress={() => this.props.registry() }
+                        style={[buttonRight, this.isFilterLogin('REGISTRY')]}
+                        onPress={() => this.props.registry()}
                     >
-                        <Text style={this.isFilterLogin('REGISTRY')}>SIGN UP</Text>
+                        <Text>SIGN UP</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -77,6 +81,7 @@ const imageWidth = width * 0.2;
 const imageHeight = (imageWidth / 2000) * 2000;
 const styles = StyleSheet.create({
     container: {
+        //flex: 1,
         width: width,
         height: height,
         backgroundColor: colors.menuUI,
@@ -95,17 +100,28 @@ const styles = StyleSheet.create({
         width: width / 13,
         height: height / 18,
     },
+    inactiveStyle: {
+        width: (width - 65) / 2,
+        height: height * 0.07,
+        backgroundColor: '#D7D7D7',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingVertical: 15,
+        borderBottomLeftRadius: 20,
+        borderTopLeftRadius: 20,
+        marginRight: 1,
+    },
     bottom: {
-        flex: 2,
+        //flex: 2,
         alignItems: 'center',
         flexDirection: 'row',
         justifyContent: 'center',
-        marginBottom: 30,
+        marginBottom: 25,
     },
     buttonLeft: {
         width: (width - 65) / 2,
         height: height * 0.07,
-        backgroundColor: '#FFF',
+        backgroundColor: '#FFECB3',
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: 15,
@@ -116,7 +132,7 @@ const styles = StyleSheet.create({
     buttonRight: {
         width: (width - 65) / 2,
         height: height * 0.07,
-        backgroundColor: '#FFF',
+        backgroundColor: '#FFECB3',
         alignItems: 'center',
         justifyContent: 'center',
         paddingVertical: 15,
@@ -129,9 +145,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     logoStyle: {
-        width: imageWidth * 1.1,
-        height: imageHeight * 1.1,
+        width: imageWidth * 1.6,
+        height: imageHeight * 1.5,
         borderRadius: 100,
-        //margin: 20,
+    },
+    buttontextBottom: {
+        backgroundColor: '#feca57'
     }
 })

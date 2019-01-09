@@ -56,42 +56,57 @@ export const TABBAR = TabNavigator(
         tabHome: {
             screen: ROUTE_HOME,
             navigationOptions:{
-                // tabBarIcon: ({ focused, tintColor }) => {
-                //     if (focused) {
-                //         return (<Image source={iconHome1} style={styles.icon} />)
-                //     }
-                //     else {
-                //         return (<Image source={iconHome} style={styles.icon} />)
-                //     }
-                // },
-                // tabBarLabel: ({ focused, tintColor }) =>
-                //     (<Text style={focused ? styles.iconTextActive : styles.iconText}>Home</Text>),
+                tabBarIcon: ({ focused, tintColor }) => {
+                    if (focused) {
+                        return (<Image source={iconHome1} style={styles.icon} />)
+                    }
+                    else {
+                        return (<Image source={iconHome} style={styles.icon} />)
+                    }
+                },
+                tabBarLabel: ({ focused, tintColor }) =>
+                    (<Text style={focused ? styles.iconTextActive : styles.iconText}>Home</Text>),
             }
         },
-        // tabCart: {
-        //     screen: ROUTE_CART,
-        //     navigationOptions:{
-        //         tabBarIcon: ({focused})=> <IconCart focused={focused}/>,
-        //         tabBarLabel: ({focused, tintColor})=> 
-        //             (<Text style={focused ? styles.iconTextActive : styles.iconText}>Cart</Text>),
-        //     }                
-        // },
-        // tabContact: {
-        //     screen: ROUTE_CONTACT,
-        //     navigationOptions:{
-        //         tabBarIcon: ({ focused, tintColor }) => {
-        //             if (focused) {
-        //                 return (<Image source={iconContact1} style={styles.icon} />)
-        //             }
-        //             else {
-        //                 return (<Image source={iconContact} style={styles.icon} />)
-        //                 return
-        //             }
-        //         },
-        //         tabBarLabel:({focused, tintColor})=> 
-        //             (<Text style={focused ? styles.iconTextActive : styles.iconText}>Contact</Text>),
-        //     }
-        // }
+        tabCart: {
+            screen: ROUTE_CART,
+            navigationOptions:{
+                tabBarIcon: ({focused})=> <IconCart focused={focused}/>,
+                tabBarLabel: ({focused, tintColor})=> 
+                    (<Text style={focused ? styles.iconTextActive : styles.iconText}>Cart</Text>),
+            }                
+        },
+        tabSearch: {
+            screen: ROUTE_SEARCH,
+            navigationOptions:{
+                tabBarIcon: ({ focused, tintColor }) => {
+                    if (focused) {
+                        return (<Image source={iconSearch1} style={styles.icon} />)
+                    }
+                    else {
+                        return (<Image source={iconSearch} style={styles.icon} />)
+                    }
+                },
+                tabBarLabel: ({focused, tintColor})=> 
+                    (<Text style={focused ? styles.iconTextActive : styles.iconText}>Search</Text>),
+            }
+        },
+        tabContact: {
+            screen: ROUTE_CONTACT,
+            navigationOptions:{
+                tabBarIcon: ({ focused, tintColor }) => {
+                    if (focused) {
+                        return (<Image source={iconContact1} style={styles.icon} />)
+                    }
+                    else {
+                        return (<Image source={iconContact} style={styles.icon} />)
+                        return
+                    }
+                },
+                tabBarLabel:({focused, tintColor})=> 
+                    (<Text style={focused ? styles.iconTextActive : styles.iconText}>Contact</Text>),
+            }
+        }
     },
     {
         tabBarPosition:'bottom',

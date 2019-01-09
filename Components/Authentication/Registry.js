@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity,Alert, TextInput, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity,Alert, TextInput, Dimensions, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
 import Register from "../../Redux/API/Register";
 import { login } from '../../Redux/Reducer/CreateAction';
@@ -74,6 +74,7 @@ class Registry extends Component{
         const { body, button, buttontext, textInputStyle, inputView } = styles
         return(       
                 <View style={body}>
+                <KeyboardAvoidingView behavior='padding' style={body}>
                     <View style={inputView}>
                         <Input
                             placeholder='Enter your name'
@@ -101,6 +102,7 @@ class Registry extends Component{
                             }}
                             value={this.state.email}
                             onChangeText={(email) => { this.setState({email}) }}
+                            multiline style={{maxHeight: 80}}
                             inputContainerStyle = {{backgroundColor: 'transparent', borderColor: colors.bannerUI}}
                             containerStyle = {{width: width - 10}}
                             inputStyle = {{color: colors.bannerUI}}
@@ -147,6 +149,8 @@ class Registry extends Component{
                         <Text style={buttontext}>SIGN UP NOW</Text>
                     </TouchableOpacity>
                     <Text>{this.state.textResult}</Text>
+                </KeyboardAvoidingView>
+                    
                 </View>
 
                
@@ -160,7 +164,7 @@ const styles = StyleSheet.create({
     body: {
         flex: 10,
         alignItems: 'center',
-        marginTop: 20,
+       //marginTop: 10,
     },
     textInputStyle: {
         
@@ -172,7 +176,7 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
     },
     button: {
-        backgroundColor: colors.topUI,
+        backgroundColor: colors.brightred,
         borderColor: '#FFF',
         width: width / 1.9,
         height: height * 0.07,

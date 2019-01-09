@@ -21,7 +21,7 @@ class Search extends Component{
     }
   }
   goDetail(product){
-    this.props.navigation.navigate('PRODUCTDETAIL',{product});
+    this.props.navigation.navigate('PRODUCTDETAIL',{product});   
   }
   _search(){
     const {contentSearch} = this.state;
@@ -43,7 +43,6 @@ class Search extends Component{
   }
   goBack(){
     this.props.navigation.navigate('First');
-    //this.props.navigation.navigate('DrawerOpen')
   }
   render() {
     const { colorStyle, header, hearderSearch, textinput,iconStyle, stylesearch, products, stayElavated, productsImage, imageProduct, productsContent, textStyle0, textStyle1, textStyle2, productsShowDetail } = styles;

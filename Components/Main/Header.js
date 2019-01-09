@@ -25,7 +25,7 @@ class Header extends Component{
                             platform="android"
                             underlineColorAndroid='transparent'
                             placeholder="Search..."                      
-                            onFocus={ this.props.goSear }                                                      
+                            onFocus={this.props.goSear}                                                      
                         /> 
                     </View>
                     <IconCart goCar={this.props.goCart}/>                  

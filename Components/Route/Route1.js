@@ -12,6 +12,7 @@ import Search from '../Main/Search';
 import Cart from '../Order/Cart'
 import IconCart from './TabBarIcon/IconCart';
 import Contact from '../Main/Contact';
+import ProductDetail from '../Main/Home/Product/ProductDetail';
 
 
 var {width} = Dimensions.get('window');
@@ -43,6 +44,9 @@ export const SIDEMAIN = DrawerNavigator({
     },
     FormContact:{
         screen: Contact
+    },
+    FormProductDetail:{
+        screen: ProductDetail
     }
 },
 {
