@@ -71,8 +71,20 @@ class Cart extends Component {
     }
   }
   _Success() {
-    this.props.updateProductsCart([]);
-    saveCart([]);
+    Alert.alert(
+      'Information Order',
+      '',
+      [
+        {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
+        {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+        {text: 'OK', onPress: () => console.log(
+          this.props.updateProductsCart([]),
+          saveCart([])
+
+        )},
+      ],
+      { cancelable: false }
+    )
   }
   goBack(){
     this.props.navigation.navigate('First');

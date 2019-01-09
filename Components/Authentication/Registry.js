@@ -74,7 +74,6 @@ class Registry extends Component{
         const { body, button, buttontext, textInputStyle, inputView } = styles
         return(       
                 <View style={body}>
-                <KeyboardAvoidingView behavior='padding' style={body}>
                     <View style={inputView}>
                         <Input
                             placeholder='Enter your name'
@@ -89,6 +88,10 @@ class Registry extends Component{
                             inputContainerStyle = {{backgroundColor: 'transparent', borderColor: colors.bannerUI}}
                             containerStyle = {{width: width - 10}}
                             inputStyle = {{color: colors.bannerUI}}
+
+                            returnKeyType = { "next" }
+                            onSubmitEditing={() => { this.secondTextInput.focus(); }}
+                            blurOnSubmit={false}
                         />
                     </View>   
                     <View style={inputView}>
@@ -106,6 +109,12 @@ class Registry extends Component{
                             inputContainerStyle = {{backgroundColor: 'transparent', borderColor: colors.bannerUI}}
                             containerStyle = {{width: width - 10}}
                             inputStyle = {{color: colors.bannerUI}}
+
+                            ref={(input) => { this.secondTextInput = input; }}
+
+                            returnKeyType = { "next" }
+                            onSubmitEditing={() => { this.thirdTextInput.focus(); }}
+                            blurOnSubmit={false}
                         />
                     </View>   
                     <View style={inputView}>
@@ -123,6 +132,12 @@ class Registry extends Component{
                             containerStyle = {{width: width - 10}}
                             inputStyle = {{color: colors.bannerUI}}
                             secureTextEntry
+
+                            ref={(input) => { this.thirdTextInput = input; }}
+
+                            returnKeyType = { "next" }
+                            onSubmitEditing={() => { this.lastTextInput.focus(); }}
+                            blurOnSubmit={false}
                         />
                     </View>   
                     <View style={inputView}>
@@ -140,6 +155,8 @@ class Registry extends Component{
                             containerStyle = {{width: width - 10}}
                             inputStyle = {{color: colors.bannerUI}}
                             secureTextEntry
+
+                            ref={(input) => { this.lastTextInput = input; }}
                         />
                     </View>   
                     <TouchableOpacity
@@ -148,9 +165,7 @@ class Registry extends Component{
                     >
                         <Text style={buttontext}>SIGN UP NOW</Text>
                     </TouchableOpacity>
-                    <Text>{this.state.textResult}</Text>
-                </KeyboardAvoidingView>
-                    
+                    <Text>{this.state.textResult}</Text>          
                 </View>
 
                

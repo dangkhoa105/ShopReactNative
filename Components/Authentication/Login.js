@@ -62,6 +62,11 @@ class Login extends Component{
                         inputContainerStyle = {{backgroundColor: 'transparent', borderColor: colors.bannerUI}}
                         containerStyle = {{width: width - 10}}
                         inputStyle = {{color: colors.bannerUI}}
+
+                        returnKeyType = { "next" }
+                        onSubmitEditing={() => { this.secondTextInput.focus(); }}
+                        blurOnSubmit={false}
+                        keyboardType="email-address"
                     />
                 </View>              
                 <View style={inputView}>
@@ -79,6 +84,8 @@ class Login extends Component{
                         containerStyle = {{width: width - 10}}
                         inputStyle = {{color: colors.bannerUI}}
                         secureTextEntry
+
+                        ref={(input) => { this.secondTextInput = input; }}
                     />
                 </View>                
                 <TouchableOpacity

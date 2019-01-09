@@ -34,7 +34,7 @@ class SignIn extends Component {
               containerStyle = {{backgroundColor: colors.headerUI, margin: 10}}
               titleStyle = {{ fontSize: 20, color: colors.bannerUI }}
               onPress={()=> {this.props.goOrderHis()}}
-              title = 'Order History              >'
+              title = 'Order History                 >'
             />
 
             <Button
@@ -50,7 +50,7 @@ class SignIn extends Component {
               containerStyle = {{backgroundColor: colors.headerUI, margin: 10}}
               titleStyle = {{ fontSize: 20, color: colors.bannerUI }}
               onPress={()=> {this.props.goChange()}}
-              title = 'Change Infomation                >'
+              title = 'Change Infomation      >'
             />
 
             <Button
@@ -66,7 +66,7 @@ class SignIn extends Component {
               containerStyle = {{backgroundColor: colors.headerUI, margin: 10}}
               titleStyle = {{ fontSize: 20, color: colors.bannerUI }}
               onPress={() => {this.props.goCont()}}
-              title = 'About                           >'
+              title = 'About                              >'
             />
 
             <Button
@@ -82,7 +82,7 @@ class SignIn extends Component {
               containerStyle = {{backgroundColor: colors.headerUI, margin: 10}}
               titleStyle = {{ fontSize: 20, color: colors.bannerUI }}
               onPress={this._OnSignOut.bind(this)}
-              title = 'Sign Out                       >'
+              title = 'Sign Out                          >'
             />
           </View>
       </View>
