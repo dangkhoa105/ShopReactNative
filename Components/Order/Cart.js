@@ -148,7 +148,7 @@ class Cart extends Component {
                 </TouchableOpacity>
               </View>
             </View>
-            : <Text>Sign in, please! </Text>
+            : <Text style={{fontSize: 25, marginLeft: width / 3.5}}>Sign in, please! </Text>
       }
       </View>
     );

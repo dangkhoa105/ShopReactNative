@@ -1,4 +1,5 @@
 {
   "name": "Shop",
-  "displayName": "Shop"
+  "displayName": "Shop",
+  "icon": "logo.png"
 }

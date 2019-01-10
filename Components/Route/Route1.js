@@ -30,24 +30,24 @@ export const SIDEMAIN = DrawerNavigator({
     FormAuthen:{
         screen: Authentication
     },
-    FormSearch:{
-        screen: Search
-    },
-    FormHeader:{
-        screen: Header
-    },
-    FormCart:{
-        screen: Cart
-    },
-    FormIconCart:{
-        screen: IconCart
-    },
+    // FormSearch:{
+    //     screen: Search
+    // },
+    // FormHeader:{
+    //     screen: Header
+    // },
+    // FormCart:{
+    //     screen: Cart
+    // },
+    // FormIconCart:{
+    //     screen: IconCart
+    // },
     FormContact:{
         screen: Contact
     },
-    FormProductDetail:{
-        screen: ProductDetail
-    }
+    // FormProductDetail:{
+    //     screen: ProductDetail
+    // }
 },
 {
     initialRouteName: 'First',

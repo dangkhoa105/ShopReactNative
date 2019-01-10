@@ -31,7 +31,7 @@ class Registry extends Component{
         const {name,email,pass} =this.state;
         Register(email,name,pass)
         .then(res=> {
-            if(res==='INPUT_FAIL') return this._registerSpace();
+            if(res==='KHONG_THANH_CONG') return this._registerSpace();
 
             else if(res === 'THANH_CONG') return this._registerSuccess();
             
@@ -105,7 +105,6 @@ class Registry extends Component{
                             }}
                             value={this.state.email}
                             onChangeText={(email) => { this.setState({email}) }}
-                            multiline style={{maxHeight: 80}}
                             inputContainerStyle = {{backgroundColor: 'transparent', borderColor: colors.bannerUI}}
                             containerStyle = {{width: width - 10}}
                             inputStyle = {{color: colors.bannerUI}}
